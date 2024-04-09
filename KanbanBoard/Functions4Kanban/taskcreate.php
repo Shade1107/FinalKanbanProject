@@ -1,10 +1,11 @@
 <?php
-// require_once('../header_footer/header.php');
-require_once('../Repositories/TaskRepository.php');
-require_once('../Repositories/Task_memberRepository.php');
-require_once('../Repositories/UserRepository.php');
-require_once('../Repositories/Project_memberRepository.php');
-require_once('../Database/DatabaseConnection.php');
+$path = realpath(__DIR__."/../");
+// require_once("$path/header_footer/header.php');
+require_once("$path/Repositories/TaskRepository.php");
+require_once("$path/Repositories/Task_memberRepository.php");
+require_once("$path/Repositories/UserRepository.php");
+require_once("$path/Repositories/Project_memberRepository.php");
+require_once("$path/Database/DatabaseConnection.php");
 
 $taskRepo = new TaskRepository(DatabaseConnection::getInstance());
 

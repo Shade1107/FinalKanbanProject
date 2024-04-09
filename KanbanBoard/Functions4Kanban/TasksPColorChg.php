@@ -1,7 +1,8 @@
 <?php
+$path = realpath(__DIR__."/../");
 // var_dump($_POST);
-require_once("../Repositories/TaskRepository.php");
-require_once("../Database/DatabaseConnection.php");
+require_once("$path/Repositories/TaskRepository.php");
+require_once("$path/Database/DatabaseConnection.php");
 
 $task_id       =    $_GET['task_id'] ?? '';
 $color         =    $_GET['new_taskHeader'] ?? '';
