@@ -76,7 +76,7 @@ $taskmembers = $taskmemrepo->find($id); // Finding task members by task ID
            
         </table> 
         <br>
-        <a href="#" class="buttonlink"><button type="button" class="button mt-1 Ypfchangebtn mb-5">Back</button></a>
+        <a href="javascript:history.back()" class="buttonlink"><button type="button" class="button mt-1 Ypfchangebtn mb-5">Back</button></a>
       </div>
    </section>
   
