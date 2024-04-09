@@ -66,7 +66,7 @@ $isAdminMemberFromPJwebpage = $isAdminMemberFromPJwebpage??'';
       <div class="info-container">
         <h1>
           <?php if($isMember || $isAdmin){?>
-              <img src="image/logo2.png" width="120px" height="50px">
+              <img src="../image/logo2.png" width="120px" height="50px">
           <?php }else{?> 
 
           <img src="../image/logo2.png" width="120px" height="50px">
