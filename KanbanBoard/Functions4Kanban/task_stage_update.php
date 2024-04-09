@@ -1,8 +1,9 @@
 <?php
-    require_once("../Database/DatabaseConnection.php");
-    require_once("../Repositories/ProjectRepository.php");
-    require_once("../Repositories/StageRepository.php");
-    require_once("../Repositories/TaskRepository.php");
+$path = realpath(__DIR__."/../");
+    require_once("$path/Database/DatabaseConnection.php");
+    require_once("$path/Repositories/ProjectRepository.php");
+    require_once("$path/Repositories/StageRepository.php");
+    require_once("$path/Repositories/TaskRepository.php");
 
     //update....
     $task_id = $_GET['task_id'] ?? 0 ;//need to vlidate more deeply
