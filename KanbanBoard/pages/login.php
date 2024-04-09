@@ -17,16 +17,16 @@ unset($_SESSION['LoginError']);
       
       <link rel="icon" type="image/png" href="../image/logo2_2.PNG">
       <!-- custom css  -->
-      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body class="fed1dc">
    <div class="container-fluid row">
         <div class="col-lg-6  YloginImg ee92a9">
-                <div class="Yimg bg-info Yimg1"></div>
-                <div class="Yimg bg-secondary Yimg2"></div>
-                <div class="Yimg  bg-danger Yimg3"></div>
-                <div class="Yimg  bg-warning Yimg4"></div>
-                <div class="Yimg  bg-success Yimg5"></div>
+                <div class="Yimg  Yimg1"></div>
+                <div class="Yimg  Yimg2"></div>
+                <div class="Yimg  Yimg3"></div>
+                <div class="Yimg  Yimg4"></div>
+                <div class="Yimg  Yimg5"></div>
 
             </div>
       <div class="loginForm  col-lg-6 ee92a9 ">
@@ -35,6 +35,8 @@ unset($_SESSION['LoginError']);
                  <h1 class="loginFormText">
                     <img src="../image/logo3.png"  width="120px" height="50px">
                  </h1>
+
+
                 <span class="Yloginspan">Welcome to our Kanban</span>
                 <div class="Yinputfieldcenter ">
                       <div class="mt-5 Yinputf">
