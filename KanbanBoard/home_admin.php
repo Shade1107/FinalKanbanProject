@@ -9,7 +9,7 @@ require_once("$path/Repositories/Project_memberRepository.php");
 <?php 
 // require_once('pages/loader.php');
 $isAdmin = true;
-require_once('header_footer/header.php');
+require_once('../KanbanBoard/header_footer/header.php');
 
 require_once('pages/chart_data_function.php');
 
