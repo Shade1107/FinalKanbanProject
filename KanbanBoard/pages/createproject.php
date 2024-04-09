@@ -1,9 +1,8 @@
 <?php 
-$path = realpath(__DIR__ ."/../"); 
 $isCreateProject = true;
-require_once("$path/header_footer/header.php");
+require_once('../header_footer/header.php');
 $stageError = isset($_SESSION['stageError']) ? $_SESSION['stageError'] : ''; 
-require_once("$path/Repositories/StageRepository.php");
+require_once('../Repositories/StageRepository.php');
 include('DB_connection.php');
 // require_once('header&footer/footer.php');
 
@@ -127,7 +126,7 @@ $stageRepo = New StageRepository(DatabaseConnection::getInstance());
  </div> 
 </section>
 
-<?php 
+<?php require_once('../header_footer/footer.php'); ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script> 
