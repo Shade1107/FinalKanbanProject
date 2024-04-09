@@ -1,5 +1,10 @@
 <?php 
-require_once('../Repositories/ProjectRepository.php');
+$path = realpath(__DIR__."/../");
+// require_once("$path/config/autoload.php");
+// require_once("$path/repositories/role_repository.php");
+// require_once("$path/repositories/user_repository.php");
+// require_once("$path/helpers/view.php");
+require_once("$path/KanbanBoard/Repositories/ProjectRepository.php");
 require_once('../Repositories/TaskRepository.php');
 require_once('../Repositories/UserRepository.php');
 require_once('../Repositories/Project_memberRepository.php');

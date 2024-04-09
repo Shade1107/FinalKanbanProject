@@ -1,7 +1,7 @@
 <?php
     require_once("Model.php");
-    require_once("../Repositories/ProjectRepository.php");
-    require_once("../Database/DatabaseConnection.php");
+    require_once("$path/Repositories/ProjectRepository.php");
+    require_once("$path/Database/DatabaseConnection.php");
 
     class Project extends Model{
         public $id;
