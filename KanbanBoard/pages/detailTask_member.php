@@ -1,10 +1,11 @@
 <?php 
+$path = realpath(__DIR__ ."/../"); 
 $isDetailTaskMember = true;
 
-require_once('../header_footer/header.php');
-require_once('../Repositories/ProjectRepository.php');
-require_once('../Repositories/Task_memberRepository.php');
-require_once('../Repositories/UserRepository.php');
+require_once("$path/header_footer/header.php");
+require_once("$path/Repositories/ProjectRepository.php");
+require_once("$path/Repositories/Task_memberRepository.php");
+require_once("$path/Repositories/UserRepository.php");
 
 $id = intval($_GET['id']); // Assuming task ID is passed via GET parameter
 
@@ -75,12 +76,22 @@ $taskmembers = $taskmemrepo->find($id); // Finding task members by task ID
            
         </table> 
         <br>
+<<<<<<< HEAD
         <a href="#" onclick="history.back();" class="buttonlink">
             <button type="button" class="button mt-1 Ypfchangebtn mb-5">Back</button>
         </a>
+=======
+        <a href="javascript:history.back()" class="buttonlink"><button type="button" class="button mt-1 Ypfchangebtn mb-5">Back</button></a>
+>>>>>>> 6a6713f89ea2c7fc6a3c330129a8a4f029e12140
       </div>
    </section>
   
-    <?php require_once('../header_footer/footer.php'); ?>
-</body>
+    <!-- <script src="js/app.js"></script> -->
+
+    <?php 
+require_once("$path/header_footer/footer.php");
+
+?>
+  </body>
+
 </html>

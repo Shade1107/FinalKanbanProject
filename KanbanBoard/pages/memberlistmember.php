@@ -1,7 +1,8 @@
 <?php 
-    require_once('../header_footer/header.php');
-    require_once('../Database/DatabaseConnection.php');
-    require_once('../Repositories/UserRepository.php');
+    $path = realpath(__DIR__ ."/../"); 
+    require_once("$path/header_footer/header.php");
+    require_once("$path/Database/DatabaseConnection.php");
+    require_once("$path/Repositories/UserRepository.php");
     //$projmemberRepo = new projectMemberRepository(DatabaseConnection::getInstance());
     $memberRepo = new UserRepository(DatabaseConnection::getInstance());
     $members = $memberRepo->getAll();;

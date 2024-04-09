@@ -81,8 +81,11 @@ $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img.
             </tr>    
           </table> 
           <br>
-          <a href="profileedit.php" style="text-decoration: none;"><button class="button mt-1 Ypfchangebtn mb-5">Edit</button></a>
-      
+          <!-- add back button (myo)   -->
+          <div class="container-button-edit">
+          <a class="buttonlink" href="add_project_admin.php"><button type="button" class="buttonMiedit">Back</button></a>
+          <a class="buttonlink" href="profileedit.php"><button type="button" class="buttonMiedit">Edit</button></a>
+          </div>
       </div>
       <div class="col-lg-9 row">
              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">

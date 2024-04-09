@@ -21,8 +21,6 @@
     $projectMemberRepo = new ProjectMemberRepository($dbConnection);
     $projects = $projectMemberRepo->findWithMemberID($id);
     $totalProjects = count($projects);
-
-    
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -143,7 +141,7 @@
 
 <?php 
 $isAdminMemberFromPJwebpage = true;
-require_once('../header_footer/footer.php');
+require_once("$path/header_footer/footer.php");
 
 // require_once('chart_data_function.php');
 ?>

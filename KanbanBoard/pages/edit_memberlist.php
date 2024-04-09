@@ -1,6 +1,7 @@
 <?php
-require_once("../Database/DatabaseConnection.php");
-require_once("../Repositories/UserRepository.php");
+$path = realpath(__DIR__ ."/../"); 
+require_once("$path/Database/DatabaseConnection.php");
+require_once("$path/Repositories/UserRepository.php");
 
 $userRepo = new UserRepository(DatabaseConnection::getInstance());
 

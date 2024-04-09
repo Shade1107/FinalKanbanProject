@@ -1,8 +1,6 @@
-
 <?php
-
-
-require_once('../Database/DatabaseConnection.php');
+$path = realpath(__DIR__."/../");
+require_once("$path/Database/DatabaseConnection.php");
 
 session_start();
 
