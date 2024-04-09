@@ -1,9 +1,10 @@
 <?php 
-require_once('../header_footer/header.php');
-require_once('../Repositories/TaskRepository.php');
-require_once('../Repositories/UserRepository.php');
-require_once('../Repositories/Project_memberRepository.php');
-require_once('../Functions4Kanban/taskcreate.php');
+$path = realpath(__DIR__ ."/../"); 
+require_once("$path/header_footer/header.php");
+require_once("$path/Repositories/TaskRepository.php");
+require_once("$path/Repositories/UserRepository.php");
+require_once("$path/Repositories/Project_memberRepository.php");
+require_once("$path/Functions4Kanban/taskcreate.php");
 
 ?>
 <!Doctype html>
@@ -50,7 +51,7 @@ require_once('../Functions4Kanban/taskcreate.php');
             
           </div>
           <?php
-                require_once('../Repositories/ProjectRepository.php');
+                require_once("$path/Repositories/ProjectRepository.php");
 
                 if (isset($_GET["id"])) {
                     $id = intval($_GET["id"]);
@@ -125,12 +126,10 @@ require_once('../Functions4Kanban/taskcreate.php');
                       </div>
                     </div>
               </div>
-                <Br>
-             
+                <br>
                   <div class="buttontask-container py-5">
                   <a href="../home_admin.php?id=<?= $project->id ?>" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
                   <button type="submit" class="buttonMi">Create</button>
-
                   </div>
 
            </form>
@@ -138,7 +137,7 @@ require_once('../Functions4Kanban/taskcreate.php');
  </div> 
 </section>
 
-<?php require_once('../header_footer/footer.php'); ?>
+<?php require_once("$path/header_footer/footer.php"); ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script> 

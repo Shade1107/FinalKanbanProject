@@ -1,8 +1,9 @@
 <?php 
+$path = realpath(__DIR__ ."/../"); 
 $isCreateProject = true;
-require_once('../header_footer/header.php');
+require_once("$path/header_footer/header.php");
 $stageError = isset($_SESSION['stageError']) ? $_SESSION['stageError'] : ''; 
-require_once('../Repositories/StageRepository.php');
+require_once("$path/Repositories/StageRepository.php");
 include('DB_connection.php');
 // require_once('header&footer/footer.php');
 

@@ -1,12 +1,12 @@
 <?php
     $path = realpath(__DIR__ ."/../"); 
-    require_once('$path/KanbanBoard/Database/DatabaseConnection.php');
-    require_once('$path/KanbanBoard/Repositories/UserRepository.php');
-    require_once('$path/KanbanBoard/Repositories/RoleRepository.php');
-    require_once('$path/KanbanBoard/Repositories/GenderRepository.php');
-    require_once('$path/KanbanBoard/header_footer/header.php');
-    require_once('$path/KanbanBoard/Repositories/ProjectRepository.php');
-    require_once('$path/KanbanBoard/Repositories/Project_memberRepository.php');
+    require_once("$path/Database/DatabaseConnection.php");
+    require_once("$path/Repositories/UserRepository.php");
+    require_once("$path/Repositories/RoleRepository.php");
+    require_once("$path/Repositories/GenderRepository.php");
+    require_once("$path/header_footer/header.php");
+    require_once("$path/Repositories/ProjectRepository.php");
+    require_once("$path/Repositories/Project_memberRepository.php");
 
     $isAdminMemberFromPJwebpage = true;
 
