@@ -1,5 +1,6 @@
 <?php
-require_once('../header_footer/header.php');
+ $path = realpath(__DIR__ ."/../"); 
+require_once('$path/KanbanBoard/header_footer/header.php');
 include('DB_connection.php');
 // require_once('header&footer/footer.php');
 

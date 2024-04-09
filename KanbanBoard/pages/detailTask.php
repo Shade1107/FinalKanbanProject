@@ -1,5 +1,6 @@
 <?php 
-require_once('../header&footer/header.php');
+ $path = realpath(__DIR__ ."/../"); 
+require_once('$path/KanbanBoard/header&footer/header.php');
 
 ?>
 <head>

@@ -1,10 +1,11 @@
 <?php
-require_once('../header_footer/header.php');
+ $path = realpath(__DIR__ ."/../"); 
+require_once('$path/KanbanBoard/header_footer/header.php');
 require_once('chart_data_function.php');
-require_once '../Database/DatabaseConnection.php';
-require_once '../Repositories/UserRepository.php';
-require_once '../Repositories/RoleRepository.php';
-require_once '../Repositories/GenderRepository.php';
+require_once '$path/KanbanBoard/Database/DatabaseConnection.php';
+require_once '$path/KanbanBoard/Repositories/UserRepository.php';
+require_once '$path/KanbanBoard/Repositories/RoleRepository.php';
+require_once '$path/KanbanBoard/Repositories/GenderRepository.php';
 
 
 

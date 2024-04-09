@@ -1,9 +1,10 @@
 <?php 
-require_once('../header_footer/header.php');
-require_once('../Repositories/TaskRepository.php');
-require_once('../Repositories/UserRepository.php');
-require_once('../Repositories/Project_memberRepository.php');
-require_once('../Functions4Kanban/taskcreate.php');
+ $path = realpath(__DIR__ ."/../"); 
+require_once('$path/KanbanBoard/header_footer/header.php');
+require_once('$path/KanbanBoard/Repositories/TaskRepository.php');
+require_once('$path/KanbanBoard/Repositories/UserRepository.php');
+require_once('$path/KanbanBoard/Repositories/Project_memberRepository.php');
+require_once('$path/KanbanBoard/Functions4Kanban/taskcreate.php');
 
 ?>
 <!Doctype html>
@@ -14,12 +15,7 @@ require_once('../Functions4Kanban/taskcreate.php');
     <!-- <link rel="stylesheet" href="../css/Mistyle.css" /> -->
     <!-- title logo -->
     <link rel="icon" type="../image/png" href="../image/logo2_2.PNG">
-<<<<<<< HEAD
  </head>  
-=======
-
- </head>
->>>>>>> 06c6532c1c25bba931b60b0a5cb6beff7104d31e
  <body class="YHomeBodyColor">
  <section class="Ycolumn-container MiYcolumn-container pb-5">
  <div class="row">
