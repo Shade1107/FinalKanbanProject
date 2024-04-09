@@ -21,17 +21,21 @@ unset($_SESSION['LoginError']);
   </head>
   <body class="fed1dc">
    <div class="container-fluid row">
-      <div class="col-lg-6  YloginImg ee92a9">
-        <div class="Yimg bg-info Yimg1"></div>
-        <div class="Yimg bg-secondary Yimg2"></div>
-        <div class="Yimg bg-danger Yimg3"></div>
-        <div class="Yimg bg-warning Yimg4"></div>
-        <div class="Yimg bg-success Yimg5"></div>
+        <div class="col-lg-6  YloginImg ee92a9">
+                <div class="Yimg  Yimg1"></div>
+                <div class="Yimg  Yimg2"></div>
+                <div class="Yimg  Yimg3"></div>
+                <div class="Yimg  Yimg4"></div>
+                <div class="Yimg  Yimg5"></div>
 
-      </div>
+            </div>
       <div class="loginForm  col-lg-6 ee92a9 ">
             <form action="../Functions4Kanban/Funcz4login.php" method="POST">
-                <h1 class="loginFormText">⟁ Kanban Board</h1>
+                 <!-- to change logo picture(myo) -->
+                 <h1 class="loginFormText">
+                    <img src="../image/logo3.png"  width="120px" height="50px">
+                 </h1>
+
 
                 <span class="Yloginspan">Welcome to our Kanban</span>
                 <div class="Yinputfieldcenter ">
@@ -41,37 +45,29 @@ unset($_SESSION['LoginError']);
                           <input type="email" name="email" id="email" class="input-field mb-5" placeholder="Enter Email">
                         
                           <div class="psw-eye">
-                            <input type="password" name="password" id="password" class="input-field-psw mb-5" placeholder="Enter Password">
-                            <i class="fa fa-eye toggle-password" onclick="togglePassword()" aria-hidden="true"></i>
-                          
+                            <input type="password" name="password" id="password" class="input-field-psw mb-4" placeholder="Enter Password">
+                             
+                            
+                            <!-- change  from fa-eye to fa-eye-slash & mt mb for button and psw field (myo) -->
+                            <i class="fas fa-eye-slash toggle-password Yeyeicon_for_login" ></i>
                         </div>
-                        <?php if (isset($LoginError)) echo '<div style="color:red;">'.$LoginError.'</div>';?>
-                          <button type="submit" class="button mt-1" name="signin" id="signin">Login</button>
+
+                        <?php if (isset($LoginError)) echo '<div  style="color:red;">'.$LoginError.'</div>';?>
+                          <button type="submit" class="button mt-3" name="signin" id="signin">Login</button>
                         </div>
                 </div> 
-                <span class="Yloginspan mt-3"><a href="signup.php" class="YColor3e306b">CREAT A NEW ACCOUNT ?</a></span>
+
+                <!-- only link to 'NEW ACCOUNT' text (myo) -->
+                <span class="Yloginspan mt-3">Create a<a href="signup.php" class="YColor3e306b"> NEW ACCOUNT ?</a></span>
              </form>
 
       </div>
 
   </div>
 
-  <script>
-        function togglePassword() {
-            var passwordField = document.getElementById("password");
-            var icon = document.querySelector(".toggle-password");
-
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                icon.classList.remove("fa-eye");
-                icon.classList.add("fa-eye-slash");
-            } else {
-                passwordField.type = "password";
-                icon.classList.remove("fa-eye-slash");
-                icon.classList.add("fa-eye");
-            }
-        }
-    </script>
+ <!-- seperate psw toggle eye js file(myo )   -->
+ <script src="../js/psweyecloseopen.js"></script>
+ 
 </body>
 
 </body>

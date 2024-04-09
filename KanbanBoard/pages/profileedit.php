@@ -1,6 +1,5 @@
 <?php
- $path = realpath(__DIR__ ."/../"); 
-require_once('$path/KanbanBoard/header_footer/header.php');
+require_once('../header_footer/header.php');
 include('DB_connection.php');
 // require_once('header&footer/footer.php');
 
@@ -55,7 +54,7 @@ $result = false;
  }
 ?>
 <!-- <?php
-  $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img : "../image/default.jpg";
+  $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
 
 ?> -->
 <!Doctype html>
@@ -76,12 +75,12 @@ $result = false;
 
  </head>  
  <body>
- <section class="Ycolumn-container row  ">
+ <section class="Ycolumn-container MiYrow row  ">
  <div class="col-lg-3 MiYprofile-edit-leftsidebar">
   <form action="profileedit.php" method="POST" enctype="multipart/form-data">
      <!-- photo edit -->
      <div class="wrapper mt-4">
-     <img src="<?= $imagePath ?>" id="photoPrevieww">  
+     <img src="<?= $imagePath ?>" id="photoPreview1">  
  <input type="file" id="file" class="myfile" accept=".jpg, .jpeg, .png" name="profilePicture" onchange="previewPhoto(event)">
 </div>
 <!-- <br> -->
@@ -99,10 +98,14 @@ $result = false;
     </div>
     <!-- <br> -->
 
-    <div>
+    <div class="psw-eye">
     &nbsp;&nbsp;&nbsp;&nbsp; <label for="password" class="labeledit mt-2">Password :</label>&nbsp;
-    <input type="password" value="<?= $user->password ?>" required name="password" class="Miinput-fieldedit  p-3 mb-2 rounded" ><br>
-    <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+    <input type="password" value="<?= $user->password ?>" required name="password" id="password" class="Miinput-fieldedit  p-3 mb-2 rounded" ><br>
+    <!-- <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i> -->
+     
+    <!-- add toggle eye (myo)   -->
+    <i class="fas fa-eye-slash toggle-password" ></i>
+                       
     </div>
     <!-- <br> -->
     
@@ -143,58 +146,7 @@ $result = false;
 
                     </div>
               </div>  
-
-              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-              <!-- <div class="coloredit ">
-                   
-                </div> -->
-                <div class="Yproject_card ">
-                      <div class="Yproject_img_name d-flex">
-                          
-                          <span class=" Yproject"> Project 1</span>
-                      </div>
-
-                      <div class="YlineChart_profileview_page">
-                        <canvas id="Yproject1" class="Yprojectforspecuser"  width="435" height="217"></canvas>
-                      </div>
-
-                    </div>
-              </div>  
-
-              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-              <!-- <div class="coloredit ">
-                   
-                </div> -->
-                <div class="Yproject_card ">
-                      <div class="Yproject_img_name d-flex">
-                          
-                          <span class=" Yproject"> Project 1</span>
-                      </div>
-
-                      <div class="YlineChart_profileview_page">
-                        <canvas id="Yproject1" class="Yprojectforspecuser"  width="435" height="217"></canvas>
-                      </div>
-
-                    </div>
-              </div>  
-
-              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-              <!-- <div class="coloredit ">
-                   
-                </div> -->
-                <div class="Yproject_card ">
-                      <div class="Yproject_img_name d-flex">
-                          
-                          <span class=" Yproject"> Project 1</span>
-                      </div>
-
-                      <div class="YlineChart_profileview_page">
-                        <canvas id="Yproject1" class="Yprojectforspecuser"  width="435" height="217"></canvas>
-                      </div>
-
-                    </div>
-              </div>  
-    </div>
+            </div>
    </section>
 
               <?php
@@ -214,5 +166,8 @@ $result = false;
 
     generateLineChart_for_member('Yproject1', labels1, data1);
 </script> 
+
+<!-- for psw toggle eye js file(myo )   -->
+<script src="../js/psweyecloseopen.js"></script>
  </body>
  </html>

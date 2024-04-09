@@ -83,8 +83,8 @@ $stageRepo = New StageRepository(DatabaseConnection::getInstance());
               </div>
 
       <!-- stage -->
-      <div class="select-con mt-4">
-           <select id="select-tags" multiple data-placeholder="Type to add stage" class="select"  name="stages[]" multiple>     
+      <div class="select-con mt-4 Yalignelement">
+           <select id="select-tags" multiple data-placeholder="Type to add stage" class="select "  name="stages[]" multiple>     
            <option>Planing</option>
            <option>Doing</option>
            <option>Done</option>
@@ -98,7 +98,7 @@ $stageRepo = New StageRepository(DatabaseConnection::getInstance());
             <!-- detail discription -->
             <textarea placeholder="detail description..." id="Detail_des" name="Detail_Description" class="Mitext_area mt-4" ></textarea>
 
-            <div class="datecontainer">
+            <div class="datecontainer Yalignelement">
                   <div class="input-group mt-4 ">
                     <span class="input-group-text" id="basic-addon3">Choose your create date</span>
                     <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="createDate">
@@ -106,7 +106,7 @@ $stageRepo = New StageRepository(DatabaseConnection::getInstance());
               </div>
                 
                <!-- target date -->   
-              <div class="datecontainer">        
+              <div class="datecontainer Yalignelement">        
                 <div class="input-group mt-4" >
                   <span class="input-group-text" id="basic-addon3">Choose your target date</span>
                   <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="dueDate">

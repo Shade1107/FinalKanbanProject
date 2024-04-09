@@ -1,11 +1,10 @@
 <?php
- $path = realpath(__DIR__ ."/../"); 
-require_once('$path/KanbanBoard/header_footer/header.php');
+require_once('../header_footer/header.php');
 require_once('chart_data_function.php');
-require_once '$path/KanbanBoard/Database/DatabaseConnection.php';
-require_once '$path/KanbanBoard/Repositories/UserRepository.php';
-require_once '$path/KanbanBoard/Repositories/RoleRepository.php';
-require_once '$path/KanbanBoard/Repositories/GenderRepository.php';
+require_once '../Database/DatabaseConnection.php';
+require_once '../Repositories/UserRepository.php';
+require_once '../Repositories/RoleRepository.php';
+require_once '../Repositories/GenderRepository.php';
 
 
 
@@ -17,7 +16,7 @@ $userRepo = new UserRepository(DatabaseConnection::getInstance());
 $user = $userRepo->find($id);
 $role_id = $user->role_id;
 //print_r($user);
-$imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img : "../image/default.jpg";
+$imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
 
 ?>
 
@@ -42,8 +41,8 @@ $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img 
 </head>
 
 <body>
-  <div class="container_pc">
-	  <div class="pcside row">
+  <div class="container_pc ">
+	  <div class="pcside MiYrow row">
       <!-- left column -->
       <div class="pcdiv1 col-lg-3">
         
@@ -102,61 +101,8 @@ $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img 
 
                     </div>
               </div> 
-
-              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-              <!-- <div class="coloredit ">
-                   
-                </div> -->
-                <div class="Yproject_card ">
-                      <div class="Yproject_img_name d-flex">
-                          
-                          <span class=" Yproject"> Project 1</span>
-                      </div>
-
-                      <div class="YlineChart_profileview_page">
-                        <canvas id="Yproject1" class="Yprojectforspecuser"  width="435" height="217"></canvas>
-                      </div>
-
-                    </div>
-              </div>  
-
-              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-              <!-- <div class="coloredit ">
-                   
-                </div> -->
-                <div class="Yproject_card ">
-                      <div class="Yproject_img_name d-flex">
-                          
-                          <span class=" Yproject"> Project 1</span>
-                      </div>
-
-                      <div class="YlineChart_profileview_page">
-                        <canvas id="Yproject1" class="Yprojectforspecuser"  width="435" height="217"></canvas>
-                      </div>
-
-                    </div>
-              </div>  
-              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-              <!-- <div class="coloredit ">
-                   
-                </div> -->
-                <div class="Yproject_card ">
-                      <div class="Yproject_img_name d-flex">
-                          
-                          <span class=" Yproject"> Project 1</span>
-                      </div>
-
-                      <div class="YlineChart_profileview_page">
-                        <canvas id="Yproject1" class="Yprojectforspecuser"  width="435" height="217"></canvas>
-                      </div>
-
-                    </div>
-              </div>  
-             
-              
+            </div>
       </div>
-    </div>
-  </div>
 
 	
 <?php 

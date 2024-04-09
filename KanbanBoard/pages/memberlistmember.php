@@ -1,8 +1,7 @@
 <?php 
- $path = realpath(__DIR__ ."/../"); 
-    require_once('$path/KanbanBoard/header_footer/header.php');
-    require_once('$path/KanbanBoard/Database/DatabaseConnection.php');
-    require_once('$path/KanbanBoard/Repositories/UserRepository.php');
+    require_once('../header_footer/header.php');
+    require_once('../Database/DatabaseConnection.php');
+    require_once('../Repositories/UserRepository.php');
     //$projmemberRepo = new projectMemberRepository(DatabaseConnection::getInstance());
     $memberRepo = new UserRepository(DatabaseConnection::getInstance());
     $members = $memberRepo->getAll();;

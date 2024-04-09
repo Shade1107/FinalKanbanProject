@@ -1,7 +1,6 @@
 <?php
- $path = realpath(__DIR__ ."/../"); 
-require_once("$path/KanbanBoard/Database/DatabaseConnection.php");
-require_once("$path/KanbanBoard/Repositories/UserRepository.php");
+require_once("../Database/DatabaseConnection.php");
+require_once("../Repositories/UserRepository.php");
 
 $userRepo = new UserRepository(DatabaseConnection::getInstance());
 
