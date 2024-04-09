@@ -127,7 +127,7 @@ $stageRepo = New StageRepository(DatabaseConnection::getInstance());
  </div> 
 </section>
 
-<?php require_once('../header_footer/footer.php'); ?>
+<?php 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script> 

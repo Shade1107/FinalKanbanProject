@@ -1,7 +1,8 @@
 <?php 
-    require_once('../header_footer/header.php');
-    require_once('../Database/DatabaseConnection.php');
-    require_once('../Repositories/UserRepository.php');
+    $path = realpath(__DIR__ ."/../"); 
+    require_once("$path/header_footer/header.php");
+    require_once("$path/Database/DatabaseConnection.php");
+    require_once("$path/Repositories/UserRepository.php");
     //$projmemberRepo = new projectMemberRepository(DatabaseConnection::getInstance());
     $memberRepo = new UserRepository(DatabaseConnection::getInstance());
     $members = $memberRepo->getAll();;
@@ -100,7 +101,7 @@
 
 <!-- to call footer (myo) -->
     <?php 
-     require_once('../header_footer/footer.php');
+     require_once("$path/header_footer/footer.php");
     ?>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

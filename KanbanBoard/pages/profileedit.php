@@ -1,12 +1,13 @@
 <?php
-require_once('../header_footer/header.php');
+$path = realpath(__DIR__ ."/../"); 
+require_once("$path/header_footer/header.php");
 include('DB_connection.php');
 // require_once('header&footer/footer.php');
 
 require_once('chart_data_function.php');
 
-require_once("../Database/DatabaseConnection.php");
-require_once("../Repositories/UserRepository.php");
+require_once("$path/Database/DatabaseConnection.php");
+require_once("$path/Repositories/UserRepository.php");
 $id = $_SESSION['user_id'];
 $userRepo = new UserRepository(DatabaseConnection::getInstance());
 $user = $userRepo->find($id);

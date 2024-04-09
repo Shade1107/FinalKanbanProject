@@ -1,10 +1,11 @@
 <?php
-require_once('../header_footer/header.php');
-require_once('chart_data_function.php');
-require_once '../Database/DatabaseConnection.php';
-require_once '../Repositories/UserRepository.php';
-require_once '../Repositories/RoleRepository.php';
-require_once '../Repositories/GenderRepository.php';
+$path = realpath(__DIR__ ."/../"); 
+require_once("$path/header_footer/header.php");
+require_once("chart_data_function.php");
+require_once("$path/Database/DatabaseConnection.php");
+require_once("$path/Repositories/UserRepository.php");
+require_once("$path/Repositories/RoleRepository.php");
+require_once("$path/Repositories/GenderRepository.php");
 
 
 
@@ -106,7 +107,7 @@ $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img.
 
 	
 <?php 
-  require_once('../header_footer/footer.php');
+  require_once("$path/header_footer/footer.php");
  ?>
 	<!-- This is link of adding small images
 		which are used in the link section -->

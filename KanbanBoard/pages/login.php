@@ -35,8 +35,6 @@ unset($_SESSION['LoginError']);
                  <h1 class="loginFormText">
                     <img src="../image/logo3.png"  width="120px" height="50px">
                  </h1>
-
-
                 <span class="Yloginspan">Welcome to our Kanban</span>
                 <div class="Yinputfieldcenter ">
                       <div class="mt-5 Yinputf">

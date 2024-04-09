@@ -1,6 +1,7 @@
 <?php 
+$path = realpath(__DIR__ ."/../"); 
 $isDetailTaskAdmin = true;
-require_once('../header_footer/header.php');
+require_once("$path/header_footer/header.php");
 
 ?>
 <head>
@@ -60,7 +61,7 @@ require_once('../header_footer/header.php');
     <!-- <script src="js/app.js"></script> -->
 
     <?php 
-require_once('../header_footer/footer.php');
+require_once("$path/header_footer/footer.php");
 
 ?>
   </body>

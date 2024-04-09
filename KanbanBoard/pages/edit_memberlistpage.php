@@ -1,6 +1,7 @@
 <?php
-require_once("../Database/DatabaseConnection.php");
-require_once("../Repositories/UserRepository.php");
+$path = realpath(__DIR__ ."/../"); 
+require_once("$path/Database/DatabaseConnection.php");
+require_once("$path/Repositories/UserRepository.php");
 
 $id = $_GET['id'];
 $userRepo = new UserRepository(DatabaseConnection::getInstance());
@@ -123,7 +124,7 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
                         <select class="form-select gender-select" aria-label="Default select example" name="gender" required>
                             <option value="">Select Gender</option>
                             <option value="1"  ". <?= $maleSelected ?> .">Male</option>
-                             <option value="2"  ". <?= $femaleSelected ?> .">Female</option>
+                            <option value="2"  ". <?= $femaleSelected ?> .">Female</option>
                         </select>
                     </div>
 
