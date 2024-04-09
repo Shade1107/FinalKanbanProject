@@ -1,8 +1,9 @@
 <?php 
-require_once("../Repositories/UserRepository.php");
-require_once("../Repositories/ProjectRepository.php");
-require_once("../Repositories/StageRepository.php");
-require_once("../Repositories/TaskRepository.php");
+$path = realpath(__DIR__."/../");
+require_once("$path/Repositories/UserRepository.php");
+require_once("$path/Repositories/ProjectRepository.php");
+require_once("$path/Repositories/StageRepository.php");
+require_once("$path/Repositories/TaskRepository.php");
 
 $isMember = $isMember??'';
 $isAdmin = $isAdmin??'';

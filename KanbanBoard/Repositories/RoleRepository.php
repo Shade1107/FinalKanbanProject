@@ -1,6 +1,7 @@
 <?php
-    require_once('../Models/Role.php');
-    require_once('../Database/DatabaseConnection.php');
+    $path = realpath(__DIR__."/../");
+    require_once("$path/Models/Role.php");
+    require_once("$path/Database/DatabaseConnection.php");
 
     class RoleRepository{
         public static $table_name = "roles";

@@ -1,7 +1,8 @@
 <?php
-    require_once('../Models/Stage.php');
-    require_once('../Database/DatabaseConnection.php');
-    require_once('ProjectRepository.php');
+    $path = realpath(__DIR__."/../");
+    require_once("$path/Models/Stage.php");
+    require_once("$path/Database/DatabaseConnection.php");
+    require_once("ProjectRepository.php");
 
     class StageRepository{
         public static $table_name = "stages";

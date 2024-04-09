@@ -1,6 +1,7 @@
 <?php
+    $path = realpath(__DIR__."/../");
     require_once("Model.php");
-    require_once("../Repositories/Task_memberRepository.php");
+    require_once("$path/Repositories/Task_memberRepository.php");
 
     class TaskMember extends Model{
         public $id;

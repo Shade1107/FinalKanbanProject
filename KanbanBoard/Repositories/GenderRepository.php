@@ -1,6 +1,7 @@
 <?php
-    require_once('../Models/Gender.php');
-    require_once('../Database/DatabaseConnection.php');
+    $path = realpath(__DIR__."/../");
+    require_once("$path/Models/Gender.php");
+    require_once("$path/Database/DatabaseConnection.php");
 
     class GenderRepository{
         public static $table_name = "genders";

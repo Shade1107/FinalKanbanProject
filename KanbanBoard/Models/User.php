@@ -1,6 +1,7 @@
 <?php
+    $path = realpath(__DIR__."/../");
     require_once("Model.php");
-    require_once("../Repositories/UserRepository.php");
+    require_once("$path/Repositories/UserRepository.php");
 
     class User extends Model{
         public $id;

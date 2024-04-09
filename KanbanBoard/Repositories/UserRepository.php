@@ -1,8 +1,9 @@
 <?php
-    require_once('../Models/User.php');
-    require_once('../Database/DatabaseConnection.php');
-    require_once('RoleRepository.php');
-    require_once('GenderRepository.php');
+    $path = realpath(__DIR__."/../");
+    require_once("$path/Models/User.php");
+    require_once("$path/Database/DatabaseConnection.php");
+    require_once("RoleRepository.php");
+    require_once("GenderRepository.php");
 
     class UserRepository{
         public static $table_name = "users";

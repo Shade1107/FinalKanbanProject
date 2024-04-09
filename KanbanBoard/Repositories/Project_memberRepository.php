@@ -1,6 +1,7 @@
 <?php
-    require_once('../Models/Project_member.php');
-    require_once('../Database/DatabaseConnection.php');
+    $path = realpath(__DIR__."/../");
+    require_once("$path/Models/Project_member.php");
+    require_once("$path/Database/DatabaseConnection.php");
     require_once('UserRepository.php');
     require_once('ProjectRepository.php');
 

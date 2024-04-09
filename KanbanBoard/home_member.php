@@ -1,8 +1,9 @@
 <?php 
-require_once('../Repositories/ProjectRepository.php');
-require_once('../Repositories/TaskRepository.php');
-require_once('../Repositories/UserRepository.php');
-require_once('../Repositories/Project_memberRepository.php');
+$path = realpath(__DIR__."/../");
+require_once("$path/KanbanBoard/Repositories/ProjectRepository.php");
+require_once("$path/Repositories/TaskRepository.php");
+require_once("$path/Repositories/UserRepository.php");
+require_once("$path/Repositories/Project_memberRepository.php");
 ?>
 <!-- <div class="content" style="display: none;"> -->
 <?php 
