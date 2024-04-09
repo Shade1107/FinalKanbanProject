@@ -1,5 +1,6 @@
 <?php 
 $isDetailTaskMember = true;
+
 require_once('../header_footer/header.php');
 require_once('../Repositories/ProjectRepository.php');
 require_once('../Repositories/Task_memberRepository.php');

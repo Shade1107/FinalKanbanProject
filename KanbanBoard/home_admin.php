@@ -79,7 +79,14 @@ $stages    =  $stageRepo -> ProjectID($id);
                           <div class="Ymember_img">
                             <img src="image/p1.jpg" width="120px" height="50px">
                           </div>
-                          <span class=" Ymember"> <?php echo $userName->name; ?></span>
+                          <span class=" Ymember"> 
+                              <?php $userName = taskMemberRepository::getUserName($taskMember);
+                                  if ($userName !== null) {
+                                      echo $userName->name . "<br>"; // Assuming 'name' is the property holding the user's name
+                                  } else {
+                                      echo "Unknown user<br>";
+                                  }?>
+                            </span>
                       </div>
               
                       <div class="YlineChart_home_page">
@@ -238,7 +245,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                 </div>
                 <div class="task-description-container">
                   <p><td><?=$t->short_description?></td></p>
-                  <a href="#" class="">Details</a>
+                  <a href="pages/detailTask_admin.php?id=<?= $t->id ?>" class="">Details</a>
                 </div>
               </div>
     <?php endif;?>
