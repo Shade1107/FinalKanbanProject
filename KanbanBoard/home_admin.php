@@ -224,13 +224,13 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                         <div class="YsmallProfile" >
                           <div class="YsmallPS YsmallP1">
-                            <img src="../image/p1.jpg"/>
+                            <img src="./image/p1.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallP2">
-                            <img src="../image/p2.jpg"/>
+                            <img src="./image/p2.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallP3">
-                            <img src="../image/p3.jpg"/>
+                            <img src="./image/p3.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallPExtra"></div>
                         </div>
