@@ -17,7 +17,7 @@ unset($_SESSION['LoginError']);
       
       <link rel="icon" type="image/png" href="../image/logo2_2.PNG">
       <!-- custom css  -->
-      <link rel="stylesheet" href="../css/style.css" />
+      <link rel="stylesheet" href="../css/style.css">
   </head>
   <body class="fed1dc">
    <div class="container-fluid row">
