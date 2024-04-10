@@ -60,13 +60,15 @@
                     <td><?=$totalProjects?></td>
                   </tr>
 
-                  <tr>
-                     <td> Average Done Rate</td>
-                     <?php 
-                        require_once('chart_data_function.php');
-                     ?>
-                    <td>: <?=$overall_done_rate??''?>%</td>
-                  </tr>
+                  <?php foreach($projects as $projectMember): 
+                    $project = $projectMemberRepo->getProjectName($projectMember);
+                    $due_date = $projectRepository->find($projectMember->project_id);
+                  ?>
+                    <tr>
+                        <td><?= $project->name?></td>
+                        <td><?= $projectRepository->calculateDaysLeft($due_date->due_date)?> Days</td>
+                    </tr>
+                  <?php endforeach; ?>
               </table>
              
             <!-- </div> -->

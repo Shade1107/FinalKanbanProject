@@ -59,6 +59,7 @@ $specificProject = $projectRepository->find($id);
 
 
   <!-- custom css  -->
+  <link rel="icon" type="image/png" href="../image/logo2_2.PNG">
 
 
       <!-- <link rel="stylesheet" href="css/style.css" /> -->
