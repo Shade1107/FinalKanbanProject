@@ -1,11 +1,11 @@
 <?php 
 $isCreateProject = true;
 require_once('../header_footer/header.php');
+$admin_id   = $_SESSION['user_id']; 
 $stageError = isset($_SESSION['stageError']) ? $_SESSION['stageError'] : ''; 
 require_once('../Repositories/StageRepository.php');
 include('DB_connection.php');
 // require_once('header&footer/footer.php');
-
 $stageRepo = New StageRepository(DatabaseConnection::getInstance());
 
 ?>
