@@ -66,7 +66,7 @@
                   ?>
                     <tr>
                         <td><?= $project->name?></td>
-                        <td><?= $projectRepository->calculateDaysLeft($due_date->due_date)?> Days</td>
+                        <td><?= $projectRepository->calculateDaysLeft($due_date->due_date)?></td>
                     </tr>
                   <?php endforeach; ?>
               </table>
