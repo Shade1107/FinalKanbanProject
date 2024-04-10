@@ -58,7 +58,7 @@ require_once('../Functions4Kanban/taskcreate.php');
                     $project = $prorepo->find($id);
                     if (isset($project)) {
                 ?>
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                    <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
                 <?php
                     } else {
                         echo "<p>Not found.</p>";
@@ -101,11 +101,11 @@ require_once('../Functions4Kanban/taskcreate.php');
             ?>
             
             <select id="tselect" class="select" placeholder="Choose Stage" name="stage_id">
-            <?php foreach ($stages as $stage) {?>
-         <option value="<?php echo $stage->id; ?>">
-         <?php echo $stage->name; ?>
-        </option>
-    <?php } ?>
+            <?php foreach ($stages as $stage) { ?>
+            <option value="<?php echo $stage->id; ?>">
+            <?php echo $stage->name; ?>
+            </option>
+            <?php } ?>
     </select> 
 
              </div> -->
