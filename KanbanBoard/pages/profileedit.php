@@ -55,7 +55,8 @@ $result = false;
 ?>
  <?php
   $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
-
+  $projectMemberRepo = new ProjectMemberRepository(DatabaseConnection::getInstance());
+  $projects = $projectMemberRepo->findWithMemberID($id);
 ?>
 <!Doctype html>
 <head>
@@ -127,45 +128,55 @@ $result = false;
     </div>
   
 
-    <div class="col-lg-9 row ">
-           
-            <!-- <h3 class="text-center Ypjh3 mt-3 mb-3">Projects</h3> -->
-              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-              <!-- <div class="coloredit ">
-                   
-                </div> -->
-                <div class="Yproject_card ">
+    <div class="col-lg-9 row">
+        <?php if(isset($projects) && !empty($projects)) : ?>
+          <?php foreach ($projects as $projectMember) : 
+                $project = $projectMemberRepo->getProjectName($projectMember);
+                $stages  = $projectRepository->getPieBarChartLineData($projectMember->project_id, $id);
+          ?>
+             <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
+                  <div class="Yproject_card ">
                       <div class="Yproject_img_name d-flex">
                           
-                          <span class=" Yproject"> Project 1</span>
+                          <span class=" Yproject"> <?= $project->name?></span>
                       </div>
 
                       <div class="YlineChart_profileview_page">
-                        <canvas id="Yproject1" class="Yprojectforspecuser"  width="435" height="217"></canvas>
+                        <canvas id="Yproject<?= $project->id ?>" class="Yprojectforspecuser"  width="435" height="217"></canvas>
                       </div>
 
                     </div>
-              </div>  
-            </div>
-   </section>
+              </div> 
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // JavaScript code for generating pie chart
+
+
+                        
+                        var labels<?= $project->id ?> = [];
+                        var data<?= $project->id ?> = [];
+                        <?php foreach($stages as $stage): ?>
+                            labels<?= $project->id ?>.push("<?=$stage["stage"]?>");
+                            data<?= $project->id ?>.push("<?=$stage["count"]?>");
+                          
+                        <?php endforeach; ?>
+
+                        generateLineChart_for_member('Yproject<?= $project->id ?>', labels<?= $project->id ?>, data<?= $project->id ?>);
+
+
+                    });
+                </script>
+          <?php endforeach; ?>    
+        <?php else : ?>
+            <p>No projects found</p>
+        <?php endif; ?>
+      </div>
 
               <?php
               require_once('../header_footer/footer.php');
                  ?>
 
-<script>
-    // Generate the bar chart
-   // Generate the line chart
-  var labels1 = [];
-    var data1 = [];
-    <?php foreach($member1 as $m): ?>
-        labels1.push("<?=$m["stage"]?>");
-        data1.push("<?=$m["task"]?>");
-       
-    <?php endforeach; ?>
 
-    generateLineChart_for_member('Yproject1', labels1, data1);
-</script> 
 
 <!-- for psw toggle eye js file(myo )   -->
 <script src="../js/psweyecloseopen.js"></script>
