@@ -85,10 +85,18 @@
           ?>
 
                 <div class="col-lg-4 ">
+                  
                 <a href="home_admin.php?id=<?= $projectMember->project_id ?>">
                   <div class="Ytask-column  ">
                   <h3><?= $project->name?></h3>
                   <canvas id="YmyChart<?= $projectMember->project_id ?>" class="YChart<?= $projectMember->project_id ?>"></canvas>
+
+                  <!-- Delete project function -->
+                  <form action="../Functions4Kanban/Deleteproject.php" method="POST" class="delete-form">
+                  <input type="hidden" name="project_id" value="<?= $projectMember->project_id ?>">
+                  <button type="submit" class="delete-button">Delete</button>
+                    </form>
+
                   </div>
                 </a>
                 </div>  
