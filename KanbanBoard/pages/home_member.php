@@ -8,7 +8,7 @@ require_once("$path/Repositories/Project_memberRepository.php");
 <!-- <div class="content" style="display: none;"> -->
 <?php 
 // require_once('pages/loader.php');
-$isAdmin = true;
+$isMember = true;
 require_once('../header_footer/header.php');
 
 require_once('chart_data_function.php');
@@ -239,7 +239,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                 </div>
                 <div class="task-description-container">
                   <p><td><?=$t->short_description?></td></p>
-                  <a href="pages/detailTask_member.php?id=<?= $t->id ?>" class="">Details</a>
+                  <a href="detailTask_member.php?id=<?= $t->id ?>" class="">Details</a>
                 </div>
               </div>
     <?php endif;?>
