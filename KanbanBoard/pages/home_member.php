@@ -1,6 +1,6 @@
 <?php 
 $path = realpath(__DIR__."/../");
-require_once("$path/KanbanBoard/Repositories/ProjectRepository.php");
+require_once("$path/Repositories/ProjectRepository.php");
 require_once("$path/Repositories/TaskRepository.php");
 require_once("$path/Repositories/UserRepository.php");
 require_once("$path/Repositories/Project_memberRepository.php");
@@ -9,9 +9,9 @@ require_once("$path/Repositories/Project_memberRepository.php");
 <?php 
 // require_once('pages/loader.php');
 $isAdmin = true;
-require_once('header_footer/header.php');
+require_once('../header_footer/header.php');
 
-require_once('pages/chart_data_function.php');
+require_once('chart_data_function.php');
 
 
 
@@ -30,14 +30,14 @@ $stages    =  $stageRepo -> ProjectID($id);
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  
   <!-- custom chart.js  -->
-   <script src="js/charts.js"></script> 
+   <script src="../js/charts.js"></script> 
 <!-- cssloader -->
-<link rel="stylesheet" href="css/css_loader.css">
+<link rel="stylesheet" href="../css/css_loader.css">
 
   <!-- custom css  -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
     <!-- title logo  -->
-    <link rel="icon" type="image/png" href="image/logo2_2.PNG">
+    <link rel="icon" type="image/png" href="../image/logo2_2.PNG">
 
 <!-- loader JavaScript -->
 <!-- <script>
@@ -80,7 +80,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                     <div class="Ymember_card ">
                       <div class="Ymember_img_name d-flex">
                           <div class="Ymember_img">
-                            <img src="image/p1.jpg" width="120px" height="50px">
+                            <img src="../image/p1.jpg" width="120px" height="50px">
                           </div>
                           <span class=" Ymember"> 
                               <?php $userName = taskMemberRepository::getUserName($taskMember);
@@ -225,13 +225,13 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                         <div class="YsmallProfile" >
                           <div class="YsmallPS YsmallP1">
-                            <img src="./image/p1.jpg"/>
+                            <img src="../image/p1.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallP2">
-                            <img src="./image/p2.jpg"/>
+                            <img src="../image/p2.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallP3">
-                            <img src="./image/p3.jpg"/>
+                            <img src="../image/p3.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallPExtra"></div>
                         </div>
@@ -263,13 +263,13 @@ $stages    =  $stageRepo -> ProjectID($id);
 
 
     <!-- <script src="js/app.js"></script> -->
-    <script src="./js/changecolor.js"></script>
-    <script src="./js/drag_drop.js"></script>
-    <script src="./js/lightbox.js"></script>
+    <script src="../js/changecolor.js"></script>
+    <script src="../js/drag_drop.js"></script>
+    <script src="../js/lightbox.js"></script>
    
     <?php 
     $isAdmin = true;
-     require_once('header_footer/footer.php');
+     require_once('../header_footer/footer.php');
     ?>
 
  <script>

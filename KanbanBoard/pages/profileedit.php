@@ -53,10 +53,10 @@ $result = false;
       }
  }
 ?>
-<!-- <?php
+ <?php
   $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
 
-?> -->
+?>
 <!Doctype html>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -71,7 +71,7 @@ $result = false;
  
  <!-- custom chart.js  -->
   <script src="../js/charts.js"></script> 
-  <script src="../js/javascript.js"></script>
+  <script src="../js/javascript.js<?= "?v=".time()?>"></script>
 
  </head>  
  <body>
@@ -80,7 +80,7 @@ $result = false;
   <form action="profileedit.php" method="POST" enctype="multipart/form-data">
      <!-- photo edit -->
      <div class="wrapper mt-4">
-     <img src="<?= $imagePath ?>" id="photoPreview1">  
+     <img src="<?= $imagePath ?>" id="photoUpload">  
  <input type="file" id="file" class="myfile" accept=".jpg, .jpeg, .png" name="profilePicture" onchange="previewPhoto(event)">
 </div>
 <!-- <br> -->
@@ -119,7 +119,7 @@ $result = false;
     </div>
     
     <div class="container-button-edit">
-    <a class="buttonlink" href="viewProfile.php"><button type="button" class="buttonMiedit">Back</button></a>
+    <button type="button" class="buttonMiedit"  ><a class="buttonlink" href="../home_admin.php">Back</a></button>
    <input type="submit" class="buttonMiedit" name="save" value="Save">
    </div>
 

@@ -85,7 +85,7 @@
           ?>
 
                 <div class="col-lg-4 ">
-                <a href="../home_admin.php?id=<?= $projectMember->project_id ?>">
+                <a href="home_admin.php?id=<?= $projectMember->project_id ?>">
                   <div class="Ytask-column  ">
                   <h3><?= $project->name?></h3>
                   <canvas id="YmyChart<?= $projectMember->project_id ?>" class="YChart<?= $projectMember->project_id ?>"></canvas>

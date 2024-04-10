@@ -66,7 +66,7 @@ $isAdminMemberFromPJwebpage = $isAdminMemberFromPJwebpage??'';
       <div class="info-container">
         <h1>
           <?php if($isMember || $isAdmin){?>
-              <img src="image/logo2.png" width="120px" height="50px">
+              <img src="../image/logo2.png" width="120px" height="50px">
           <?php }else{?> 
 
           <img src="../image/logo2.png" width="120px" height="50px">
@@ -90,7 +90,7 @@ $isAdminMemberFromPJwebpage = $isAdminMemberFromPJwebpage??'';
           <div class="d-flex Profilecircle mr-3">
                 <a href="viewprofile.php?id=<?= $userID ?>" class="circle-container">
                 <?php
-               $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img : "../image/default.jpg";
+               $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
                 ?>
                 <img src="<?= $imagePath ?>" id="photoPreview" class="avatar img-circle img-thumbnail" alt="avatar">
 
