@@ -5,7 +5,6 @@ require_once("$path/Repositories/TaskRepository.php");
 require_once("$path/Repositories/UserRepository.php");
 require_once("$path/Repositories/Project_memberRepository.php");
 ?>
-<!-- <div class="content" style="display: none;"> -->
 <?php 
 // require_once('pages/loader.php');
 $isAdmin = true;
@@ -164,9 +163,15 @@ $stages    =  $stageRepo -> ProjectID($id);
   $project = $prorepo->find($id);
 ?>
 
-<?php if(isset($_GET['laststageequaltotaltasks'])): ?>
-      echo "laststageequaltotasks"; 
+<!-- <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="True"): ?>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">MMSP</div>
+  <strong>
 <?php endif; ?>
+<?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="False"): ?>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">Lee Bl
+  </div>
+  <strong>
+<?php endif; ?> -->
 <section class="column-container mb-5 container-fluid row">
 <?php
     foreach($stages as $stage):?>

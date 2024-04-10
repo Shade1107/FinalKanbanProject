@@ -98,7 +98,7 @@
                 
                 // Fetch data from the result set
                 if ($row = $result->fetch_assoc()) {
-                    return $row['last_stage_id'];
+                    return (int) $row['last_stage_id'];
                 } else {
                     // Handle the case where no data was found or any other error occurred
                     return null;
