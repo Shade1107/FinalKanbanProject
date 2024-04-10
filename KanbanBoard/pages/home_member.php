@@ -239,7 +239,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                 </div>
                 <div class="task-description-container">
                   <p><td><?=$t->short_description?></td></p>
-                  <a href="pages/detailTask_member.php?id=<?= $t->id ?>" class="">Details</a>
+                  <a href="detailTask_member.php?id=<?= $t->id ?>" class="">Details</a>
                 </div>
               </div>
     <?php endif;?>
