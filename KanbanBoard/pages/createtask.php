@@ -58,7 +58,7 @@ require_once('../Functions4Kanban/taskcreate.php');
                     $project = $prorepo->find($id);
                     if (isset($project)) {
                 ?>
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                    <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
                 <?php
                     } else {
                         echo "<p>Not found.</p>";
@@ -93,7 +93,7 @@ require_once('../Functions4Kanban/taskcreate.php');
            <!-- discription -->
             <textarea placeholder="detail description..." class="Mitext_area mt-4" name="short_description" ></textarea>
             
-            <!-- <div class="addmember"> 
+            <div class="addmember"> 
             <?php
               // Get the task members from the repository
               $stageRepository = new StageRepository(DatabaseConnection::getInstance());
@@ -101,14 +101,14 @@ require_once('../Functions4Kanban/taskcreate.php');
             ?>
             
             <select id="tselect" class="select" placeholder="Choose Stage" name="stage_id">
-            <?php foreach ($stages as $stage) {?>
-         <option value="<?php echo $stage->id; ?>">
-         <?php echo $stage->name; ?>
-        </option>
-    <?php } ?>
+            <?php foreach ($stages as $stage) { ?>
+            <option value="<?php echo $stage->id; ?>">
+            <?php echo $stage->name; ?>
+            </option>
+            <?php } ?>
     </select> 
 
-             </div> -->
+             </div>
                   <!-- Priorty color -->
                <div class="Micolorcontainer  Yalignelement_for_createtask mt-3">
                 <div class="Micolortext">

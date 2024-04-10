@@ -36,6 +36,10 @@
         }
 
         public function delete($id){
+
+            $taskmember = "DELETE FROM " .TaskMemberRepository::$table_name. " WHERE task_id = $id;";
+            $member_results = $this->connection->query($taskmember);
+            
             $query  = "DELETE FROM ".self::$table_name." WHERE id = $id limit 1;";
             $result = $this->connection->query($query);
             return true;

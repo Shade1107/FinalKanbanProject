@@ -18,6 +18,14 @@ $tasks     =  $taskRepo  -> getAll();
 $stages    =  $stageRepo -> ProjectID($id);
 
 ?>
+
+
+
+
+
+
+
+
 <!Doctype html>
 <head>
   <!-- fontawesome -->
@@ -187,8 +195,10 @@ $stages    =  $stageRepo -> ProjectID($id);
         <div id="t_<?=$t->id?>" task_id="<?=$t->id?>" stage_id="<?=$stage->id?>" class="task-container <?=$t->task_priority_border?>" draggable="true" ondragstart="drag(event)">
         
         <div class="task-header <?=$t->task_priority_color?>">
-        <form method="POST" action="../Functions4Kanban/DeleteTask.php">
+        <form method="POST" action="../Functions4Kanban/DeleteTask.php?id=<?= $id ?>">
         <input type="hidden" name="task_id" value="<?= $t->id ?>">  
+        <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
+
         <div class="titleDeletIconDiv">
         <h5><?=$t->task_name?></h5>
         <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p>

@@ -5,6 +5,8 @@
     require_once('UserRepository.php');
     require_once('Project_memberRepository.php');
     require_once('StageRepository.php');
+    require_once('TaskRepository.php');
+    
 
     class ProjectRepository{
         public static $table_name = "projects";
@@ -36,10 +38,22 @@
         }
 
         public function delete($id){
+
+            $member_query = "DELETE FROM " . projectMemberRepository::$table_name . " WHERE project_id = $id;";
+            $member_results = $this->connection->query($member_query);
+
+            $task = "DELETE FROM " . TaskRepository::$table_name . " WHERE project_id = $id;";
+            $task_result = $this->connection->query($task);
+
+            $stage_query= "DELETE FROM " . StageRepository::$table_name . " WHERE project_id = $id;";
+            $stage = $this->connection->query($stage_query);
+
             $query  = "DELETE FROM ".self::$table_name." WHERE id = $id limit 1;";
             $result = $this->connection->query($query);
             return true;
         }
+
+       
 
         public function create($admin_id, $name, $description, $detail_descrip, $create_date, $due_date, $stages, $users_id) {
             $query = "
