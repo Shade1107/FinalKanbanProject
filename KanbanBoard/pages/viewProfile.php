@@ -5,6 +5,7 @@ require_once '../Database/DatabaseConnection.php';
 require_once '../Repositories/UserRepository.php';
 require_once '../Repositories/RoleRepository.php';
 require_once '../Repositories/GenderRepository.php';
+require_once '../Repositories/Project_memberRepository.php';
 
 
 
@@ -18,6 +19,9 @@ $role_id = $user->role_id;
 //print_r($user);
 $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
 $backButton = $role_id == 1 ? 'add_project_admin.php' : 'add_project_member.php'; 
+
+$projectMemberRepo = new ProjectMemberRepository(DatabaseConnection::getInstance());
+$projects = $projectMemberRepo->findWithMemberID($id);
 ?>
 
 
@@ -88,25 +92,48 @@ $backButton = $role_id == 1 ? 'add_project_admin.php' : 'add_project_member.php'
           </div>
       </div>
       <div class="col-lg-9 row">
+        <?php if(isset($projects) && !empty($projects)) : ?>
+          <?php foreach ($projects as $projectMember) : 
+                $project = $projectMemberRepo->getProjectName($projectMember);
+                $stages  = $projectRepository->getPieBarChartLineData($projectMember->project_id, $id);
+          ?>
              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-              <!-- <div class="coloredit ">
-                   
-                </div> -->
-                <div class="Yproject_card ">
+                  <div class="Yproject_card ">
                       <div class="Yproject_img_name d-flex">
                           
-                          <span class=" Yproject"> Project 1</span>
+                          <span class=" Yproject"> <?= $project->name?></span>
                       </div>
 
                       <div class="YlineChart_profileview_page">
-                        <canvas id="Yproject1" class="Yprojectforspecuser"  width="435" height="217"></canvas>
+                        <canvas id="Yproject<?= $project->id ?>" class="Yprojectforspecuser"  width="435" height="217"></canvas>
                       </div>
 
                     </div>
               </div> 
-            </div>
-      </div>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // JavaScript code for generating pie chart
 
+
+                        
+                        var labels<?= $project->id ?> = [];
+                        var data<?= $project->id ?> = [];
+                        <?php foreach($stages as $stage): ?>
+                            labels<?= $project->id ?>.push("<?=$stage["stage"]?>");
+                            data<?= $project->id ?>.push("<?=$stage["count"]?>");
+                          
+                        <?php endforeach; ?>
+
+                        generateLineChart_for_member('Yproject<?= $project->id ?>', labels<?= $project->id ?>, data<?= $project->id ?>);
+
+
+                    });
+                </script>
+          <?php endforeach; ?>    
+        <?php else : ?>
+            <p>No projects found</p>
+        <?php endif; ?>
+      </div>
 	
 <?php 
   require_once('../header_footer/footer.php');
@@ -115,19 +142,19 @@ $backButton = $role_id == 1 ? 'add_project_admin.php' : 'add_project_member.php'
 		which are used in the link section -->
 	<script src="https://kit.fontawesome.com/704ff50790.js" crossorigin="anonymous"></script>
   
-  <script>
+  <!-- <script>
     // Generate the bar chart
    // Generate the line chart
-  var labels1 = [];
+    var labels1 = [];
     var data1 = [];
-    <?php foreach($member1 as $m): ?>
-        labels1.push("<?=$m["stage"]?>");
-        data1.push("<?=$m["task"]?>");
+    <php foreach($member1 as $m): ?>
+        labels1.push("<=$m["stage"]?>");
+        data1.push("<=$m["task"]?>");
        
-    <?php endforeach; ?>
+    <php endforeach; ?>
 
     generateLineChart_for_member('Yproject1', labels1, data1);
-</script> 
+</script>  -->
 
 </body>
 
