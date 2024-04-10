@@ -10,7 +10,7 @@ require_once("$path/Repositories/Project_memberRepository.php");
 // require_once('pages/loader.php');
 $isMember = true;
 require_once('../header_footer/header.php');
-
+$user_id = $_SESSION['user_id'];
 require_once('chart_data_function.php');
 
 
@@ -185,6 +185,8 @@ $stages    =  $stageRepo -> ProjectID($id);
   $prorepo = new ProjectRepository(DatabaseConnection::getInstance());
   $project = $prorepo->find($id);
 ?>
+<div class="PjId" hidden> <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id"> </div>
+<div class="UserId" hidden> <input type="hidden" name="user_id" value="<?= $user_id ?>" id="user_id"> </div>
     <section class="column-container mb-5 container-fluid row">
     <?php
     foreach($stages as $stage):?>
@@ -195,8 +197,6 @@ $stages    =  $stageRepo -> ProjectID($id);
         <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
     <?php foreach($tasks as $t):?>
       <?php if ($t->project_id == $id && $t->stage_id == $stage->id):?>
-        
-
         <div id="t_<?=$t->id?>" task_id="<?=$t->id?>" stage_id="<?=$stage->id?>" class="task-container <?=$t->task_priority_border?>" draggable="true" ondragstart="drag(event)">
         
         <div class="task-header <?=$t->task_priority_color?>">
@@ -204,7 +204,7 @@ $stages    =  $stageRepo -> ProjectID($id);
         <input type="hidden" name="task_id" value="<?= $t->id ?>">  
         <div class="titleDeletIconDiv">
         <h5><?=$t->task_name?></h5>
-        <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p>
+        <!-- <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p> -->
         <div class="modal fade" id="modal<?=$t->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content ">
@@ -214,13 +214,13 @@ $stages    =  $stageRepo -> ProjectID($id);
         <span aria-hidden="true">&times;</span>
         </button>
         </div>
-                  <div class="modal-body">
+                  <!-- <div class="modal-body">
                       Do you Want to Delete This Task?
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="button" data-dismiss="modal">Cancel</button>
                        <button type="submit" class="button mt-1" name="DeleteTask" id="DeleteTask">Delete</button>
-                  </div>
+                  </div> -->
                                   </div>
                                 </div>
                               </div> 
@@ -231,15 +231,15 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                     <div class="canvas-container">
                           <div class="candiv">
-                              <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1"  ></canvas>
                               <div class="YCanvasExtra YFirstExtra">1st Priority</div>
                             </div>
                           <div class="candiv">
-                              <canvas id="canvas2" width="25" height="25" class="canvas canvas2" data-color="#795ce0" data-cand="cand2"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas2" width="25" height="25" class="canvas canvas2" data-color="#795ce0" data-cand="cand2"  ></canvas>
                               <div class="YCanvasExtra YSecondExtra">2nd Priority</div>
                           </div> 
                           <div class="candiv">
-                              <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3"  ></canvas>
                               <div class="YCanvasExtra YThirdExtra">3rd Priority</div>
                           </div>
                     </div>
@@ -279,9 +279,6 @@ $stages    =  $stageRepo -> ProjectID($id);
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-
 
     <!-- <script src="js/app.js"></script> -->
     <script src="../js/changecolor.js"></script>
