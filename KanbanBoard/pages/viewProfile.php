@@ -95,7 +95,7 @@ $projects = $projectMemberRepo->findWithMemberID($id);
         <?php if(isset($projects) && !empty($projects)) : ?>
           <?php foreach ($projects as $projectMember) : 
                 $project = $projectMemberRepo->getProjectName($projectMember);
-                $stages  = $projectRepository->getPieBarChartData($projectMember->project_id);
+                $stages  = $projectRepository->getPieBarChartLineData($projectMember->project_id, $id);
           ?>
              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
                   <div class="Yproject_card ">
@@ -148,8 +148,8 @@ $projects = $projectMemberRepo->findWithMemberID($id);
     var labels1 = [];
     var data1 = [];
     <php foreach($member1 as $m): ?>
-        labels1.push("<?=$m["stage"]?>");
-        data1.push("<?=$m["task"]?>");
+        labels1.push("<=$m["stage"]?>");
+        data1.push("<=$m["task"]?>");
        
     <php endforeach; ?>
 

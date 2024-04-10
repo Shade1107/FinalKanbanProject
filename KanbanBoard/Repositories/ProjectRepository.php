@@ -139,10 +139,29 @@
             return $taskMembers;
         }
 
-        function getPieBarChartLineData($id){
-
+        function getPieBarChartLineData($id, $userid){
+            $query = "SELECT 
+                            s.name AS stage, 
+                            COALESCE(COUNT(t.id), 0) AS count 
+                        FROM 
+                            stages s 
+                        LEFT JOIN 
+                            tasks t ON t.stage_id = s.id AND t.project_id = '$id' 
+                        LEFT JOIN 
+                            task_members tm ON tm.task_id = t.id AND tm.user_id = '$userid' 
+                        WHERE 
+                            s.project_id = '$id' 
+                        GROUP BY 
+                            s.id, s.name
+                    ";
+        
+            $result = $this->connection->query($query);
+            $stages = [];
+            while($row = mysqli_fetch_assoc($result)){
+                $stages[] = $row;
+            }
+            return $stages;
         }
     }
-
     
 ?>  
