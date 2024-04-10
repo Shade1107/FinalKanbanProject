@@ -204,7 +204,7 @@ $stages    =  $stageRepo -> ProjectID($id);
         <input type="hidden" name="task_id" value="<?= $t->id ?>">  
         <div class="titleDeletIconDiv">
         <h5><?=$t->task_name?></h5>
-        <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p>
+        <!-- <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p> -->
         <div class="modal fade" id="modal<?=$t->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content ">
@@ -214,13 +214,13 @@ $stages    =  $stageRepo -> ProjectID($id);
         <span aria-hidden="true">&times;</span>
         </button>
         </div>
-                  <div class="modal-body">
+                  <!-- <div class="modal-body">
                       Do you Want to Delete This Task?
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="button" data-dismiss="modal">Cancel</button>
                        <button type="submit" class="button mt-1" name="DeleteTask" id="DeleteTask">Delete</button>
-                  </div>
+                  </div> -->
                                   </div>
                                 </div>
                               </div> 
@@ -231,15 +231,15 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                     <div class="canvas-container">
                           <div class="candiv">
-                              <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1"  ></canvas>
                               <div class="YCanvasExtra YFirstExtra">1st Priority</div>
                             </div>
                           <div class="candiv">
-                              <canvas id="canvas2" width="25" height="25" class="canvas canvas2" data-color="#795ce0" data-cand="cand2"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas2" width="25" height="25" class="canvas canvas2" data-color="#795ce0" data-cand="cand2"  ></canvas>
                               <div class="YCanvasExtra YSecondExtra">2nd Priority</div>
                           </div> 
                           <div class="candiv">
-                              <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3"  ></canvas>
                               <div class="YCanvasExtra YThirdExtra">3rd Priority</div>
                           </div>
                     </div>
