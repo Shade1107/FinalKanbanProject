@@ -38,6 +38,9 @@ $stages    =  $stageRepo -> ProjectID($id);
 <!-- cssloader -->
 <link rel="stylesheet" href="../css/css_loader.css">
 
+<!-- custom js   -->
+<script src="../js/changecolor.js"></script>
+
   <!-- custom css  -->
     <link rel="stylesheet" href="../css/style.css" type="text/css">
     <!-- title logo  -->
@@ -137,10 +140,9 @@ $stages    =  $stageRepo -> ProjectID($id);
                   <?php foreach ($stages as $stage):?>
                   <tr class="Ynear_deadline" data-toggle="tooltip" data-placement="top" data-bs-original-title="Task : Task1 , your deadline is approaching!">
                       <td class="Ypadding_left"><?=$stage->name?></td>
-                      <td id="planningTaskCount<?= $stage->id ?>" class="Ypadding_right">
-                      <?= count(array_filter($tasks, function($task) use ($stage) {
-                      return $task->stage_id === $stage->id;
-                      })) ?>
+                      <!-- change some code for table data(myo) -->
+                      <td id="<?=$stage->name?>TaskCount" class="Ypadding_right">
+                     
                       </td>
                   </tr>
                   <?php endforeach;?>
@@ -181,7 +183,8 @@ $stages    =  $stageRepo -> ProjectID($id);
 <?php
     foreach($stages as $stage):?>
 <div class="col-lg-3 col-md-3 col-sm-3">
-    <div class="task-column">
+    <!-- <div class="task-column" > -->
+    <div class="task-column" id="<?=$stage->name?>">
         <h4 class="text-center"><?=$stage->name?></h4>
         <hr class="custom-hr">
         <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
