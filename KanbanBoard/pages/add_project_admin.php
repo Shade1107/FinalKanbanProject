@@ -70,10 +70,6 @@
 
               </table>
              
-            <!-- </div> -->
-            <div class="YlineChart">
-              <canvas id="YmylineChart" ></canvas>
-            </div>
             
         </div>
         <div class="col-lg-9 row">
@@ -114,21 +110,6 @@
                         data<?= $project->id ?>.push(<?= $stage["count"] ?>);
                         <?php endforeach; ?>
 
-                        // new Chart(document.getElementById("YmyChart<?= $project->id ?>"), {
-                        //     type: 'pie',
-                        //     data: {
-                        //         labels: labels<?= $project->id ?>,
-                        //         datasets: [{
-                        //             data: data<?= $project->id ?>
-                        //         }]
-                        //     },
-                        //     options: {
-                        //         title: {
-                        //             display: true,
-                        //             text: 'Chart JS Pie Chart Example'
-                        //         }
-                        //     }
-                        // });
                         generatePieChart("YmyChart<?= $project->id ?>", labels<?= $project->id ?>, data<?= $project->id ?> ,"<?= $project->name?>");
 
                     });
@@ -138,7 +119,6 @@
       <p>No projects found</p>
     <?php endif; ?>  
 
-    </section>
 
     <div class="col-lg-4">
                 <div class="Ytask-column ">
@@ -146,7 +126,6 @@
                       <!-- <span class="">+</span> -->
                       <div class="YChart Yplus_sign_project"><span><a href="createproject.php"> <i class="fa-regular fa-square-plus"></i></a></span></div>
                     </div>
-                    <div></div>
                 </div>
               </div>
     </section>
@@ -159,24 +138,6 @@ require_once("$path/header_footer/footer.php");
 ?>
 
 
-<script>
-  var labels5 = [];
-    var data5 = [];
-    <?php foreach($totalProject as $tp): ?>
-        labels5.push("<?=$tp["project"]?>");
-       
-    <?php endforeach; ?>
-
-    <?php foreach($donePercentage as $dp): ?>
-       
-        data5.push(<?=$dp?>);
-    <?php endforeach; ?>
-
-    
-
-    generateLineChart('YmylineChart', labels5, data5,'Done percentage for each project');
-
-</script>
 
 </body>
 </html>
