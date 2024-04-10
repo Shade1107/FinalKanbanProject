@@ -4,6 +4,8 @@
     require_once("$path/Database/DatabaseConnection.php");
     require_once("RoleRepository.php");
     require_once("GenderRepository.php");
+    require_once('Project_memberRepository.php');
+
 
     class UserRepository{
         public static $table_name = "users";
@@ -35,6 +37,12 @@
         }
 
         public function delete($id){
+            $member_query = "DELETE FROM " . projectMemberRepository::$table_name . " WHERE user_id = $id;";
+            $member_results = $this->connection->query($member_query);
+
+            $member_query = "DELETE FROM " . taskMemberRepository::$table_name . " WHERE user_id = $id;";
+            $member_results = $this->connection->query($member_query);
+
             $query  = "DELETE FROM ".self::$table_name." WHERE id = $id limit 1;";
             $result = $this->connection->query($query);
             return true;
