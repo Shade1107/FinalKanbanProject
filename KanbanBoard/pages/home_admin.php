@@ -1,17 +1,16 @@
 <?php 
 $path = realpath(__DIR__."/../");
-require_once("$path/KanbanBoard/Repositories/ProjectRepository.php");
+require_once("$path/Repositories/ProjectRepository.php");
 require_once("$path/Repositories/TaskRepository.php");
 require_once("$path/Repositories/UserRepository.php");
 require_once("$path/Repositories/Project_memberRepository.php");
 ?>
-<!-- <div class="content" style="display: none;"> -->
 <?php 
 // require_once('pages/loader.php');
 $isAdmin = true;
-require_once('../KanbanBoard/header_footer/header.php');
+require_once("$path/header_footer/header.php");
 
-require_once('pages/chart_data_function.php');
+require_once('chart_data_function.php');
 
 $taskRepo  =  new TaskRepository(DatabaseConnection::getInstance());
 $stageRepo =  new StageRepository(DatabaseConnection::getInstance());
@@ -19,6 +18,14 @@ $tasks     =  $taskRepo  -> getAll();
 $stages    =  $stageRepo -> ProjectID($id);
 
 ?>
+
+
+
+
+
+
+
+
 <!Doctype html>
 <head>
   <!-- fontawesome -->
@@ -27,14 +34,14 @@ $stages    =  $stageRepo -> ProjectID($id);
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  
   <!-- custom chart.js  -->
-   <script src="js/charts.js"></script> 
+   <script src="../js/charts.js"></script> 
 <!-- cssloader -->
-<link rel="stylesheet" href="css/css_loader.css">
+<link rel="stylesheet" href="../css/css_loader.css">
 
   <!-- custom css  -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
     <!-- title logo  -->
-    <link rel="icon" type="image/png" href="image/logo2_2.PNG">
+    <link rel="icon" type="image/png" href="../image/logo2_2.PNG">
 
 <!-- loader JavaScript -->
 <!-- <script>
@@ -77,7 +84,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                     <div class="Ymember_card ">
                       <div class="Ymember_img_name d-flex">
                           <div class="Ymember_img">
-                            <img src="image/p1.jpg" width="120px" height="50px">
+                            <img src="../image/p1.jpg" width="120px" height="50px">
                           </div>
                           <span class=" Ymember"> 
                               <?php $userName = taskMemberRepository::getUserName($taskMember);
@@ -164,9 +171,15 @@ $stages    =  $stageRepo -> ProjectID($id);
   $project = $prorepo->find($id);
 ?>
 
-<?php if(isset($_GET['laststageequaltotaltasks'])): ?>
-      echo "laststageequaltotasks"; 
+<!-- <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="True"): ?>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">MMSP</div>
+  <strong>
 <?php endif; ?>
+<?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="False"): ?>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">Lee Bl
+  </div>
+  <strong>
+<?php endif; ?> -->
 <section class="column-container mb-5 container-fluid row">
 <?php
     foreach($stages as $stage):?>
@@ -185,8 +198,10 @@ $stages    =  $stageRepo -> ProjectID($id);
         <div id="t_<?=$t->id?>" task_id="<?=$t->id?>" stage_id="<?=$stage->id?>" class="task-container <?=$t->task_priority_border?>" draggable="true" ondragstart="drag(event)">
         
         <div class="task-header <?=$t->task_priority_color?>">
-        <form method="POST" action="../Functions4Kanban/DeleteTask.php">
+        <form method="POST" action="../Functions4Kanban/DeleteTask.php?id=<?= $id ?>">
         <input type="hidden" name="task_id" value="<?= $t->id ?>">  
+        <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
+
         <div class="titleDeletIconDiv">
         <h5><?=$t->task_name?></h5>
         <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p>
@@ -231,13 +246,13 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                         <div class="YsmallProfile" >
                           <div class="YsmallPS YsmallP1">
-                            <img src="./image/p1.jpg"/>
+                            <img src="../image/p1.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallP2">
-                            <img src="./image/p2.jpg"/>
+                            <img src="../image/p2.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallP3">
-                            <img src="./image/p3.jpg"/>
+                            <img src="../image/p3.jpg"/>
                           </div>
                           <div class="YsmallPS YsmallPExtra"></div>
                         </div>
@@ -245,7 +260,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                 </div>
                 <div class="task-description-container">
                   <p><td><?=$t->short_description?></td></p>
-                  <a href="pages/detailTask_admin.php?id=<?= $t->id ?>" class="">Details</a>
+                  <a href="detailTask_admin.php?id=<?= $t->id ?>" class="">Details</a>
                 </div>
               </div>
     <?php endif;?>
@@ -269,13 +284,13 @@ $stages    =  $stageRepo -> ProjectID($id);
 
 
     <!-- <script src="js/app.js"></script> -->
-    <script src="js/changecolor.js"></script>
-    <script src="js/drag_drop.js"></script>
-    <script src="js/lightbox.js"></script>
+    <script src="../js/changecolor.js"></script>
+    <script src="../js/drag_drop.js"></script>
+    <script src="../js/lightbox.js"></script>
    
     <?php 
     $isAdmin = true;
-     require_once('header_footer/footer.php');
+     require_once("$path/header_footer/footer.php");
     ?>
 
  <script>

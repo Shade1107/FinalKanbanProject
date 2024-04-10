@@ -71,7 +71,7 @@ $result = false;
  
  <!-- custom chart.js  -->
   <script src="../js/charts.js"></script> 
-  <script src="../js/javascript.js"></script>
+  <script src="../js/javascript.js<?= "?v=".time()?>"></script>
 
  </head>  
  <body>

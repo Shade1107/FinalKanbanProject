@@ -93,7 +93,7 @@ require_once('../Functions4Kanban/taskcreate.php');
            <!-- discription -->
             <textarea placeholder="detail description..." class="Mitext_area mt-4" name="short_description" ></textarea>
             
-            <!-- <div class="addmember"> 
+            <div class="addmember"> 
             <?php
               // Get the task members from the repository
               $stageRepository = new StageRepository(DatabaseConnection::getInstance());
@@ -108,7 +108,7 @@ require_once('../Functions4Kanban/taskcreate.php');
             <?php } ?>
     </select> 
 
-             </div> -->
+             </div>
                   <!-- Priorty color -->
                <div class="Micolorcontainer  Yalignelement_for_createtask mt-3">
                 <div class="Micolortext">

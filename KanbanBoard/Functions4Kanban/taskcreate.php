@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Create the task
             $result = $taskRepo->create($project_id,$stage, $short_description, $task_name, $user_ids,$priority_color,$priority_border);
             if ($result) {
-                header('Location: ../home_admin.php?id=' . $project_id); 
+                header('Location: ../pages/home_admin.php?id=' . $project_id); 
                 exit;
             } else {
                 $error_message = "Error inserting task.";
