@@ -129,7 +129,7 @@ function changecolor(canvas) {
 }
 
 function ChgPColor4Tasks(task_id,new_taskContainer,new_taskHeader) {
-  let url = '../Functions4Kanban/TasksPColorChg.php?task_id=' + task_id + '&new_taskContainer=' + new_taskContainer + '&new_taskHeader=' + new_taskHeader;
+  let url = './Functions4Kanban/TasksPColorChg.php?task_id=' + task_id + '&new_taskContainer=' + new_taskContainer + '&new_taskHeader=' + new_taskHeader;
 
   //alternative approach use jquery $.get().... 
   const xhttp = new XMLHttpRequest();

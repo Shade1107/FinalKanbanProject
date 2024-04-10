@@ -263,9 +263,9 @@ $stages    =  $stageRepo -> ProjectID($id);
 
 
     <!-- <script src="js/app.js"></script> -->
-    <script src="js/changecolor.js"></script>
-    <script src="js/drag_drop.js"></script>
-    <script src="js/lightbox.js"></script>
+    <script src="./js/changecolor.js"></script>
+    <script src="./js/drag_drop.js"></script>
+    <script src="./js/lightbox.js"></script>
    
     <?php 
     $isAdmin = true;
