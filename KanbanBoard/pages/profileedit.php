@@ -120,7 +120,7 @@ $result = false;
     </div>
     
     <div class="container-button-edit">
-    <button type="button" class="buttonMiedit"  ><a class="buttonlink" href="viewProfile.php">Back</a></button>
+    <a class="buttonlink" href="viewProfile.php"><button type="button" class="buttonMiedit"  >Back</button></a>
    <input type="submit" class="buttonMiedit" name="save" value="Save">
    </div>
 
