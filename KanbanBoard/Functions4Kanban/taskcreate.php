@@ -1,6 +1,6 @@
 <?php
-$path = realpath(__DIR__."/../");
-// require_once("$path/header_footer/header.php');
+$path = realpath(__DIR__ . "/../");
+
 require_once("$path/Repositories/TaskRepository.php");
 require_once("$path/Repositories/Task_memberRepository.php");
 require_once("$path/Repositories/UserRepository.php");
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stage     = $_POST['stage_id'];
         $priority_color = $_POST['task_priority_color'];
         $priority_border = $_POST['task_priority_border'];
-       
+
         if (empty($task_name)) {
             $error_message = "Task name is required.";
         } else {

@@ -42,6 +42,20 @@
             $member_query = "DELETE FROM " . projectMemberRepository::$table_name . " WHERE project_id = $id;";
             $member_results = $this->connection->query($member_query);
 
+            $tasks = [];
+            $query = "SELECT id FROM " . TaskRepository::$table_name . " WHERE project_id = $id";
+            $results = $this->connection->query($query);
+            if ($results) {
+                while ($row = mysqli_fetch_object($results)) {
+                    $tasks[] = $row;
+                }
+            }
+            foreach ($tasks as $task) {
+                $taskId = $task->id; // Fetching the id property of the task object
+                $query = "DELETE FROM " . taskMemberRepository::$table_name . " WHERE task_id = $taskId";
+                $result = $this->connection->query($query);
+            }
+
             $task = "DELETE FROM " . TaskRepository::$table_name . " WHERE project_id = $id;";
             $task_result = $this->connection->query($task);
 
@@ -125,6 +139,7 @@
             }
             return $stages;
         }
+
         public function findWithMemberID($id){
             $taskMembers   = [];
             $query  = "SELECT * FROM ".self::$table_name." WHERE user_id = $id;";
@@ -137,7 +152,28 @@
             }
             return $taskMembers;
         }
-    }
 
+        function getPieBarChartLineData($id, $userid){
+            $query = "SELECT 
+                            s.name AS stage, 
+                            COALESCE(
+                                (SELECT COUNT(t.id) 
+                                FROM tasks t 
+                                JOIN task_members tm ON t.id = tm.task_id 
+                                WHERE t.stage_id = s.id AND t.project_id = '$id' AND tm.user_id = '$userid'), 0) AS count
+                        FROM 
+                            stages s 
+                        WHERE 
+                            s.project_id = '$id';
+                    ";
+        
+            $result = $this->connection->query($query);
+            $stages = [];
+            while($row = mysqli_fetch_assoc($result)){
+                $stages[] = $row;
+            }
+            return $stages;
+        }
+    }
     
 ?>  
