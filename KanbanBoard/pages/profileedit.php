@@ -70,7 +70,7 @@ $result = false;
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  
  <!-- custom chart.js  -->
-  <script src="../js/charts.js"></script> 
+  <script src="../js/charts.js<?= "?v=".time()?>"></script> 
   <script src="../js/javascript.js<?= "?v=".time()?>"></script>
 
  </head>  
@@ -119,7 +119,7 @@ $result = false;
     </div>
     
     <div class="container-button-edit">
-    <button type="button" class="buttonMiedit"  ><a class="buttonlink" href="../home_admin.php">Back</a></button>
+    <button type="button" class="buttonMiedit"  ><a class="buttonlink" href="viewProfile.php">Back</a></button>
    <input type="submit" class="buttonMiedit" name="save" value="Save">
    </div>
 

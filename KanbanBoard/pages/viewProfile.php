@@ -17,7 +17,7 @@ $user = $userRepo->find($id);
 $role_id = $user->role_id;
 //print_r($user);
 $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
-
+$backButton = $role_id == 1 ? 'add_project_admin.php' : 'add_project_member.php'; 
 ?>
 
 
@@ -83,7 +83,7 @@ $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img.
           <br>
           <!-- add back button (myo)   -->
           <div class="container-button-edit">
-          <a class="buttonlink" href="add_project_admin.php"><button type="button" class="buttonMiedit">Back</button></a>
+          <a class="buttonlink" href="<?= $backButton ?>"><button type="button" class="buttonMiedit">Back</button></a>
           <a class="buttonlink" href="profileedit.php"><button type="button" class="buttonMiedit">Edit</button></a>
           </div>
       </div>
