@@ -62,9 +62,6 @@ $stages    =  $stageRepo -> ProjectID($id);
     <div class="row">
 
     </div>
-
-  
-
     <div class="col-lg-12  ">
               <h6 class="pt-3 mb-0 text-secondary">Members</h6>
               <hr/>

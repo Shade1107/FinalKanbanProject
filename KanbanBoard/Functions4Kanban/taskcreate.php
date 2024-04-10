@@ -18,13 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         isset($_POST['task_priority_color'])&&
         isset($_POST['task_priority_border'])
     ) {
-        $project_id = $_POST['project_id'];
-        $short_description = $_POST['short_description'];
-        $task_name = $_POST['task_name'];
+        $project_id =  $_POST['project_id'];
+        $short_description =  DatabaseConnection::getInstance()->real_escape_string ($_POST['short_description']);
+        $task_name =  DatabaseConnection::getInstance()->real_escape_string ($_POST['task_name']);
         $user_ids = $_POST['user_id'];
-        $stage     = $_POST['stage_id'];
-        $priority_color = $_POST['task_priority_color'];
-        $priority_border = $_POST['task_priority_border'];
+        $stage     =  DatabaseConnection::getInstance()->real_escape_string ($_POST['stage_id']);
+        $priority_color =  DatabaseConnection::getInstance()->real_escape_string ($_POST['task_priority_color']);
+        $priority_border =  DatabaseConnection::getInstance()->real_escape_string ($_POST['task_priority_border']);
        
         if (empty($task_name)) {
             $error_message = "Task name is required.";

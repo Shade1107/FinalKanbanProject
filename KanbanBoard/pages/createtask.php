@@ -45,7 +45,9 @@ require_once('../Functions4Kanban/taskcreate.php');
             <?php if(isset($error_message)) { ?>
                       <div style="color: red;"><?php echo $error_message; ?></div>
                       <?php
-                       } ?>
+                       }
+                       
+                       ?>
             </div>
             
           </div>
@@ -58,7 +60,7 @@ require_once('../Functions4Kanban/taskcreate.php');
                     $project = $prorepo->find($id);
                     if (isset($project)) {
                 ?>
-                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                    <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
                 <?php
                     } else {
                         echo "<p>Not found.</p>";
@@ -101,11 +103,11 @@ require_once('../Functions4Kanban/taskcreate.php');
             ?>
             
             <select id="tselect" class="select" placeholder="Choose Stage" name="stage_id">
-            <?php foreach ($stages as $stage) {?>
-         <option value="<?php echo $stage->id; ?>">
-         <?php echo $stage->name; ?>
-        </option>
-    <?php } ?>
+            <?php foreach ($stages as $stage) { ?>
+            <option value="<?php echo $stage->id; ?>">
+            <?php echo $stage->name; ?>
+            </option>
+            <?php } ?>
     </select> 
 
              </div>
@@ -128,7 +130,9 @@ require_once('../Functions4Kanban/taskcreate.php');
                 <Br>
              
                   <div class="buttontask-container py-5">
-                  <a href="../home_admin.php?id=<?= $project->id ?>" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
+                    <a href="#" onclick="history.back();" class="buttonlink">
+                      <button type="button" class="buttonMi">Back</button>
+                    </a>
                   <button type="submit" class="buttonMi">Create</button>
 
                   </div>
