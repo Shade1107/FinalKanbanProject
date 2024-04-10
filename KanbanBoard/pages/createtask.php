@@ -87,7 +87,7 @@ require_once('../Functions4Kanban/taskcreate.php');
             <?php echo $userName->name; ?>
         </option>
     <?php } ?>
-    </select>      
+    </select>
              </div>
 
            <!-- discription -->

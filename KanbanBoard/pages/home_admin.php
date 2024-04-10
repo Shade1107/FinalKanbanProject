@@ -1,5 +1,5 @@
 <?php 
-$path = realpath(__DIR__."/../");
+$path = realpath(__DIR__."/../"); 
 require_once("$path/Repositories/ProjectRepository.php");
 require_once("$path/Repositories/TaskRepository.php");
 require_once("$path/Repositories/UserRepository.php");
@@ -9,23 +9,15 @@ require_once("$path/Repositories/Project_memberRepository.php");
 // require_once('pages/loader.php');
 $isAdmin = true;
 require_once("$path/header_footer/header.php");
-
+$userid = $_SESSION['user_id'];
 require_once('chart_data_function.php');
 
 $taskRepo  =  new TaskRepository(DatabaseConnection::getInstance());
 $stageRepo =  new StageRepository(DatabaseConnection::getInstance());
 $tasks     =  $taskRepo  -> getAll();
 $stages    =  $stageRepo -> ProjectID($id);
-
+// $_SESSION['user_id'] = 
 ?>
-
-
-
-
-
-
-
-
 <!Doctype html>
 <head>
   <!-- fontawesome -->
@@ -186,8 +178,11 @@ $stages    =  $stageRepo -> ProjectID($id);
         <hr class="custom-hr">
         <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
     <?php foreach($tasks as $t):?>
-<div class="StageId" hidden>
+<div class="PjId" hidden>
 <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
+</div>
+<div class="userId" hidden>
+<input type="hidden" name="user_id" value="<?= $userid ?>" id="user_id">
 </div>
       <?php if ($t->project_id == $id && $t->stage_id == $stage->id):?>
         
@@ -195,10 +190,8 @@ $stages    =  $stageRepo -> ProjectID($id);
         <div id="t_<?=$t->id?>" task_id="<?=$t->id?>" stage_id="<?=$stage->id?>" class="task-container <?=$t->task_priority_border?>" draggable="true" ondragstart="drag(event)">
         
         <div class="task-header <?=$t->task_priority_color?>">
-        <form method="POST" action="../Functions4Kanban/DeleteTask.php?id=<?= $id ?>">
+        <form method="POST" action="../Functions4Kanban/DeleteTask.php">
         <input type="hidden" name="task_id" value="<?= $t->id ?>">  
-        <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
-
         <div class="titleDeletIconDiv">
         <h5><?=$t->task_name?></h5>
         <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p>
