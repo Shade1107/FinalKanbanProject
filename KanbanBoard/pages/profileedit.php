@@ -70,7 +70,7 @@ $result = false;
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  
  <!-- custom chart.js  -->
-  <script src="../js/charts.js<?= "?v=".time()?>"></script> 
+  <script src="../js/charts.js"></script> 
   <script src="../js/javascript.js<?= "?v=".time()?>"></script>
 
  </head>  
