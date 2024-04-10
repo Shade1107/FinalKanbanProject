@@ -19,13 +19,6 @@ $stages    =  $stageRepo -> ProjectID($id);
 
 ?>
 
-
-
-
-
-
-
-
 <!Doctype html>
 <head>
   <!-- fontawesome -->
@@ -79,6 +72,8 @@ $stages    =  $stageRepo -> ProjectID($id);
               <?php foreach ($taskMembers as $taskMember) {
         // Get the user name for each task member
         $userName = taskMemberRepository::getUserName($taskMember);
+        $chartstages  = $projectRepository->getPieBarChartLineData($id, $taskMember->user_id);
+        
         ?>
                   <div class="col-lg-3 Ycol-lg-3">
                     <div class="Ymember_card ">
@@ -97,12 +92,31 @@ $stages    =  $stageRepo -> ProjectID($id);
                       </div>
               
                       <div class="YlineChart_home_page">
-                      <canvas id="YmemberlineChart<?= $taskMember->id ?>"></canvas>
+                      <canvas id="YmemberlineChart<?= $taskMember->user_id ?>"></canvas>
                       </div>
 
                     </div>
 
                   </div>
+                  <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // JavaScript code for generating pie chart
+
+
+                        
+                        var labels<?= $taskMember->user_id ?> = [];
+                        var data<?= $taskMember->user_id ?> = [];
+                        <?php foreach($chartstages as $stage): ?>
+                            labels<?= $taskMember->user_id ?>.push("<?=$stage["stage"]?>");
+                            data<?= $taskMember->user_id ?>.push("<?=$stage["count"]?>");
+                          
+                        <?php endforeach; ?>
+
+                        generateLineChart_for_member('YmemberlineChart<?= $taskMember->user_id ?>', labels<?= $taskMember->user_id ?>, data<?= $taskMember->user_id ?>);
+
+
+                    });
+                </script>
                   <?php } ?>
 
 
@@ -308,100 +322,100 @@ $stages    =  $stageRepo -> ProjectID($id);
 </script>
 
 <script>
-  // Generate the line chart
-  var labels1 = [];
-    var data1 = [];
-    <?php foreach($member1 as $m): ?>
-        labels1.push("<?=$m["stage"]?>");
-        data1.push("<?=$m["task"]?>");
+//   // Generate the line chart
+//   var labels1 = [];
+//     var data1 = [];
+//     <?php foreach($member1 as $m): ?>
+//         labels1.push("<?=$m["stage"]?>");
+//         data1.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart1', labels1, data1);
+//     generateLineChart_for_member('YmemberlineChart1', labels1, data1);
 
-//for member2
-    var labels2 = [];
-    var data2 = [];
-    <?php foreach($member2 as $m): ?>
-        labels2.push("<?=$m["stage"]?>");
-        data2.push("<?=$m["task"]?>");
+// //for member2
+//     var labels2 = [];
+//     var data2 = [];
+//     <?php foreach($member2 as $m): ?>
+//         labels2.push("<?=$m["stage"]?>");
+//         data2.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart2', labels2, data2);
+//     generateLineChart_for_member('YmemberlineChart2', labels2, data2);
 
 
-//for member3
-    var labels3 = [];
-    var data3 = [];
-    <?php foreach($member3 as $m): ?>
-        labels3.push("<?=$m["stage"]?>");
-        data3.push("<?=$m["task"]?>");
+// //for member3
+//     var labels3 = [];
+//     var data3 = [];
+//     <?php foreach($member3 as $m): ?>
+//         labels3.push("<?=$m["stage"]?>");
+//         data3.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart3', labels3, data3);
+//     generateLineChart_for_member('YmemberlineChart3', labels3, data3);
 
-//for member4
+// //for member4
 
-    var labels4 = [];
-    var data4 = [];
-    <?php foreach($member4 as $m): ?>
-        labels4.push("<?=$m["stage"]?>");
-        data4.push("<?=$m["task"]?>");
+//     var labels4 = [];
+//     var data4 = [];
+//     <?php foreach($member4 as $m): ?>
+//         labels4.push("<?=$m["stage"]?>");
+//         data4.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart4', labels4, data4);
+//     generateLineChart_for_member('YmemberlineChart4', labels4, data4);
 
-//for member5
-    var labels5 = [];
-    var data5 = [];
-    <?php foreach($member5 as $m): ?>
-        labels5.push("<?=$m["stage"]?>");
-        data5.push("<?=$m["task"]?>");
+// //for member5
+//     var labels5 = [];
+//     var data5 = [];
+//     <?php foreach($member5 as $m): ?>
+//         labels5.push("<?=$m["stage"]?>");
+//         data5.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart5', labels5, data5);
+//     generateLineChart_for_member('YmemberlineChart5', labels5, data5);
 
 
-// //for member6
-    var labels6 = [];
-    var data6 = [];
-    <?php foreach($member6 as $m): ?>
-        labels6.push("<?=$m["stage"]?>");
-        data6.push("<?=$m["task"]?>");
+// // //for member6
+//     var labels6 = [];
+//     var data6 = [];
+//     <?php foreach($member6 as $m): ?>
+//         labels6.push("<?=$m["stage"]?>");
+//         data6.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart6', labels6, data6);
+//     generateLineChart_for_member('YmemberlineChart6', labels6, data6);
 
 
     
-// //for member7
-var labels7 = [];
-    var data7 = [];
-    <?php foreach($member7 as $m): ?>
-        labels7.push("<?=$m["stage"]?>");
-        data7.push("<?=$m["task"]?>");
+// // //for member7
+// var labels7 = [];
+//     var data7 = [];
+//     <?php foreach($member7 as $m): ?>
+//         labels7.push("<?=$m["stage"]?>");
+//         data7.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart7', labels7, data7);
+//     generateLineChart_for_member('YmemberlineChart7', labels7, data7);
 
 
     
-// //for member6
-var labels8 = [];
-    var data8 = [];
-    <?php foreach($member8 as $m): ?>
-        labels8.push("<?=$m["stage"]?>");
-        data8.push("<?=$m["task"]?>");
+// // //for member6
+// var labels8 = [];
+//     var data8 = [];
+//     <?php foreach($member8 as $m): ?>
+//         labels8.push("<?=$m["stage"]?>");
+//         data8.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart8', labels8, data8);
+//     generateLineChart_for_member('YmemberlineChart8', labels8, data8);
 
 
 </script>

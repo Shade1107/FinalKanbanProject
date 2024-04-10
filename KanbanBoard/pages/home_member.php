@@ -75,6 +75,8 @@ $stages    =  $stageRepo -> ProjectID($id);
               <?php foreach ($taskMembers as $taskMember) {
         // Get the user name for each task member
         $userName = taskMemberRepository::getUserName($taskMember);
+        $chartstages  = $projectRepository->getPieBarChartLineData($id, $taskMember->user_id);
+        
         ?>
                   <div class="col-lg-3 Ycol-lg-3">
                     <div class="Ymember_card ">
@@ -93,12 +95,31 @@ $stages    =  $stageRepo -> ProjectID($id);
                       </div>
               
                       <div class="YlineChart_home_page">
-                      <canvas id="YmemberlineChart<?= $taskMember->id ?>"></canvas>
+                      <canvas id="YmemberlineChart<?= $taskMember->user_id ?>"></canvas>
                       </div>
 
                     </div>
 
                   </div>
+                  <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // JavaScript code for generating pie chart
+
+
+                        
+                        var labels<?= $taskMember->user_id ?> = [];
+                        var data<?= $taskMember->user_id ?> = [];
+                        <?php foreach($chartstages as $stage): ?>
+                            labels<?= $taskMember->user_id ?>.push("<?=$stage["stage"]?>");
+                            data<?= $taskMember->user_id ?>.push("<?=$stage["count"]?>");
+                          
+                        <?php endforeach; ?>
+
+                        generateLineChart_for_member('YmemberlineChart<?= $taskMember->user_id ?>', labels<?= $taskMember->user_id ?>, data<?= $taskMember->user_id ?>);
+
+
+                    });
+                </script>
                   <?php } ?>
 
 
