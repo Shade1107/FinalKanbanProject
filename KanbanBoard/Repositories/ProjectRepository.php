@@ -125,6 +125,7 @@
             }
             return $stages;
         }
+
         public function findWithMemberID($id){
             $taskMembers   = [];
             $query  = "SELECT * FROM ".self::$table_name." WHERE user_id = $id;";
@@ -136,6 +137,10 @@
                 }
             }
             return $taskMembers;
+        }
+
+        function getPieBarChartLineData($id){
+
         }
     }
 
