@@ -86,9 +86,11 @@ require_once('../Functions4Kanban/taskcreate.php');
                             <?php } ?>
                         </select>   
 
-                        <?php if(empty($taskMembers)) { ?>
-                            <div style="color: red;">No members available for this project.</div>
+                        <?php if(isset($error_messages['user_id'])) { ?>
+                            <div style="color: red;"><?php echo $error_messages['user_id']; ?></div>
                         <?php } ?>
+
+                    
                     </div> 
 
                     <textarea placeholder="detail description..." class="Mitext_area mt-4" name="short_description" ></textarea>

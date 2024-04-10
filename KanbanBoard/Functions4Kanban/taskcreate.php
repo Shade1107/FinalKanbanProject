@@ -28,6 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
+    // Check if user_id field is empty (no members selected)
+    if (!isset($_POST['user_id']) || empty($_POST['user_id'])) {
+        $error_messages['user_id'] = "Please select at least one member.";
+    }
+
     if (empty($error_messages)) {
         $project_id = $_POST['project_id'];
         $short_description = DatabaseConnection::getInstance()->real_escape_string($_POST['short_description']);
