@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signin'])){
                 exit;
             }
         } else {
-        $LoginError = 'Login Error ! invalid email or password please try again';
+        $LoginError = '<p style="display:flex; justify-content: center;">Login Error !</p><p>invalid email or password please try again </p>';
         session_start();
         $_SESSION['LoginError'] = $LoginError; 
             header("Location: ../pages/login.php");

@@ -72,9 +72,9 @@
               </table>
              
             <!-- </div> -->
-            <div class="YlineChart">
+            <!-- <div class="YlineChart">
               <canvas id="YmylineChart" ></canvas>
-            </div>
+            </div> -->
             
         </div>
         <div class="col-lg-9 row">

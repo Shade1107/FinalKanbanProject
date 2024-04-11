@@ -46,7 +46,7 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                    <tbody style="line-height: 70px;">
+                    <tbody>
                         <?php foreach ($members as $m) : ?>
                             <tr id="listItem_<?=$m->id?>" style="color:white">
                                 <td ><?= $m->id ?></td>
@@ -74,26 +74,28 @@
                                 </svg></a></p>
                                 <div class="modal fade" id="<?=$m->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
+
                                   <div class="modal-content ">
-                                    <div class="modal-header d-flex justify-content-between">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">Are you sure??</h5>
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="text">Are you sure??</h5>
                                       <button type="button" class="close YmodelCancelButton" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
+
                                     <div class="modal-body">
                                       Do you Want to Delete This member?
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="button mx-2" data-dismiss="modal">Cancel</button>
-                                      <button type="button" class="button m-0" onclick="KdeleteMember(<?=$m->id?>)"> Delete</button>
+                                      <button type="button" class="button " data-dismiss="modal">Cancel</button>
+                                      <button type="button" class="button mt-1" onclick="KdeleteMember(<?=$m->id?>)"> Delete</button>
                                         <!-- <a href="delete_memberlist.php?id=<?=$m->id?>"></a> -->
                                        
                                     </div>
                                   </div>
                                 </div>
                               </div>
-
+                              </div>
                             </td>      
                             </tr>
                         <?php endforeach ?>
