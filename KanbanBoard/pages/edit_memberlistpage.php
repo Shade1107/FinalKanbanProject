@@ -1,5 +1,4 @@
 
-
 <?php
 
 // sayar close to close error 
@@ -9,19 +8,19 @@ $path = realpath(__DIR__ ."/../");
 require_once("$path/Database/DatabaseConnection.php");
 require_once("$path/Repositories/UserRepository.php");
 
-$id = $_GET['id'];
-$userRepo = new UserRepository(DatabaseConnection::getInstance());
-$user = $userRepo->find($id);
 
-$imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
+$uid = $_GET['uid'];
+$edit_userRepo = new UserRepository(DatabaseConnection::getInstance());
+$edit_user = $edit_userRepo->find($uid);
 
+$editImagePath = (isset($edit_user->img) && !empty($edit_user->img)) ? "../image/".$edit_user->img."?v=".time() : "../image/default.jpg";
 
-$selectedGender = $user->gender_id;
+$selectedGender = $edit_user->gender_id;    
 $maleSelected = ($selectedGender == 1) ? 'selected' : '';
 $femaleSelected = ($selectedGender == 2) ? 'selected' : '';
 
 
-$selectedRole = $user->role_id;
+$selectedRole = $edit_user->role_id;
 $adminSelected = ($selectedRole == 1) ? 'selected' : '';
 $memberSelected = ($selectedRole == 2) ? 'selected' : '';
 
@@ -45,7 +44,7 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
     
        
 </head>
-<?php  require_once("../header_footer/header.php"); ?>
+<?php require_once("../header_footer/header.php");?>
 <body class="MiYcolumn-container">
     <form class="form-horizontal color" role="form" method="POST" enctype="multipart/form-data" action="edit_memberlist.php">
         <div class="container bootstrap snippets bootdey">
@@ -55,7 +54,7 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
                 <!-- left column -->
                 <div class="col-md-3">
                     <div class="text-center">
-                        <img src="<?= $imagePath ?>"  class="avatar img-circle img-thumbnail" alt="avatar">
+                        <img src="<?= $editImagePath ?>"  class="avatar img-circle img-thumbnail" alt="avatar">
                     </div>
                 </div>
 
@@ -63,24 +62,24 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
                 <div class="col-md-9 personal-info">
                     <h3>Personal info</h3>
 
-                    <input class="form-control  color" value="<?= $user->id ?>" type="text" name="id" hidden>
+                    <input class="form-control  color" value="<?= $edit_user->id ?>" type="text" name="id" hidden>
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Name:</label>
                         <div class="col-lg-8">
-                            <input class="form-control Miinput-field" value="<?= $user->name ?>" type="text" name="name" required>
+                            <input class="form-control Miinput-field" value="<?= $edit_user->name ?>" type="text" name="name" required>
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="col-lg-3 control-label">Email:</label>
                         <div class="col-lg-8">
-                            <input class="form-control Miinput-field" value="<?= $user->email ?>" type="email" name="email" required>
+                            <input class="form-control Miinput-field" value="<?= $edit_user->email ?>" type="email" name="email" required>
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="col-lg-3 control-label">Password:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="<?= $user->password ?>" name="password" required>
+                            <input class="form-control" type="text" value="<?= $edit_user->password ?>" name="password" required>
                         </div>
                     </div>
                     
