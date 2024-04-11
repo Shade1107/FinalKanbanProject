@@ -78,8 +78,8 @@ $stages    =  $stageRepo -> ProjectID($id);
                   <div class="col-lg-3 Ycol-lg-3">
                     <div class="Ymember_card ">
                       <div class="Ymember_img_name d-flex">
-                          <div class="Ymember_img">
-                            <img src="../image/p1.jpg" width="120px" height="50px">
+                      <div class="Ymember_img">
+                            <img src="../image/<?=$userName->img?>" width="120px" height="50px">
                           </div>
                           <span class=" Ymember"> 
                               <?php $userName = taskMemberRepository::getUserName($taskMember);
