@@ -128,7 +128,7 @@ $stages    =  $stageRepo -> ProjectID($id);
               <div class=" Ytask_table_div" >
               <h4 class="text-center mb-3 pt-3" >Total Tasks</h4>
     
-          <table class="Ytask_table">
+              <table class="Ytask_table">
                   <tbody><tr>
                     <th class="Ypadding_left">Stages</th>
                     <th class="Ypadding_right">Tasks</th>
@@ -136,13 +136,14 @@ $stages    =  $stageRepo -> ProjectID($id);
                   <?php foreach ($stages as $stage):?>
                   <tr class="Ynear_deadline" data-toggle="tooltip" data-placement="top" data-bs-original-title="Task : Task1 , your deadline is approaching!">
                       <td class="Ypadding_left"><?=$stage->name?></td>
-                      <td id="planningTaskCount<?= $stage->id ?>" class="Ypadding_right">
-                      <?= count(array_filter($tasks, function($task) use ($stage) {
-                      return $task->stage_id === $stage->id;
-                      })) ?>
+                      <!-- change some code for table data(myo) -->
+                      <td id="<?=$stage->name?>TaskCount" class="Ypadding_right">
+                     
                       </td>
                   </tr>
                   <?php endforeach;?>
+
+                  
               </tbody></table>
               </div>
 
