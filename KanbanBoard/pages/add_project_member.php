@@ -60,13 +60,16 @@
                     <td><?=$totalProjects?></td>
                   </tr>
 
-                  <tr>
-                     <td> Average Done Rate</td>
-                     <?php 
-                        require_once('chart_data_function.php');
-                     ?>
-                    <td>: <?=$overall_done_rate??''?>%</td>
-                  </tr>
+                  <!-- for deadline day left (myo) -->
+                  <?php foreach($projects as $projectMember): 
+                    $project = $projectMemberRepo->getProjectName($projectMember);
+                    $due_date = $projectRepository->find($projectMember->project_id);
+                  ?>
+                    <tr>
+                        <td><?= $project->name?></td>
+                        <td><?= $projectRepository->calculateDaysLeft($due_date->due_date)?></td>
+                    </tr>
+                  <?php endforeach; ?>
               </table>
              
             <!-- </div> -->
@@ -90,7 +93,7 @@
                 <div class="col-lg-4 ">
                 <a href="home_member.php?id=<?= $projectMember->project_id ?>">
                   <div class="Ytask-column  ">
-                  <h3><?= $project->name?></h3>
+                  <!-- <h3><?= $project->name?></h3> -->
                   <canvas id="YmyChart<?= $projectMember->project_id ?>" class="YChart<?= $projectMember->project_id ?>"></canvas>
                   </div>
                 </a>

@@ -157,7 +157,8 @@ $stages    =  $stageRepo -> ProjectID($id);
                     <th class="Ypadding_right">Tasks</th>
                   </tr>
                   <?php foreach ($stages as $stage):?>
-                  <tr class="Ynear_deadline" data-toggle="tooltip" data-placement="top" data-bs-original-title="Task : Task1 , your deadline is approaching!">
+                    <!-- delete tooltip(myo)  -->
+                  <tr >
                       <td class="Ypadding_left"><?=$stage->name?></td>
                       <!-- change some code for table data(myo) -->
                       <td id="<?=$stage->name?>TaskCount" class="Ypadding_right">
