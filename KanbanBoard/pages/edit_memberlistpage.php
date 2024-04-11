@@ -43,53 +43,7 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css" />
     
-        body {
-            margin-top: 20px;
-        }
-
-        .avatar {
-            width: 200px;
-            height: 200px;
-            border: 1px solid white;
-            border-radius: 50%;
-        }
-
-        .backDiv {
-            float: left;
-        }
-
-        .editDiv {
-            float: left;
-            margin-left: 930px;
-        }
-
-        #edit {
-            text-decoration: none;
-            font-size: 20px;
-            color: lightcyan;
-        }
-
-        .btn-custom {
-            border: 1px solid black;
-            background-color: #79305a;
-        }
-
-        input[type="file"] {
-            max-width: 0px;
-            max-height: 0px;
-        }
-
-        .gender-select {
-            width: 555px;
-            height: 40px;
-        }
-
-        .btn-custom {
-            border: 1px solid black;
-            background-color: #79305a;
-            color: white;
-        }
-    </style> -->
+       
 </head>
 <?php  require_once("../header_footer/header.php"); ?>
 <body class="MiYcolumn-container">
