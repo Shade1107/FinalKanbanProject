@@ -232,6 +232,7 @@ $stages    =  $stageRepo -> ProjectID($id);
         <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p>
         <div class="modal fade" id="modal<?=$t->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
+          
         <div class="modal-content ">
         <div class="modal-header">
         <h5 class="modal-title" id="<?=$t->task_name?>"><?=$t->task_name?></h5>

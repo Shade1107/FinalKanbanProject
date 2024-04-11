@@ -49,13 +49,19 @@ unset($_SESSION['LoginError']);
                              
                             <!-- change  from fa-eye to fa-eye-slash & mt mb for button and psw field (myo) -->
                             <i class="fas fa-eye-slash toggle-password Yeyeicon_for_login " ></i>
-                            <?php if (isset($LoginError)) echo '<div  style="color:red;">'.$LoginError.'</div>';?>
-                        </div>
 
-                        
+                            </div>
+                            </div>
+
+                          <?php if (isset($LoginError)) echo '<div  style="color:red;" >'.$LoginError.'</div>';?>
+
                           <button type="submit" class="button mt-3" name="signin" id="signin">Login</button>
-                        </div>
+                      
+                        
                 </div> 
+
+                                        <!-- <?php if (isset($LoginError)) echo '<div  style="color:red;" class="ms-5">'.$LoginError.'</div>';?> -->
+
 
                 <!-- only link to 'NEW ACCOUNT' text (myo) -->
                 <span class="Yloginspan mt-3">Create a<a href="signup.php" class="YColor3e306b"> NEW ACCOUNT ?</a></span>

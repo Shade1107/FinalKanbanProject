@@ -105,14 +105,14 @@ $result = false;
     <!-- <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i> -->
      
     <!-- add toggle eye (myo)   -->
-    <i class="fas Yeyeedit fa-eye-slash  toggle-password Yeyeicon_for_login1" ></i>
+    <i class="fas Yeyeedit fa-eye-slash  toggle-password " ></i>
                        
     </div>
     <!-- <br> -->
     
     <div>
     &nbsp;&nbsp;&nbsp;&nbsp; <label for="gender" class="labeledit mt-2">Gender :</label>&nbsp;&nbsp;&nbsp;&nbsp;
-    <select class="Miinput-fieldedit bg-white  p-2 mb-2 rounded" name="gender" required>
+    <select class="  Miinput-fieldedit bg-white  p-2 mb-2 rounded" name="gender" required>
     <option value="1"  ". <?= $maleSelected ?> .">Male</option>
     <option value="2"  ". <?= $femaleSelected ?> .">Female</option>
     </select>
