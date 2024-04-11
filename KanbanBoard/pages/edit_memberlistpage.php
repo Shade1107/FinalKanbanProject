@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $path = realpath(__DIR__ ."/../"); 
 require_once("$path/Database/DatabaseConnection.php");
 require_once("$path/Repositories/UserRepository.php");
@@ -18,6 +21,12 @@ $femaleSelected = ($selectedGender == 2) ? 'selected' : '';
 $selectedRole = $user->role_id;
 $adminSelected = ($selectedRole == 1) ? 'selected' : '';
 $memberSelected = ($selectedRole == 2) ? 'selected' : '';
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php");
+    exit;
+  }
+  
 
 ?>
 
