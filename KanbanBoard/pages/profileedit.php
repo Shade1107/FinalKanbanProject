@@ -120,8 +120,11 @@ $result = false;
     </div>
     
     <div class="container-button-edit">
-    <a class="buttonlink" href="viewProfile.php"><button type="button" class="buttonMiedit"  >Back</button></a>
-   <input type="submit" class="buttonMiedit" name="save" value="Save">
+    <a class="buttonlink" href="viewProfile.php">
+      <button type="button" class="buttonMiedit"  >Back</button></a>
+   <!-- <input type="submit" class="buttonMiedit" name="save" value="Save"> -->
+   <!-- change button(myo)  -->
+   <button  type="submit" name="save" class=" buttonMiedit">Save</button>
    </div>
 
   </form>

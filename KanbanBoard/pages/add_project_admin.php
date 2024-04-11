@@ -21,6 +21,7 @@
     $projectMemberRepo = new ProjectMemberRepository($dbConnection);
     $projects = $projectMemberRepo->findWithMemberID($id);
     $totalProjects = count($projects);
+    
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -92,11 +93,11 @@
                   
                 <a href="home_admin.php?id=<?= $projectMember->project_id ?>">
                   <div class="Ytask-column R-pilechart">
-                  <h3><?= $project->name?></h3>
+                  <!-- <h3><?= $project->name?></h3> -->
                   <canvas id="YmyChart<?= $projectMember->project_id ?>" class="YChart<?= $projectMember->project_id ?> ychartyoon"></canvas>
 
                   <!-- Delete project function -->
-                  <form action="../Functions4Kanban/Deleteproject.php" method="POST" class="delete-form mt-1">
+                  <form action="../Functions4Kanban/Deleteproject.php" method="POST" class="delete-form mt-3">
                   <input type="hidden" name="project_id" value="<?= $projectMember->project_id ?>">
                   <button type="submit" class="button">Delete</button>
                     </form>

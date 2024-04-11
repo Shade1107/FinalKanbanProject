@@ -39,7 +39,7 @@ function generatePieChart(canvasId, labels, data ,project_title) {
                    
                         // This more specific font property overrides the global property
                     font: {
-                       size: 15
+                       size: 20// change piechart title(myo)
                  },
                  color : '#59498c'
                     
