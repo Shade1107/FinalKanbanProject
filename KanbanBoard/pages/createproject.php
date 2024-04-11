@@ -3,11 +3,13 @@ $isCreateProject = true;
 require_once('../header_footer/header.php');
 $admin_id   = $_SESSION['user_id']; 
 $stageError = isset($_SESSION['stageError']) ? $_SESSION['stageError'] : ''; 
+
 require_once('../Repositories/StageRepository.php');
 include('DB_connection.php');
 // require_once('header&footer/footer.php');
 $stageRepo = New StageRepository(DatabaseConnection::getInstance());
 
+unset($_SESSION['stageError']);
 ?>
 <!Doctype html>
 <head>
@@ -89,7 +91,7 @@ $stageRepo = New StageRepository(DatabaseConnection::getInstance());
            <option>Doing</option>
            <option>Done</option>
            
-       </select><?php if (isset($stageError)) echo '<div style="color:red;">'.$stageError.'</div>';?>
+       </select>
       </div>
 
             <!-- discription -->
@@ -113,6 +115,7 @@ $stageRepo = New StageRepository(DatabaseConnection::getInstance());
                 </div>
               </div>
       </div>
+      <?php if (isset($stageError)) echo '<div style="color:red;">'.$stageError.'</div>';?>
   
        <div class="buttontask-container py-5">
        <a href="add_project_admin.php" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
