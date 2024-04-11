@@ -145,7 +145,7 @@ $stages    =  $stageRepo -> ProjectID($id);
               <div class=" Ytask_table_div" >
               <h4 class="text-center mb-3 pt-3" >Total Tasks</h4>
     
-          <table class="Ytask_table">
+              <table class="Ytask_table">
                   <tbody><tr>
                     <th class="Ypadding_left">Stages</th>
                     <th class="Ypadding_right">Tasks</th>
@@ -467,11 +467,10 @@ function updateVisibility() {
     div.style.display = isVisible ? 'inline-block' : 'none';
   });
 }
-
-
-
-  });
+});
 </script>
+
+
 
 
 
