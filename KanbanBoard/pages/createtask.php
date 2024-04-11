@@ -127,7 +127,7 @@ require_once('../Functions4Kanban/taskcreate.php');
                 <Br>
              
                   <div class="buttontask-container py-5">
-                  <a href="../home_admin.php?id=<?= $project->id ?>" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
+                  <a href="#" onclick="history.back();" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
                   <button type="submit" class="buttonMi">Create</button>
 
                   </div>
