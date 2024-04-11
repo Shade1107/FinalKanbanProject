@@ -174,6 +174,27 @@
             }
             return $stages;
         }
+
+        function calculateDaysLeft($targetDatetime) {
+            // Convert target datetime string to a DateTime object
+            $targetDatetimeObj = new DateTime($targetDatetime);
+        
+            // Get current datetime
+            $currentDatetimeObj = new DateTime();
+        
+            // Calculate the difference
+            $interval = $currentDatetimeObj->diff($targetDatetimeObj);
+        
+            // Get the total days left
+            $daysLeft = $interval->format('%r%a');
+
+
+            if ($daysLeft < 0) {
+                return abs($daysLeft) . " day(s) late";
+            } else {
+                return $daysLeft . " day(s) left";
+            }
+        }
     }
     
 ?>  

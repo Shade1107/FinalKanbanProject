@@ -35,7 +35,7 @@
                         <th>Picture</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th onclick="togglePassword()">Password</th>
+                        <!-- <th onclick="togglePassword()">Password</th> -->
                         <th>Gender</th>
                         <th>Role</th>
                         <th>Action</th>
@@ -48,7 +48,7 @@
                                 <td><img src="../image/<?=$m->img?>" style="max-width: 50px; max-height: 50px;"></td>
                                 <td><?= $m->name ?></td>
                                 <td><?= $m->email ?></td>  
-                                <td data-password="<?= $m->password ?>">***</td>   
+                                <!-- <td data-password="<?= $m->password ?>">***</td>    -->
                                 <td><?= $m->getGender()->name ?></td>     
                                 <td><?= $m->getRole()->name ?></td>
 

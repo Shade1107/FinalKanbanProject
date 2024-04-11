@@ -1,6 +1,5 @@
 <?php
-session_start();
-$path = realpath(__DIR__."/../");
+    $path = realpath(__DIR__."/../");
     require_once("$path/Database/DatabaseConnection.php");
     require_once("$path/Repositories/ProjectRepository.php");
     require_once("$path/Repositories/StageRepository.php");

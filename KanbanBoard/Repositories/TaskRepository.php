@@ -19,9 +19,12 @@
             $task   = null;
             $query  = "SELECT * FROM ".self::$table_name." WHERE id = $id;";
             $result = $this->connection->query($query);
-            if($result) $task = $this->toModel(mysqli_fetch_object($result));
+            if($result) 
+            $task = $this->toModel(mysqli_fetch_object($result));
             return $task;
+        
         }
+        
         public function getAll(){
             $tasks = [];
             $query = "SELECT * FROM ". self::$table_name . ";";
@@ -118,7 +121,6 @@
         }
         
         public function assignStage(Task $task, Stage $stage){
-
             $query  = "UPDATE " .self::$table_name. " SET stage_id = '$stage->id' WHERE id = $task->id";
             $result = $this->connection->query($query);
 
@@ -142,5 +144,15 @@
             }
             return $tasks;
         }    
+        public function getPriorityName($priority){
+            // Priority mapping
+            $priorityNames = [
+                "YfirstPriority" => "First",
+                "YsecondPriority" => "Second",
+                "YthirdPriority" => "Third",
+            ];
+                    return $priorityNames[$priority] ?? "Unknown";
+        }
+        
 }
 ?>  

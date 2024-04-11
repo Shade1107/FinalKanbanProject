@@ -5,7 +5,9 @@
     require_once("$path/Repositories/UserRepository.php");
     //$projmemberRepo = new projectMemberRepository(DatabaseConnection::getInstance());
     $memberRepo = new UserRepository(DatabaseConnection::getInstance());
-    $members = $memberRepo->getAll();;
+    $members = $memberRepo->getAll();
+    
+    
 
 ?>
 

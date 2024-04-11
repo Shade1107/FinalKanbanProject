@@ -42,7 +42,7 @@ unset($_SESSION['LoginError']);
                       <div class="mt-5 Yinputf">
                         
                           
-                          <input type="email" name="email" id="email" class="input-field mb-5" placeholder="Enter Email">
+                          <input type="email" name="email" id="email" class="input-field mb-4" placeholder="Enter Email">
                         
                           <div class="psw-eye">
                             <input type="password" name="password" id="password" class="input-field-psw mb-4" placeholder="Enter Password">

@@ -1,42 +1,47 @@
-<?php 
+<?php
 $path = realpath(__DIR__."/../");
 require_once("$path/Repositories/UserRepository.php");
 require_once("$path/Repositories/ProjectRepository.php");
 require_once("$path/Repositories/StageRepository.php");
 require_once("$path/Repositories/TaskRepository.php");
 
+// Start session
+session_start();
+
 $isMember = $isMember??'';
 $isAdmin = $isAdmin??'';
 
-$dbConnection = DatabaseConnection::getInstance();
-$projectRepository = new ProjectRepository($dbConnection);
-$projects = $projectRepository->getAll();
-
-$id = intval($_GET["id"]?? '2');
-$projects = $projectRepository->find($id);
-
-?>  
-<?php
-
-session_start(); 
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
-{
-  $userID = $_SESSION['user_id'];
-  $userRepo = new UserRepository(DatabaseConnection::getInstance());
-  $user = $userRepo->find($userID);
+// Redirect non-logged in users to login page
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+  header("Location: login.php");
+  exit;
 }
-$isAdminMemberFromPJwebpage = $isAdminMemberFromPJwebpage??'';
-// if ($isMember) {
-//   // Display content for members
-//   echo "<script>alert('Welcome, Member!');</script>";
-// } else {
-//   // Display content for guests
-//   echo "Welcome, Guest!";
-// }
 
+// Get database connection instance
+$dbConnection = DatabaseConnection::getInstance();
 
-// Find the user with the specified ID
+// Initialize repositories
+$projectRepository = new ProjectRepository($dbConnection);
+$userRepository = new UserRepository($dbConnection);
+
+// Get user information if logged in
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  $userID = $_SESSION['user_id'];
+  $user = $userRepository->find($userID);
+}
+
+// Get project ID from GET parameter (sanitize input)
+$id = intval($_GET["id"] ?? 2);
+
+// Fetch all projects and a specific project
+$allProjects = $projectRepository->getAll();
+$specificProject = $projectRepository->find($id);
+
 ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,6 +59,7 @@ $isAdminMemberFromPJwebpage = $isAdminMemberFromPJwebpage??'';
 
 
   <!-- custom css  -->
+  <link rel="icon" type="image/png" href="../image/logo2_2.PNG">
 
 
       <!-- <link rel="stylesheet" href="css/style.css" /> -->
