@@ -145,7 +145,7 @@ $stages    =  $stageRepo -> ProjectID($id);
               <div class=" Ytask_table_div" >
               <h4 class="text-center mb-3 pt-3" >Total Tasks</h4>
     
-              <table class="Ytask_table">
+          <table class="Ytask_table">
                   <tbody><tr>
                     <th class="Ypadding_left">Stages</th>
                     <th class="Ypadding_right">Tasks</th>
@@ -166,6 +166,7 @@ $stages    =  $stageRepo -> ProjectID($id);
 
            
             </div>
+
                   <div class="Ykanban_barchart col-lg-8">
                         <canvas id="YbarChart_from_kanban_board" class="YChart mt-3"></canvas>
                   </div>
@@ -177,33 +178,35 @@ $stages    =  $stageRepo -> ProjectID($id);
 
   </section>
   
-  <?php
-  $id = intval($_GET["id"]);
-  $prorepo = new ProjectRepository(DatabaseConnection::getInstance());
-  $project = $prorepo->find($id);
-?>
+        <?php
+        $id = intval($_GET["id"]);
+        $prorepo = new ProjectRepository(DatabaseConnection::getInstance());
+        $project = $prorepo->find($id);
+      ?>
 
-<!-- <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="True"): ?>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">MMSP</div>
-  <strong>
-<?php endif; ?>
-<?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="False"): ?>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">Lee Bl
-  </div>
-  <strong>
-<?php endif; ?> -->
-<section class="column-container mb-5 container-fluid row">
-<?php
-    foreach($stages as $stage):?>
+      <!-- <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="True"): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">MMSP</div>
+        <strong>
+      <?php endif; ?>
+      <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="False"): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">Lee Bl
+        </div>
+        <strong>
+      <?php endif; ?> -->
+      <section class="column-container mb-5 container-fluid row">
+      <?php
+          foreach($stages as $stage):?>
 <div class="col-lg-3 col-md-3-home col-sm-3">
-    <div class="task-column">
-        <h4 class="text-center"><?=$stage->name?></h4>
-        <hr class="custom-hr">
-        <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
-    <?php foreach($tasks as $t):?>
+    <!-- <div class="task-column" > -->
+    <div class="task-column" id="<?=$stage->name?>">
+              <h4 class="text-center"><?=$stage->name?></h4>
+              <hr class="custom-hr" />
+              <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
+          
+              <?php foreach($tasks as $t):?>
 <div class="PjId" hidden>
-<input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
-</div>
+      <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
+      </div>
 <div class="userId" hidden>
 <input type="hidden" name="user_id" value="<?= $userid ?>" id="user_id">
 </div>
@@ -216,7 +219,7 @@ $stages    =  $stageRepo -> ProjectID($id);
         <form method="POST" action="../Functions4Kanban/DeleteTask.php?id="<?= $id ?>>
         <input type="hidden" name="task_id" value="<?= $t->id ?>">  
         <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
- 
+
         <div class="titleDeletIconDiv">
         <h5><?=$t->task_name?></h5>
         <!-- <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p> -->
@@ -229,32 +232,32 @@ $stages    =  $stageRepo -> ProjectID($id);
         <span aria-hidden="true">&times;</span>
         </button>
         </div>
-                  <!-- <div class="modal-body">
+                  <div class="modal-body">
                       Do you Want to Delete This Task?
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="button" data-dismiss="modal">Cancel</button>
                        <button type="submit" class="button mt-1" name="DeleteTask" id="DeleteTask">Delete</button>
-                  </div> -->
+                  </div>
                                   </div>
                                 </div>
                               </div> 
                       <!--  -->
                     </div>
-      </form>
+         </form>
                     <div class="d-flex">
 
                     <div class="canvas-container">
                           <div class="candiv">
-                              <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1" ></canvas>
                               <div class="YCanvasExtra YFirstExtra">1st Priority</div>
                             </div>
                           <div class="candiv">
-                              <canvas id="canvas2" width="25" height="25" class="canvas canvas2" data-color="#795ce0" data-cand="cand2"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas2" width="25" height="25" class="canvas canvas2" data-color="#795ce0" data-cand="cand2" ></canvas>
                               <div class="YCanvasExtra YSecondExtra">2nd Priority</div>
                           </div> 
                           <div class="candiv">
-                              <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3"  onclick="changecolor(this)"></canvas>
+                              <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3" ></canvas>
                               <div class="YCanvasExtra YThirdExtra">3rd Priority</div>
                           </div>
                     </div>

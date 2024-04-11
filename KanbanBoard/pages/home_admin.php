@@ -82,19 +82,19 @@ $stages    =  $stageRepo -> ProjectID($id);
         $chartstages  = $projectRepository->getPieBarChartLineData($id, $taskMember->user_id);
         
         ?>
-                  <div class="col-lg-3 Ycol-lg-3 col-sm-4 col-6 Ycol-lg-3   ">
+                  <div class="col-lg-3 Ycol-lg-3">
                     <div class="Ymember_card ">
                       <div class="Ymember_img_name d-flex">
                           <div class="Ymember_img">
                             <img src="../image/p1.jpg" width="120px" height="50px">
                           </div>
                           <span class=" Ymember"> 
-                             <?php $userName = taskMemberRepository::getUserName($taskMember);
+                              <?php $userName = taskMemberRepository::getUserName($taskMember);
                                   if ($userName !== null) {
                                       echo $userName->name . "<br>"; // Assuming 'name' is the property holding the user's name
                                   } else {
-                                      echo "Aung Khant Paing<br>";
-                                  }?> 
+                                      echo "Unknown user<br>";
+                                  }?>
                             </span>
                       </div>
               
@@ -103,12 +103,8 @@ $stages    =  $stageRepo -> ProjectID($id);
                       </div>
 
                     </div>
-                                    
-                    
 
                   </div>
-
-                  <?php } ?>
                   <script>
                 document.addEventListener("DOMContentLoaded", function() {
                         // JavaScript code for generating pie chart
@@ -125,7 +121,6 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                         generateLineChart_for_member('YmemberlineChart<?= $taskMember->user_id ?>', labels<?= $taskMember->user_id ?>, data<?= $taskMember->user_id ?>);
 
-
                     });
                 </script>
                   <?php } ?>
@@ -141,7 +136,6 @@ $stages    =  $stageRepo -> ProjectID($id);
 
 
               </div>
-        <!-- /// -->
             
 
 
