@@ -21,7 +21,7 @@
         $min_stages = 3;
         $max_stages = 4;
         if (!is_array($stages) || count($stages) < $min_stages || count($stages) > $max_stages)  {
-            $stageError = 'You need to add at least three stages and not more than four!';
+            $stageError = 'You need to add at least three stages and all fields are required!';
             session_start();
             $_SESSION['stageError'] = $stageError; 
             header("Location: ../pages/createproject.php");
