@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $path = realpath(__DIR__ ."/../"); 
 require_once("$path/Database/DatabaseConnection.php");
 require_once("$path/Repositories/UserRepository.php");
@@ -7,7 +10,7 @@ $id = $_GET['id'];
 $userRepo = new UserRepository(DatabaseConnection::getInstance());
 $user = $userRepo->find($id);
 
-$imagePath = (isset($user->img) && !empty($user->img)) ? "../image/" . $user->img : "../image/default.jpg";
+$imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
 
 
 $selectedGender = $user->gender_id;
@@ -18,6 +21,12 @@ $femaleSelected = ($selectedGender == 2) ? 'selected' : '';
 $selectedRole = $user->role_id;
 $adminSelected = ($selectedRole == 1) ? 'selected' : '';
 $memberSelected = ($selectedRole == 2) ? 'selected' : '';
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php");
+    exit;
+  }
+  
 
 ?>
 
@@ -61,11 +70,6 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
             background-color: #79305a;
         }
 
-        input[type="file"] {
-            max-width: 0px;
-            max-height: 0px;
-        }
-
         .gender-select {
             width: 555px;
             height: 40px;
@@ -88,8 +92,7 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
                 <!-- left column -->
                 <div class="col-md-3">
                     <div class="text-center">
-                        <img src="<?= $imagePath ?>" id="photoPreview" class="avatar img-circle img-thumbnail" alt="avatar" onclick="document.getElementById('file').click();">
-                        <input accept=".jpg, .jpeg, .png" type="file" name="profilePic" id="file" onchange="previewPhoto(event)">
+                        <img src="<?= $imagePath ?>"  class="avatar img-circle img-thumbnail" alt="avatar">
                     </div>
                 </div>
 
