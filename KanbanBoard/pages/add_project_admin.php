@@ -39,7 +39,7 @@
 </head>
 <body class="">
     <section class="Ycolumn-container row">
-        <div class="leftSideBar col-lg-3 ">
+        <div class="leftSideBar col-lg-3 ms-2">
         
             
         <h3 class="text-center Ypjh3 pb-3 mt-3 mb-3">Projects</h3>
@@ -57,19 +57,19 @@
                     <td><?=$totalProjects?></td>
                   </tr>
 
-
-                  <?php foreach($projects as $projectMember): 
-                    $project = $projectMemberRepo->getProjectName($projectMember);
-                    $due_date = $projectRepository->find($projectMember->project_id);
-                  ?>
-                    <tr>
-                        <td><?= $project->name?></td>
-                        <td><?= $projectRepository->calculateDaysLeft($due_date->due_date)?></td>
-                    </tr>
-                  <?php endforeach; ?>
-
+                  <tr>
+                     <td> Average Done Rate</td>
+                     <?php 
+                        require_once('chart_data_function.php');
+                     ?>
+                    <td>: <?=$overall_done_rate??''?>%</td>
+                  </tr>
               </table>
              
+            <!-- </div> -->
+            <div class="YlineChart">
+              <canvas id="YmylineChart" ></canvas>
+            </div>
             
         </div>
         <div class="col-lg-9 row">
@@ -87,14 +87,14 @@
                 <div class="col-lg-4 ">
                   
                 <a href="home_admin.php?id=<?= $projectMember->project_id ?>">
-                  <div class="Ytask-column  ">
+                  <div class="Ytask-column R-pilechart">
                   <h3><?= $project->name?></h3>
-                  <canvas id="YmyChart<?= $projectMember->project_id ?>" class="YChart<?= $projectMember->project_id ?>"></canvas>
+                  <canvas id="YmyChart<?= $projectMember->project_id ?>" class="YChart<?= $projectMember->project_id ?> ychartyoon"></canvas>
 
                   <!-- Delete project function -->
-                  <form action="../Functions4Kanban/Deleteproject.php" method="POST" class="delete-form">
+                  <form action="../Functions4Kanban/Deleteproject.php" method="POST" class="delete-form mt-1">
                   <input type="hidden" name="project_id" value="<?= $projectMember->project_id ?>">
-                  <button type="submit" class="delete-button">Delete</button>
+                  <button type="submit" class="button">Delete</button>
                     </form>
 
                   </div>
@@ -110,6 +110,21 @@
                         data<?= $project->id ?>.push(<?= $stage["count"] ?>);
                         <?php endforeach; ?>
 
+                        // new Chart(document.getElementById("YmyChart<?= $project->id ?>"), {
+                        //     type: 'pie',
+                        //     data: {
+                        //         labels: labels<?= $project->id ?>,
+                        //         datasets: [{
+                        //             data: data<?= $project->id ?>
+                        //         }]
+                        //     },
+                        //     options: {
+                        //         title: {
+                        //             display: true,
+                        //             text: 'Chart JS Pie Chart Example'
+                        //         }
+                        //     }
+                        // });
                         generatePieChart("YmyChart<?= $project->id ?>", labels<?= $project->id ?>, data<?= $project->id ?> ,"<?= $project->name?>");
 
                     });
@@ -120,12 +135,14 @@
     <?php endif; ?>  
 
 
+
     <div class="col-lg-4">
-                <div class="Ytask-column ">
+                <div class="Ytask-column R-pilechart">
                     <div class="YChart">
                       <!-- <span class="">+</span> -->
                       <div class="YChart Yplus_sign_project"><span><a href="createproject.php"> <i class="fa-regular fa-square-plus"></i></a></span></div>
                     </div>
+                    <div></div>
                 </div>
               </div>
     </section>
@@ -138,6 +155,24 @@ require_once("$path/header_footer/footer.php");
 ?>
 
 
+<script>
+  var labels5 = [];
+    var data5 = [];
+    <?php foreach($totalProject as $tp): ?>
+        labels5.push("<?=$tp["project"]?>");
+       
+    <?php endforeach; ?>
+
+    <?php foreach($donePercentage as $dp): ?>
+       
+        data5.push(<?=$dp?>);
+    <?php endforeach; ?>
+
+    
+
+    generateLineChart('YmylineChart', labels5, data5,'Done percentage for each project');
+
+</script>
 
 </body>
 </html>

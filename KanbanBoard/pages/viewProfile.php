@@ -51,11 +51,12 @@ $projects = $projectMemberRepo->findWithMemberID($id);
       <div class="pcdiv1 col-lg-3">
         
         <div class="d-flex justify-content-center align-items-center">
-            <div>
+            <div class="profilechange-edit">
+              <div class="imgcenter">
               <a href="#" class="circle-container Yprofile-change-img">
                     <img src="<?= $imagePath ?>" class="Yproviewimg">
                   </a>
-                
+                </div>
                 <br>
                 <br>
                 <h3>Personal info</h3>
@@ -98,7 +99,10 @@ $projects = $projectMemberRepo->findWithMemberID($id);
                 $stages  = $projectRepository->getPieBarChartLineData($projectMember->project_id, $id);
           ?>
              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-                  <div class="Yproject_card ">
+              <!-- <div class="coloredit ">
+                   
+                </div> -->
+                <div class="Yproject_card ">
                       <div class="Yproject_img_name d-flex">
                           
                           <span class=" Yproject"> <?= $project->name?></span>
@@ -121,7 +125,7 @@ $projects = $projectMemberRepo->findWithMemberID($id);
                         <?php foreach($stages as $stage): ?>
                             labels<?= $project->id ?>.push("<?=$stage["stage"]?>");
                             data<?= $project->id ?>.push("<?=$stage["count"]?>");
-                          
+
                         <?php endforeach; ?>
 
                         generateLineChart_for_member('Yproject<?= $project->id ?>', labels<?= $project->id ?>, data<?= $project->id ?>);
@@ -145,7 +149,7 @@ $projects = $projectMemberRepo->findWithMemberID($id);
   <!-- <script>
     // Generate the bar chart
    // Generate the line chart
-    var labels1 = [];
+  var labels1 = [];
     var data1 = [];
     <php foreach($member1 as $m): ?>
         labels1.push("<=$m["stage"]?>");

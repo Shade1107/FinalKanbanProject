@@ -139,7 +139,6 @@
             }
             return $stages;
         }
-
         public function findWithMemberID($id){
             $taskMembers   = [];
             $query  = "SELECT * FROM ".self::$table_name." WHERE user_id = $id;";
@@ -173,7 +172,7 @@
                 $stages[] = $row;
             }
             return $stages;
-        }
+    }
 
         function calculateDaysLeft($targetDatetime) {
             // Convert target datetime string to a DateTime object

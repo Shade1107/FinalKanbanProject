@@ -190,13 +190,15 @@ $stages    =  $stageRepo -> ProjectID($id);
     <section class="column-container mb-5 container-fluid row">
     <?php
     foreach($stages as $stage):?>
-<div class="col-lg-3 col-md-3 col-sm-3">
+<div class="col-lg-3 col-md-3-home col-sm-3">
     <div class="task-column">
         <h4 class="text-center"><?=$stage->name?></h4>
         <hr class="custom-hr">
         <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
     <?php foreach($tasks as $t):?>
       <?php if ($t->project_id == $id && $t->stage_id == $stage->id):?>
+        
+
         <div id="t_<?=$t->id?>" task_id="<?=$t->id?>" stage_id="<?=$stage->id?>" class="task-container <?=$t->task_priority_border?>" draggable="true" ondragstart="drag(event)">
         
         <div class="task-header <?=$t->task_priority_color?>">
@@ -279,6 +281,9 @@ $stages    =  $stageRepo -> ProjectID($id);
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
 
     <!-- <script src="js/app.js"></script> -->
     <script src="../js/changecolor.js"></script>

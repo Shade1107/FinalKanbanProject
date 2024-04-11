@@ -1,5 +1,5 @@
 <?php
-$path = realpath(__DIR__ ."/../");
+$path = realpath(__DIR__."/../");
 // require_once("$path/header_footer/header.php');
 require_once("$path/Repositories/TaskRepository.php");
 require_once("$path/Repositories/Task_memberRepository.php");

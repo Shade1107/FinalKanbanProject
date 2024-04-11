@@ -42,14 +42,13 @@ unset($_SESSION['LoginError']);
                       <div class="mt-5 Yinputf">
                         
                           
-                          <input type="email" name="email" id="email" class="input-field mb-4" placeholder="Enter Email">
+                          <input type="email" name="email" id="email" class="input-field mb-5" placeholder="Enter Email">
                         
                           <div class="psw-eye">
-                            <input type="password" name="password" id="password" class="input-field-psw mb-4" placeholder="Enter Password">
+                            <input type="password" name="password" id="password" class="input-field-psw mb-5" placeholder="Enter Password">
                              
-                            
                             <!-- change  from fa-eye to fa-eye-slash & mt mb for button and psw field (myo) -->
-                            <i class="fas fa-eye-slash toggle-password Yeyeicon_for_login" ></i>
+                            <i class="fas fa-eye-slash toggle-password Yeyeicon_for_login ms-5" ></i>
                         </div>
 
                         <?php if (isset($LoginError)) echo '<div  style="color:red;">'.$LoginError.'</div>';?>

@@ -78,6 +78,7 @@ function generateLineChart(canvasId, labels, data, project_title) {
         data: chartData,
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     display: false,
@@ -230,7 +231,14 @@ function generateLineChart_for_member(canvasId, labels, data) {
                         minRotation: 45
                     }
                 }
-            }
+            },
+            beforeDraw: function(c) {
+                var chartHeight = c.chart.height;
+                var size = chartHeight * 5 / 100;
+                c.scales['y-axis-0'].options.ticks.minor.fontSize = size;
+            },
+            responsive :true,
+            maintainAspectRatio : false,
         }
     };
 

@@ -105,7 +105,7 @@ $result = false;
     <!-- <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i> -->
      
     <!-- add toggle eye (myo)   -->
-    <i class="fas fa-eye-slash toggle-password" ></i>
+    <i class="fas Yeyeedit fa-eye-slash  toggle-password Yeyeicon_for_login1" ></i>
                        
     </div>
     <!-- <br> -->
@@ -134,8 +134,11 @@ $result = false;
                 $project = $projectMemberRepo->getProjectName($projectMember);
                 $stages  = $projectRepository->getPieBarChartLineData($projectMember->project_id, $id);
           ?>
-             <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
-                  <div class="Yproject_card ">
+              <div class="col-lg-4 Yprojectfromprofile d-flex justify-content-center align-items-center">
+              <!-- <div class="coloredit ">
+                   
+                </div> -->
+                <div class="Yproject_card ">
                       <div class="Yproject_img_name d-flex">
                           
                           <span class=" Yproject"> <?= $project->name?></span>
@@ -146,7 +149,7 @@ $result = false;
                       </div>
 
                     </div>
-              </div> 
+              </div>  
               <script>
                 document.addEventListener("DOMContentLoaded", function() {
                         // JavaScript code for generating pie chart
@@ -170,7 +173,8 @@ $result = false;
         <?php else : ?>
             <p>No projects found</p>
         <?php endif; ?>
-      </div>
+            </div>
+   </section>
 
               <?php
               require_once('../header_footer/footer.php');

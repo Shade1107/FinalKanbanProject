@@ -1,5 +1,5 @@
 <?php 
-$path = realpath(__DIR__."/../"); 
+$path = realpath(__DIR__."/../");
 require_once("$path/Repositories/ProjectRepository.php");
 require_once("$path/Repositories/TaskRepository.php");
 require_once("$path/Repositories/UserRepository.php");
@@ -16,8 +16,15 @@ $taskRepo  =  new TaskRepository(DatabaseConnection::getInstance());
 $stageRepo =  new StageRepository(DatabaseConnection::getInstance());
 $tasks     =  $taskRepo  -> getAll();
 $stages    =  $stageRepo -> ProjectID($id);
-// $_SESSION['user_id'] = 
+
 ?>
+
+
+
+
+
+
+
 
 <!Doctype html>
 <head>
@@ -75,7 +82,7 @@ $stages    =  $stageRepo -> ProjectID($id);
         $chartstages  = $projectRepository->getPieBarChartLineData($id, $taskMember->user_id);
         
         ?>
-                  <div class="col-lg-3 Ycol-lg-3">
+                  <div class="col-lg-3 Ycol-lg-3 col-sm-4 col-6 Ycol-lg-3   ">
                     <div class="Ymember_card ">
                       <div class="Ymember_img_name d-flex">
                           <div class="Ymember_img">
@@ -143,7 +150,7 @@ $stages    =  $stageRepo -> ProjectID($id);
             <div class="col-lg-4"> 
             
 
-              <div class=" Ytask_table_div" >
+              <div class=" Ytask_table_div " >
               <h4 class="text-center mb-3 pt-3" >Total Tasks</h4>
     
           <table class="Ytask_table">
@@ -167,6 +174,7 @@ $stages    =  $stageRepo -> ProjectID($id);
 
            
             </div>
+
                   <div class="Ykanban_barchart col-lg-8">
                         <canvas id="YbarChart_from_kanban_board" class="YChart mt-3"></canvas>
                   </div>
@@ -177,35 +185,38 @@ $stages    =  $stageRepo -> ProjectID($id);
     </div>
 
   </section>
-  
-  <?php
-  $id = intval($_GET["id"]);
-  $prorepo = new ProjectRepository(DatabaseConnection::getInstance());
-  $project = $prorepo->find($id);
-?>
 
-<!-- <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="True"): ?>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">MMSP</div>
-  <strong>
-<?php endif; ?>
-<?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="False"): ?>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">Lee Bl
-  </div>
-  <strong>
-<?php endif; ?> -->
-<section class="column-container mb-5 container-fluid row">
-<?php
-    foreach($stages as $stage):?>
-<div class="col-lg-3 col-md-3 col-sm-3">
+
+  
+        <?php
+        $id = intval($_GET["id"]);
+        $prorepo = new ProjectRepository(DatabaseConnection::getInstance());
+        $project = $prorepo->find($id);
+      ?>
+
+      <!-- <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="True"): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">MMSP</div>
+        <strong>
+      <?php endif; ?>
+      <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="False"): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">Lee Bl
+        </div>
+        <strong>
+      <?php endif; ?> -->
+      <section class="column-container mb-5 container-fluid row">
+      <?php
+          foreach($stages as $stage):?>
+<div class="col-lg-3 col-md-3-home col-sm-3">
     <!-- <div class="task-column" > -->
     <div class="task-column" id="<?=$stage->name?>">
-        <h4 class="text-center"><?=$stage->name?></h4>
-        <hr class="custom-hr">
-        <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
-    <?php foreach($tasks as $t):?>
+              <h4 class="text-center"><?=$stage->name?></h4>
+              <hr class="custom-hr" />
+              <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
+          
+              <?php foreach($tasks as $t):?>
 <div class="PjId" hidden>
-<input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
-</div>
+      <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
+      </div>
 <div class="userId" hidden>
 <input type="hidden" name="user_id" value="<?= $userid ?>" id="user_id">
 </div>
@@ -218,7 +229,7 @@ $stages    =  $stageRepo -> ProjectID($id);
         <form method="POST" action="../Functions4Kanban/DeleteTask.php?id="<?= $id ?>>
         <input type="hidden" name="task_id" value="<?= $t->id ?>">  
         <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
- 
+
         <div class="titleDeletIconDiv">
         <h5><?=$t->task_name?></h5>
         <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p>
@@ -243,7 +254,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                               </div> 
                       <!--  -->
                     </div>
-      </form>
+         </form>
                     <div class="d-flex">
 
                     <div class="canvas-container">
@@ -441,6 +452,12 @@ $stages    =  $stageRepo -> ProjectID($id);
 
     updateVisibility();
 
+       //add new function for only show 3 member when change the browser size
+       window.addEventListener('resize', function () {
+        numVisibleDivs = calculateVisibleDivs();
+        updateVisibility();
+    });
+
     prevButton.addEventListener('click', function () {
       if (currentIndex > 0) {
         currentIndex--;
@@ -469,9 +486,25 @@ function updateVisibility() {
   });
 }
 
+function calculateVisibleDivs() {
+
+       
+         if (window.innerWidth >= 768) { // Medium screens (md)
+            return 4;
+        } else if (window.innerWidth >= 576) { // Small screens (sm) and extra small screens (xs)
+            return 3; // Change this as needed
+        }else {
+          return 2;
+        }
+    }
+
 
 
   });
+
+
+
+  
 </script>
 
 

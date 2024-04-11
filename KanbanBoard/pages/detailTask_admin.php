@@ -15,7 +15,7 @@ $user = new taskMemberRepository(DatabaseConnection::getInstance());
     $taskrepo       = new TaskRepository (DatabaseConnection::getInstance());
     $task = $taskrepo->find($id);
     $taskmember = $taskmemberrepo->findWithTaskID($id);
-    
+
     $priority   = $taskrepo ->getPriorityName($task->task_priority_color);
 
 ?>
