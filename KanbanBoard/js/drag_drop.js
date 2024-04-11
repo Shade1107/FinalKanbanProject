@@ -6,22 +6,23 @@ function allowDrop(ev) {
     ev.preventDefault();
     ev.target.closest('.dropzone').classList.add('drag-over');
 }
+
 function dragLeave(ev) {
     ev.preventDefault();
     ev.target.closest('.dropzone').classList.remove('drag-over');
 }
+
 function drag(ev) {
     let taskDiv = document.getElementById(ev.target.id);
 
     //user div id == task-d to move between role divs
     let task_div_id = ev.target.id;
-    let task_id     = taskDiv.getAttribute('task_id');
-    let stage_id    = taskDiv.getAttribute('stage_id');
+    let task_id = taskDiv.getAttribute('task_id');
+    let stage_id = taskDiv.getAttribute('stage_id');
     ev.dataTransfer.setData("task_div_id", task_div_id);
     ev.dataTransfer.setData("task_id", task_id);
     ev.dataTransfer.setData("old_stage_id", stage_id);
     ev.dataTransfer.setData("stage_id", stage_id);
-    
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -35,43 +36,29 @@ document.addEventListener('DOMContentLoaded', function() {
   //   updateTaskCounts();
   
   //   updateBarChartData();
-  });
+});
 
-  
 function drop(ev) {
-    
     ev.preventDefault();
     
     console.log(ev.target.closest('.drop_stage').id);
 
     ev.target.classList.remove('drag-over');
-    let task_div           = document.getElementById(ev.dataTransfer.getData("task_div_id"));
-    let task_id            = ev.dataTransfer.getData("task_id");
-    let old_stage_id       = ev.dataTransfer.getData("old_stage_id");
+    let task_div = document.getElementById(ev.dataTransfer.getData("task_div_id"));
+    let task_id = ev.dataTransfer.getData("task_id");
+    let old_stage_id = ev.dataTransfer.getData("old_stage_id");
     let new_stage_div = document.getElementById(ev.target.closest('.drop_stage').id);
     //get new_stage_id from drop target stage div
     let new_stage_id = new_stage_div.getAttribute("stage_id");
-    console.log("old stage :"+old_stage_id);
-    console.log("new stage :"+new_stage_id);
+    console.log("old stage :" + old_stage_id);
+    console.log("new stage :" + new_stage_id);
     let target = ev.target.closest('.dropzone');    
 
-    update_task_stage(task_id, new_stage_id, task_div, target,project_id);
-    StageChgHistory(task_id,user_id,old_stage_id,new_stage_id,project_id);
-}
-function update_task_stage(task_id, new_stage_id, task_div, new_stage_div,project_id) {
-    //get requerst formal querystring  => task_id=1&stage_id=2...
-    let url = '../Functions4Kanban/task_stage_update.php?task_id=' + task_id + '&stage_id=' + new_stage_id + '&project_id=' + project_id;
-    //  update_task_stage(task_id, new_stage_id, task_div, target,project_id);
-
     update_task_stage(task_id, new_stage_id, task_div, new_stage_div, project_id, function() {
-        // This function is a callback executed after the task is moved successfully
-        updateTaskCounts(); // Update task counts after the task is moved
-        updateBarChartData(); // Update bar chart data
-        
+        updateTaskCounts();
+        updateBarChartData();
+        StageChgHistory(task_id, user_id, old_stage_id, new_stage_id, project_id);
     });
-    
-    
-   
 }
 
 //update function for barchart(myo)
@@ -83,32 +70,33 @@ function update_task_stage(task_id, new_stage_id, task_div, new_stage_div, proje
     // Update the task stage in the backend (assuming asynchronous operation)
     let url = '../Functions4Kanban/task_stage_update.php?task_id=' + task_id + '&stage_id=' + new_stage_id + '&project_id=' + project_id;
     const xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
+    xhttp.onload = function() {
         let response = JSON.parse(xhttp.responseText);
         if (response.code === 1) {
             // Task stage updated successfully
             console.log('Task stage updated successfully.');
+            // Call the callback function once the task movement is completed
+            if (typeof callback === 'function') {
+                callback();
+            }
         } else {
             console.error('Error updating task stage:', response.message);
-        }
-        // Call the callback function once the task movement is completed
-        if (typeof callback === 'function') {
-            callback();
         }
     };
     xhttp.open("GET", url);
     xhttp.send();
 }
+
 function StageChgHistory(task_id, user_id, old_stage_id, new_stage_id, project_id) {
     // Form the query string with proper parameter values
-    let url = '../Functions4Kanban/stage_history.php?task_id=' + task_id + 
-              '&user_id=' + user_id + 
-              '&old_stage_id=' + old_stage_id + 
-              '&new_stage_id=' + new_stage_id +  
-              '&project_id=' + project_id;       
+    let url = '../Functions4Kanban/stage_history.php?task_id=' + task_id +
+        '&user_id=' + user_id +
+        '&old_stage_id=' + old_stage_id +
+        '&new_stage_id=' + new_stage_id +
+        '&project_id=' + project_id;
 
     const xhttp = new XMLHttpRequest();
-    xhttp.onload = function (xhttp) {
+    xhttp.onload = function(xhttp) {
         let response = JSON.parse(xhttp.target.responseText);
         if (response.code == 1) {
             console.log('success');
@@ -120,11 +108,11 @@ function StageChgHistory(task_id, user_id, old_stage_id, new_stage_id, project_i
 
 console.log("drag");
 
-console.log("pj id: "+project_id);
-console.log("user id : "+user_id);
+console.log("pj id: " + project_id);
+console.log("user id : " + user_id);
 
 //add function for barchart(myo)
-function updateTaskCounts() {
+function updateTaskCounts(){
     const columnContainers = document.querySelectorAll('.column-container .task-list');
     columnContainers.forEach(column => {
         const columnId = column.closest('.task-column').id;
@@ -160,7 +148,3 @@ function updateBarChartData() {
     myChart.data.datasets[0].data = data;
     myChart.update();
 }
-
-  
-
-

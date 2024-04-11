@@ -19,7 +19,6 @@ $path = realpath(__DIR__."/../");
     $projectRepo = new ProjectRepository(DatabaseConnection::getInstance());
     $taskRepo = new TaskRepository(DatabaseConnection::getInstance());
     $stageRepo = new StageRepository(DatabaseConnection::getInstance());
-
     date_default_timezone_set('Asia/Yangon');
     $change_date = date("Y-m-d H:i:s");
     $project     = $project_id;
