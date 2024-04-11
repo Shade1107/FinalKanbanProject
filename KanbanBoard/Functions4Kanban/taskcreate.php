@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         isset($_POST['task_name']) &&
         isset($_POST['user_id'])&&
         isset($_POST['task_priority_color'])&&
-        isset($_POST['task_priority_border'])
+        isset($_POST['task_priority_border']) 
     ) {
         $project_id = $_POST['project_id'];
         $short_description = $_POST['short_description'];
@@ -36,10 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 exit;
             } else {
                 $error_message = "Error inserting task.";
+               
             }
         }
     } else {
         $error_message = "One or more required fields are missing.";
+        $project_id = isset($_POST['project_id']) ? $_POST['project_id'] : ""; 
+    header('Location: ../pages/createtask.php?id=' . $project_id  . '&error=' . urlencode($error_message));
+    exit;
     }
+
 }
 ?>
