@@ -47,7 +47,7 @@ require_once('../Functions4Kanban/taskcreate.php');
                       <?php
                        } ?>
             </div>
-
+            
           </div>
           <?php
                 require_once('../Repositories/ProjectRepository.php');
@@ -69,7 +69,7 @@ require_once('../Functions4Kanban/taskcreate.php');
             <div class="Yinput-container text-center">
 
             <input type="text" id="" class="Miinput-field mt-5" placeholder="Enter task title" name="task_name"><br>
-
+            
            <!-- add member -->
           <div class="addmember"> 
             <?php
@@ -77,7 +77,7 @@ require_once('../Functions4Kanban/taskcreate.php');
               $pjMemberRepository = new projectMemberRepository();
               $taskMembers = $pjMemberRepository->findWithProjectID($id);
             ?>
-
+            
             <select id="tselect" class="select" placeholder="search member to add" name="user_id[]" multiple>
                       <?php foreach ($taskMembers as $taskMember) {
         // Get the user name for each task member
@@ -89,17 +89,16 @@ require_once('../Functions4Kanban/taskcreate.php');
     <?php } ?>
     </select>      
              </div>
-
-           <!-- discription -->
+             <!-- discription -->
             <textarea placeholder="detail description..." class="Mitext_area mt-4" name="short_description" ></textarea>
-
+            
             <div class="addmember"> 
             <?php
               // Get the task members from the repository
               $stageRepository = new StageRepository(DatabaseConnection::getInstance());
               $stages = $stageRepository->ProjectID($id);
             ?>
-
+            
             <select id="tselect" class="select" placeholder="Choose Stage" name="stage_id">
             <?php foreach ($stages as $stage) { ?>
             <option value="<?php echo $stage->id; ?>">
@@ -126,7 +125,7 @@ require_once('../Functions4Kanban/taskcreate.php');
                     </div>
               </div>
                 <Br>
-
+             
                   <div class="buttontask-container py-5">
                   <a href="../home_admin.php?id=<?= $project->id ?>" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
                   <button type="submit" class="buttonMi">Create</button>
