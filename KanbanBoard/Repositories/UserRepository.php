@@ -30,8 +30,8 @@
 
         public function find($id){
             $user   = null;
-            $query  = "SELECT * FROM ".self::$table_name." WHERE id = $id;";
-            $result = $this->connection->query($query);
+            $query  = "SELECT * FROM ".self::$table_name." WHERE id = $id;";           
+             $result = $this->connection->query($query);
             if($result) $user = $this->toModel(mysqli_fetch_object($result));
             return $user;
         }

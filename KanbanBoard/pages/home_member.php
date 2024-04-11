@@ -449,11 +449,10 @@ function updateVisibility() {
     div.style.display = isVisible ? 'inline-block' : 'none';
   });
 }
-
-
-
-  });
+});
 </script>
+
+
 
 
 

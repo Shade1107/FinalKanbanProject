@@ -75,19 +75,24 @@ $stages    =  $stageRepo -> ProjectID($id);
         $chartstages  = $projectRepository->getPieBarChartLineData($id, $taskMember->user_id);
         
         ?>
+        <!-- change condition for check null user (myo) -->
+         <?php $userName = taskMemberRepository::getUserName($taskMember);
+                                  if ($userName !== null) {?>
+                                      
                   <div class="col-lg-3 Ycol-lg-3">
-                    <div class="Ymember_card ">
+                 
+                                     <div class="Ymember_card ">
                       <div class="Ymember_img_name d-flex">
                           <div class="Ymember_img">
                             <img src="../image/p1.jpg" width="120px" height="50px">
                           </div>
                           <span class=" Ymember"> 
-                              <?php $userName = taskMemberRepository::getUserName($taskMember);
+                             <?php $userName = taskMemberRepository::getUserName($taskMember);
                                   if ($userName !== null) {
                                       echo $userName->name . "<br>"; // Assuming 'name' is the property holding the user's name
                                   } else {
-                                      echo "Unknown user<br>";
-                                  }?>
+                                      echo "Aung Khant Paing<br>";
+                                  }?> 
                             </span>
                       </div>
               
@@ -96,8 +101,12 @@ $stages    =  $stageRepo -> ProjectID($id);
                       </div>
 
                     </div>
+                                    
+                    
 
                   </div>
+
+                  <?php } ?>
                   <script>
                 document.addEventListener("DOMContentLoaded", function() {
                         // JavaScript code for generating pie chart
@@ -454,6 +463,19 @@ $stages    =  $stageRepo -> ProjectID($id);
     });
 
 
+// function updateVisibility() {
+//   const firstVisibleIndex = currentIndex;
+//   const lastVisibleIndex = currentIndex + numVisibleDivs - 1;
+
+//   divs.forEach((div, index) => {
+//     const isVisible = index >= firstVisibleIndex && index <= lastVisibleIndex;
+//     const offset = index - firstVisibleIndex;
+//     div.style.transition = 'transform 0.5s ease-in-out';
+//     div.style.transform = isVisible ? 'translateX(0)' : `translateX(${offset * 100}%)`;
+//     div.style.display = isVisible ? 'inline-block' : 'none';
+//   });
+// }
+
 function updateVisibility() {
   const firstVisibleIndex = currentIndex;
   const lastVisibleIndex = currentIndex + numVisibleDivs - 1;
@@ -461,16 +483,25 @@ function updateVisibility() {
   divs.forEach((div, index) => {
     const isVisible = index >= firstVisibleIndex && index <= lastVisibleIndex;
     const offset = index - firstVisibleIndex;
+    const isMemberCard = div.querySelector('.Ymember_card'); // Check if the div is a member card container
+
+    if (isMemberCard) {
+      div.style.display = isVisible ? 'block' : 'none';
+    } else {
+      div.style.display = 'inline-block';
+    }
+
     div.style.transition = 'transform 0.5s ease-in-out';
-    div.style.transform = isVisible ? 'translateX(0)' : `translateX(${offset * 100}%)`;
-    div.style.display = isVisible ? 'inline-block' : 'none';
+    div.style.transform = isVisible ? 'translateX(0)' : `translateX(${offset * (divWidth + spaceBetweenCards)}px)`; // Adjusted for proper spacing
   });
 }
 
 
 
+
   });
 </script>
+
 
 
 
