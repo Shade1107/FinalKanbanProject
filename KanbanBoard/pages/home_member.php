@@ -1,27 +1,24 @@
 <?php 
-$path = realpath(__DIR__."/../");
+$path = realpath(__DIR__."/../"); 
 require_once("$path/Repositories/ProjectRepository.php");
 require_once("$path/Repositories/TaskRepository.php");
 require_once("$path/Repositories/UserRepository.php");
 require_once("$path/Repositories/Project_memberRepository.php");
 ?>
-<!-- <div class="content" style="display: none;"> -->
 <?php 
 // require_once('pages/loader.php');
 $isMember = true;
-require_once('../header_footer/header.php');
-$user_id = $_SESSION['user_id'];
+require_once("$path/header_footer/header.php");
+$userid = $_SESSION['user_id'];
 require_once('chart_data_function.php');
-
-
-
 
 $taskRepo  =  new TaskRepository(DatabaseConnection::getInstance());
 $stageRepo =  new StageRepository(DatabaseConnection::getInstance());
 $tasks     =  $taskRepo  -> getAll();
 $stages    =  $stageRepo -> ProjectID($id);
-
+// $_SESSION['user_id'] = 
 ?>
+
 <!Doctype html>
 <head>
   <!-- fontawesome -->
@@ -33,6 +30,9 @@ $stages    =  $stageRepo -> ProjectID($id);
    <script src="../js/charts.js"></script> 
 <!-- cssloader -->
 <link rel="stylesheet" href="../css/css_loader.css">
+
+<!-- custom js   -->
+<script src="../js/changecolor.js"></script>
 
   <!-- custom css  -->
     <link rel="stylesheet" href="../css/style.css" type="text/css">
@@ -58,9 +58,6 @@ $stages    =  $stageRepo -> ProjectID($id);
     <div class="row">
 
     </div>
-
-  
-
     <div class="col-lg-12  ">
               <h6 class="pt-3 mb-0 text-secondary">Members</h6>
               <hr/>
@@ -137,8 +134,8 @@ $stages    =  $stageRepo -> ProjectID($id);
             
 
 
-        <!-- // -->
-                      <hr/>
+        <!-- // -->  
+        <hr/>
                       
       </div>
 
@@ -157,13 +154,14 @@ $stages    =  $stageRepo -> ProjectID($id);
                   <?php foreach ($stages as $stage):?>
                   <tr class="Ynear_deadline" data-toggle="tooltip" data-placement="top" data-bs-original-title="Task : Task1 , your deadline is approaching!">
                       <td class="Ypadding_left"><?=$stage->name?></td>
-                      <td id="planningTaskCount<?= $stage->id ?>" class="Ypadding_right">
-                      <?= count(array_filter($tasks, function($task) use ($stage) {
-                      return $task->stage_id === $stage->id;
-                      })) ?>
+                      <!-- change some code for table data(myo) -->
+                      <td id="<?=$stage->name?>TaskCount" class="Ypadding_right">
+                     
                       </td>
                   </tr>
                   <?php endforeach;?>
+
+                  
               </tbody></table>
               </div>
 
@@ -185,23 +183,42 @@ $stages    =  $stageRepo -> ProjectID($id);
   $prorepo = new ProjectRepository(DatabaseConnection::getInstance());
   $project = $prorepo->find($id);
 ?>
-<div class="PjId" hidden> <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id"> </div>
-<div class="UserId" hidden> <input type="hidden" name="user_id" value="<?= $user_id ?>" id="user_id"> </div>
-    <section class="column-container mb-5 container-fluid row">
-    <?php
+
+<!-- <?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="True"): ?>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">MMSP</div>
+  <strong>
+<?php endif; ?>
+<?php if(isset($_SESSION['laststageequaltotaltasks']) && $_SESSION['laststageequaltotaltasks']=="False"): ?>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">Lee Bl
+  </div>
+  <strong>
+<?php endif; ?> -->
+<section class="column-container mb-5 container-fluid row">
+<?php
     foreach($stages as $stage):?>
 <div class="col-lg-3 col-md-3 col-sm-3">
-    <div class="task-column">
+    <!-- <div class="task-column" > -->
+    <div class="task-column" id="<?=$stage->name?>">
         <h4 class="text-center"><?=$stage->name?></h4>
         <hr class="custom-hr">
         <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">
     <?php foreach($tasks as $t):?>
+<div class="PjId" hidden>
+<input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
+</div>
+<div class="userId" hidden>
+<input type="hidden" name="user_id" value="<?= $userid ?>" id="user_id">
+</div>
       <?php if ($t->project_id == $id && $t->stage_id == $stage->id):?>
+        
+
         <div id="t_<?=$t->id?>" task_id="<?=$t->id?>" stage_id="<?=$stage->id?>" class="task-container <?=$t->task_priority_border?>" draggable="true" ondragstart="drag(event)">
         
         <div class="task-header <?=$t->task_priority_color?>">
-        <form method="POST" action="../Functions4Kanban/DeleteTask.php">
+        <form method="POST" action="../Functions4Kanban/DeleteTask.php?id="<?= $id ?>>
         <input type="hidden" name="task_id" value="<?= $t->id ?>">  
+        <input type="hidden" name="project_id" value="<?= $id ?>" id="project_id">
+ 
         <div class="titleDeletIconDiv">
         <h5><?=$t->task_name?></h5>
         <!-- <p><i class="fa-solid fa-xmark" type="button" class="btn btn-primary" id="custom-alert-button"  data-toggle="modal" data-target="#modal<?=$t->id?>"></i></p> -->
@@ -231,15 +248,15 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                     <div class="canvas-container">
                           <div class="candiv">
-                              <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1"  ></canvas>
+                              <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1"  onclick="changecolor(this)"></canvas>
                               <div class="YCanvasExtra YFirstExtra">1st Priority</div>
                             </div>
                           <div class="candiv">
-                              <canvas id="canvas2" width="25" height="25" class="canvas canvas2" data-color="#795ce0" data-cand="cand2"  ></canvas>
+                              <canvas id="canvas2" width="25" height="25" class="canvas canvas2" data-color="#795ce0" data-cand="cand2"  onclick="changecolor(this)"></canvas>
                               <div class="YCanvasExtra YSecondExtra">2nd Priority</div>
                           </div> 
                           <div class="candiv">
-                              <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3"  ></canvas>
+                              <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3"  onclick="changecolor(this)"></canvas>
                               <div class="YCanvasExtra YThirdExtra">3rd Priority</div>
                           </div>
                     </div>
@@ -260,7 +277,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                 </div>
                 <div class="task-description-container">
                   <p><td><?=$t->short_description?></td></p>
-                  <a href="detailTask_member.php?id=<?= $t->id ?>" class="">Details</a>
+                  <a href="detailTask_admin.php?id=<?= $t->id ?>" class="">Details</a>
                 </div>
               </div>
     <?php endif;?>
@@ -280,6 +297,9 @@ $stages    =  $stageRepo -> ProjectID($id);
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
+
+
     <!-- <script src="js/app.js"></script> -->
     <script src="../js/changecolor.js"></script>
     <script src="../js/drag_drop.js"></script>
@@ -287,7 +307,7 @@ $stages    =  $stageRepo -> ProjectID($id);
    
     <?php 
     $isAdmin = true;
-     require_once('../header_footer/footer.php');
+     require_once("$path/header_footer/footer.php");
     ?>
 
  <script>
@@ -305,100 +325,100 @@ $stages    =  $stageRepo -> ProjectID($id);
 </script>
 
 <script>
-  // Generate the line chart
-  var labels1 = [];
-    var data1 = [];
-    <?php foreach($member1 as $m): ?>
-        labels1.push("<?=$m["stage"]?>");
-        data1.push("<?=$m["task"]?>");
+//   // Generate the line chart
+//   var labels1 = [];
+//     var data1 = [];
+//     <?php foreach($member1 as $m): ?>
+//         labels1.push("<?=$m["stage"]?>");
+//         data1.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart1', labels1, data1);
+//     generateLineChart_for_member('YmemberlineChart1', labels1, data1);
 
-//for member2
-    var labels2 = [];
-    var data2 = [];
-    <?php foreach($member2 as $m): ?>
-        labels2.push("<?=$m["stage"]?>");
-        data2.push("<?=$m["task"]?>");
+// //for member2
+//     var labels2 = [];
+//     var data2 = [];
+//     <?php foreach($member2 as $m): ?>
+//         labels2.push("<?=$m["stage"]?>");
+//         data2.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart2', labels2, data2);
+//     generateLineChart_for_member('YmemberlineChart2', labels2, data2);
 
 
-//for member3
-    var labels3 = [];
-    var data3 = [];
-    <?php foreach($member3 as $m): ?>
-        labels3.push("<?=$m["stage"]?>");
-        data3.push("<?=$m["task"]?>");
+// //for member3
+//     var labels3 = [];
+//     var data3 = [];
+//     <?php foreach($member3 as $m): ?>
+//         labels3.push("<?=$m["stage"]?>");
+//         data3.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart3', labels3, data3);
+//     generateLineChart_for_member('YmemberlineChart3', labels3, data3);
 
-//for member4
+// //for member4
 
-    var labels4 = [];
-    var data4 = [];
-    <?php foreach($member4 as $m): ?>
-        labels4.push("<?=$m["stage"]?>");
-        data4.push("<?=$m["task"]?>");
+//     var labels4 = [];
+//     var data4 = [];
+//     <?php foreach($member4 as $m): ?>
+//         labels4.push("<?=$m["stage"]?>");
+//         data4.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart4', labels4, data4);
+//     generateLineChart_for_member('YmemberlineChart4', labels4, data4);
 
-//for member5
-    var labels5 = [];
-    var data5 = [];
-    <?php foreach($member5 as $m): ?>
-        labels5.push("<?=$m["stage"]?>");
-        data5.push("<?=$m["task"]?>");
+// //for member5
+//     var labels5 = [];
+//     var data5 = [];
+//     <?php foreach($member5 as $m): ?>
+//         labels5.push("<?=$m["stage"]?>");
+//         data5.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart5', labels5, data5);
+//     generateLineChart_for_member('YmemberlineChart5', labels5, data5);
 
 
-// //for member6
-    var labels6 = [];
-    var data6 = [];
-    <?php foreach($member6 as $m): ?>
-        labels6.push("<?=$m["stage"]?>");
-        data6.push("<?=$m["task"]?>");
+// // //for member6
+//     var labels6 = [];
+//     var data6 = [];
+//     <?php foreach($member6 as $m): ?>
+//         labels6.push("<?=$m["stage"]?>");
+//         data6.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart6', labels6, data6);
+//     generateLineChart_for_member('YmemberlineChart6', labels6, data6);
 
 
     
-// //for member7
-var labels7 = [];
-    var data7 = [];
-    <?php foreach($member7 as $m): ?>
-        labels7.push("<?=$m["stage"]?>");
-        data7.push("<?=$m["task"]?>");
+// // //for member7
+// var labels7 = [];
+//     var data7 = [];
+//     <?php foreach($member7 as $m): ?>
+//         labels7.push("<?=$m["stage"]?>");
+//         data7.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart7', labels7, data7);
+//     generateLineChart_for_member('YmemberlineChart7', labels7, data7);
 
 
     
-// //for member6
-var labels8 = [];
-    var data8 = [];
-    <?php foreach($member8 as $m): ?>
-        labels8.push("<?=$m["stage"]?>");
-        data8.push("<?=$m["task"]?>");
+// // //for member6
+// var labels8 = [];
+//     var data8 = [];
+//     <?php foreach($member8 as $m): ?>
+//         labels8.push("<?=$m["stage"]?>");
+//         data8.push("<?=$m["task"]?>");
        
-    <?php endforeach; ?>
+//     <?php endforeach; ?>
 
-    generateLineChart_for_member('YmemberlineChart8', labels8, data8);
+//     generateLineChart_for_member('YmemberlineChart8', labels8, data8);
 
 
 </script>
