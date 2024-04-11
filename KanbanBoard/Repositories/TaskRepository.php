@@ -144,5 +144,15 @@
             }
             return $tasks;
         }    
+        public function getPriorityName($priority){
+            // Priority mapping
+            $priorityNames = [
+                "YfirstPriority" => "First",
+                "YsecondPriority" => "Second",
+                "YthirdPriority" => "Third",
+            ];
+                    return $priorityNames[$priority] ?? "Unknown";
+        }
+        
 }
 ?>  
