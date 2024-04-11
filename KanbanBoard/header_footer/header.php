@@ -26,7 +26,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
   $user = $userRepo->find($userID);
 }
 $isAdminMemberFromPJwebpage = $isAdminMemberFromPJwebpage??'';
-// if ($isMember) {
+// if ($isAdminMemberFromPJwebpage) {
 //   // Display content for members
 //   echo "<script>alert('Welcome, Member!');</script>";
 // } else {
@@ -81,6 +81,11 @@ $isAdminMemberFromPJwebpage = $isAdminMemberFromPJwebpage??'';
 
      <div class="menu-container">
      <ul>
+           <?php if(!$isAdminMemberFromPJwebpage):?>
+         <li>
+            <a href="<?= ($isAdmin ? '../pages/add_project_admin.php' : (isset($user) && $user->role_id == 2 ? '../pages/add_project_member.php' : '../pages/add_project_admin.php')) ?>" class="btn mt-3">Projects Board</a>
+          </li>
+          <?php endif;?>
       <?php 
           if ($isAdmin) :?>
           <li>

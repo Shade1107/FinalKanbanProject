@@ -1,4 +1,7 @@
 <?php
+
+      // to add projects board nav link(myo) 
+    $isAdminMemberFromPJwebpage = true;
     $path = realpath(__DIR__ ."/../"); 
     require_once("$path/Database/DatabaseConnection.php");
     require_once("$path/Repositories/UserRepository.php");
@@ -8,7 +11,7 @@
     require_once("$path/Repositories/ProjectRepository.php");
     require_once("$path/Repositories/Project_memberRepository.php");
 
-    $isAdminMemberFromPJwebpage = true;
+ 
 
     // Get the user ID from the URL parameter
     $id = $_SESSION['user_id'];
