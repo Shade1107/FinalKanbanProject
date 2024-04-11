@@ -504,10 +504,6 @@ function calculateVisibleDivs() {
         }
     }
 
-window.addEventListener('load', function() {
-  const loader = document.getElementById('loader-wrapper');
-  loader.style.display = 'none'; // Hide the loader when the page has finished loading
-});
 
 
   });
