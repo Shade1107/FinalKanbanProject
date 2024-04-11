@@ -7,6 +7,7 @@ body {
   padding: 0;
   /* background: linear-gradient(to right,  rgb(185, 43, 39), rgb(21, 101, 192)); */
   background:#ee92a9 ;
+  overflow-x: hidden;
 }
 
 .fed1dc{ 
@@ -203,8 +204,8 @@ header .info-container {
 
   
 .circle-container img {
-width: 100%;
-height: 100%; 
+width: 50px;
+height: 50px; 
 object-fit: cover; /* Ensures the image covers the circular container */
 border-radius: 50%; /* Ensures the image itself is also clipped to a circle */
 }
@@ -289,9 +290,6 @@ header .input-container {
   width: 95%;
   margin: 5px;
   margin-top: 80px;
- 
-
-  /* background-color: #f8deec; */
  
   border: 3px solid rgb(198, 146, 174);
   background-color: #fce5ff;
@@ -779,8 +777,27 @@ align-items: center;
 
   cursor: pointer;
 }
+ 
+.fasignup.fa-eye-slash.toggle-password{
 
+    top: 45% !important;
+    left: 75% !important;
 
+}
+
+/* 
+.edit fa-eye-slash{
+  font-size: 20px;
+  position: absolute;
+  z-index: 3;
+  left: 243px;
+  color: #3e306b;
+  padding: 10px 16px;
+  top: 45% !important;
+  left: 75% !important;
+
+  cursor: pointer;
+} */
 
 
 .fa-eye-slash{
@@ -790,16 +807,11 @@ align-items: center;
   left: 243px;
   color: #3e306b;
   padding: 10px 16px;
-  top: 45%;
-  left: 75%;
+  top: 0;
+  left: 82% !important;
   cursor: pointer;
 }
 
-/* add for login eye icon  */
-.Yeyeicon_for_login{
-  top: -4% !important;
-  left: 68%;
-}
 
 .input-field:focus {
   border-bottom-color: #3e306b;
@@ -817,7 +829,7 @@ align-items: center;
 }
 
 .button{
-  margin: 0px 116px;
+  margin: auto;
   display: block;
   margin-top: 0px;
 font-size: 15px;
@@ -894,28 +906,16 @@ button:hover{
 
 .Ycolumn-container .Ytask-column {
 
-  color: rgb(62, 48, 107);
+color: rgb(62, 48, 107);
 border-radius: 16px;
-/* padding: 50px 30px; */
-/* margin: 20px 10px; */
-/* 
-
-margin-top: 5px;
-margin-top: 5px;
-margin-top: 41px; */
-/* width: 283px; */
-/* margin:10px; */
 background-color: #ffe8fc9c;
-
 border: 3px solid rgb(159, 83, 158);
 text-align: center;
 margin: 20px 0px;
-/* margin: 20px; */
 padding: 0px;
-/* width: 0px; */
-
 margin-left: 20px;
-
+width: 250px;
+height: 350px;
 }
 
 .MiYcolumn-container{
@@ -943,12 +943,18 @@ text-align: center; */
    
 }
 
-.Yplus_sign_project{
-  /* display: block; */
+.Yplus_sign_project {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+}
+
+.YChart {
+  padding: 0;
+  box-sizing: border-box;
+  width: auto;
+  height: 280px;
+  margin: 30px 0px;
 }
 
 .Yplus_sign_project span{
@@ -1245,25 +1251,7 @@ to {
 animation: colorChange 0.5s ease;
 }
 
-.YChart{
-/* display: inline-block; */
-padding: 0;
 
-box-sizing: border-box;
-width: 280px;
-height: 280px;
-margin: 20px 0px;
-
-
-}
-
-/* .chart-legend {
-padding: 10px;
-background-color: #f8f9fa;
-border-radius: 5px;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-margin-bottom: 10px;
-} */
 
 .YlineChart{
 /* background-color: white; */
@@ -1413,16 +1401,6 @@ width: 400px;
 
 
   .Miinput-field {
-    /* width: 400px;
-    height: 50px;
-    border: none;
-    border-bottom: 2px double #3e306b;     
-     color: #725e9d;
-      background: none;
-      outline: none; 
-      padding-left: 20px;
-      transition: border-bottom-color 0.3s ease; */
-
 
       display: inline-block;
       width: 400px;
@@ -1491,7 +1469,6 @@ width: 400px;
     border-radius: 10px;
     border: none;
     padding-left: 20px;
-    
     padding-top: 10px;
     color: #725e9d;
   }
@@ -1504,16 +1481,14 @@ width: 400px;
   .datecontainer{
     width: 400px;
     height: 50px;
-    /* background-color: yellow; */
-    /* float: left; */
+    margin: auto;
   }
 
   .Micolorcontainer{
-    width: 400px;
-    /* height: 40px; */
-    float: left;
+    width: 400px; 
     background-color: white;
     border-radius: 5px;
+     margin: auto;
  }
 
  .Micolortext{
@@ -1620,10 +1595,7 @@ width: 400px;
  
 
   /* /// yoon add */
-  .select{
-    width: 400px;
-    
-   }
+
   
    .p-4 {
     padding: 0px !important;
@@ -1641,6 +1613,8 @@ width: 400px;
    
     display: flex;
     justify-content: center;
+    max-height: 281px;
+    width: 100%;
   }
 
   .Ytotal_task{
@@ -1924,10 +1898,10 @@ box-shadow: 0 4px 15px rgba(60, 95, 125, 0.437);
 
 
 
-.Ytask_table_div{
-background-color: #fff1fd;
-border-radius: 45px;
-
+.Ytask_table_div {
+  background-color: #fff1fd;
+  border-radius: 0px  !important;
+  margin: 30px;
 }
 
 .Ytask_table_div h4{
@@ -1975,6 +1949,7 @@ margin: 0 auto;
 margin: 0px 50px;
 font-family: 'Lucida Sans', 'Lucida Sans Regular', 
 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 .container-button-edit{
@@ -2121,6 +2096,8 @@ border-radius: 50%;
   background-color: #E4DEFF;
   border-right: solid 3px rgb(159, 83, 158);
   padding-top: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .pcdiv{
   background-color: #ffe8fc9c;
@@ -2135,8 +2112,9 @@ border-radius: 50%;
 
 .pctable{
     height:20px;
-    width: 250px;
-    text-align: center;
+    width: 300px;
+    margin: 0 35px;
+    text-align: justify !important;
 }
 
 
@@ -2209,7 +2187,6 @@ margin-top: 10px;
   /* background-color: #fed1dc !important;  */
   background-color: inherit !important;
   border-bottom: none;
-  
 }
 
 .MiYtable tr:nth-child(even) {
@@ -2275,36 +2252,505 @@ padding: 30px 0px;
   color:#c1abee !important;
 }
 
-/* .row{
-  margin: auto !important;
-} */
 
- /* responsive add task picture*/
- @media (max-width: 992px) {
 
-  .carousel{
-    width: 0px !important ;
-    height: 0px !important;
-    /* margin: 20px 10px; */
-}
-}
-
-/* responsive add task picture*/
-  @media (max-width: 992px) {
-
-    .carousel{
-      width: 0px !important ;
-      height: 0px !important;
-      /* margin: 20px 10px; */
-  } 
-}
 /* end code bond  */
 
 /* for createproject that the stage and the date is not align for other element(myo)  */
-.Yalignelement {
-  margin-left: 50px;
-}
+
 
 .Yalignelement_for_createtask {
   margin-left: 56px;
 }
+
+
+
+.R-pilechart{
+  position: relative;
+  height: 65vh;
+  width: 23vw;
+}
+
+.ychartyoon{
+  text-align: center;
+}
+
+.col-md-3-home {
+  flex: 0 0 auto ;
+  width: 25% !important;
+  margin: 0px auto !important ;
+}
+
+
+.Yeyeicon_for_login {
+  top: -4% !important;
+  left: 70% !important;
+}
+
+.select{
+  display: inline-block;
+  width: 400px;
+  height: 40px;
+  border: none;
+  color: #725e9d;
+  background: white;
+  /* padding-left: 20px; */
+  border-radius: 5px;
+  transition: border-bottom-color 0.3s ease;
+ }
+
+ .datecontainer{
+  text-align: center;
+ }
+
+ .profilechange-edit h3{
+  text-align: center;
+ }
+
+ .pctable{
+  height:20px;
+  width: 250px;
+  text-align: center;
+}
+
+.imgcenter{
+ text-align: center;
+ 
+}
+
+.container_pc{
+  background: #13a4d9;
+}
+
+.Yeyeedit{
+  left: 76% !important;
+  top: 32px !important;
+}
+
+@media (max-width: 1200px) {
+   /* login and sign up image  */
+   body{
+    background-color: #13a4d9 !important;
+  }
+  
+   .Yimg{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    
+  }
+  
+  .Yimg1{
+    left: 50px;
+    top: 80px;
+   
+   
+  }
+  
+  .Yimg2{
+    left: 100px;
+    top: 230px;
+  }
+  
+  .Yimg3{
+    left: 300px;
+    top: 265px;
+    width: 200px;
+    height: 130px;
+  }
+  
+  .Yimg4{
+    left: 250px;
+    top: 100px;
+    width: 222px;
+    height: 167px;
+  }
+  
+  .Yimg5{
+   
+    left: 130px;
+    top: 180px;
+    width: 300px !important;
+    height: 160px;
+  }
+
+  .info-container img {
+    width: 100px;
+    height: 40px;
+  } 
+
+  .info-container p {
+    font-size: 10px;
+  }
+
+  .R-pilechart{
+    position: relative;
+    height: 58vh;
+    width: 23vw;
+  }
+
+  .ychartyoon{
+   text-align: center;
+   width: 50%;
+   height: auto;
+  }
+
+  .menu-container ul li a {
+    text-decoration: none;
+    color: #c7b1f4;
+    font-size: 15px;
+}
+
+.pctable{
+  margin: 0 auto;
+}
+
+}
+
+@media (max-width: 992px){
+  body{
+    background-color: #b239ae !important;
+  }
+
+  .Yimg{
+    width: 0px;
+    height: 0px;
+  }
+  
+   
+  .Yimg3{
+    width: 0px;
+    height: 0px;
+  } 
+  
+  .Yimg4{
+    width: 0px;
+    height: 0px;
+  }
+  
+  .Yimg5{
+    width: 0px !important;
+    height: 0px;
+    border: none;
+  }
+
+  .carousel{
+    width: 0px !important ;
+    height: 0px !important;
+
+}
+
+.info-container p {
+  font-size: 8px;
+}
+
+.info-container img {
+  width: 86px;
+  height: 30px;
+}
+
+.R-pilechart {
+  position: relative;
+  height: 60vh;
+  width: 90vw;
+}
+
+.ychartyoon{
+  display: flex;
+  margin: auto;
+}
+
+.col-md-3-home {
+  flex: 0 0 auto ;
+  width: 25% !important;
+  margin: 0px auto !important ;
+}
+
+.col-md-3-home {
+  flex: 0 0 auto ;
+  width: 50% !important;
+  margin: 0px auto !important ;
+}
+
+.pctable{
+  margin: 0 330px;
+}
+
+
+
+}
+
+@media (max-width: 768px){
+
+  body{
+    background-color: #13d98a !important;
+  }
+
+  header .info-container {
+    width: 320px;
+    margin: 0px 30px;
+  }
+  
+  .profile a {
+    font-size: 10px;
+   
+  }
+
+  .menu-icon {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 30px !important;
+    right: 60px;
+    z-index: 9999;
+}
+
+
+.R-pilechart{
+  position: relative;
+  height: 60vh;
+  width: 88vw;
+}
+
+.ychartyoon{
+  display: flex;
+  margin: auto;
+}
+
+.col-md-3-home {
+  flex: 0 0 auto;
+  width: 100% !important;
+  margin: 0px 19px !important;
+}
+
+.pctable{
+  margin: 0 230px;
+}
+
+}
+
+@media (max-width: 576px){
+
+  body{
+    background-color: #aea8af !important;
+  }
+
+  .R-pilechart{
+    position: relative;
+    height: 60vh;
+    width: 85vw;
+  }
+
+  .ychartyoon{
+    display: flex;
+    margin: auto;
+  }
+
+  .col-md-3-home {
+    flex: 0 0 auto;
+    width: 100% !important;
+    margin: 0px 15px !important;
+  }
+
+  .pctable{
+    margin: 0 160px;
+
+
+}
+
+}
+
+@media (max-width: 500px){
+  body{
+    background-color: #d91373 !important;
+  }
+
+  .loginForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding: 0;
+    margin: 0;
+  
+  }
+
+  .input-field {
+    display: block;
+    width: 250px;
+    height: 40px;
+    border: none;
+    border-bottom: 2px double #3e306b;
+     color: #725e9d;
+      background: none;
+      outline: none; 
+      padding-left: 20px;
+      transition: all 0.3s ease;
+      margin: auto;
+  }/* Adjust width as needed */
+
+    
+  .input-field-psw {
+    display: block;
+
+    width: 250px;
+    height: 40px;
+    border: none;
+    border-bottom: 2px double #3e306b;
+     color: #725e9d;
+      background: none;
+      outline: none; 
+      padding-left: 20px;
+      transition: all 0.3s ease;
+      margin:auto;
+  }
+
+  .psw-eye{
+    position: relative;
+
+  }
+
+
+.menu-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  top: 30px !important;
+  right: 60px;
+  z-index: 9999;
+}
+
+.R-pilechart{
+  position: relative;
+  height: 60vh;
+  width: 84vw;
+}
+
+.ychartyoon{
+  display: flex;
+  margin: auto;
+}
+
+.col-md-3-home {
+  flex: 0 0 auto;
+  width: 100% !important;
+  margin: auto;
+}
+
+.pctable{
+  margin: 0 120px;
+}
+
+}
+
+/* menu */
+   
+.menu-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  z-index: 9999;
+}
+
+.menu-icon:hover{
+  width: 30px;
+  height: 30px;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: rgb(255, 251, 251);
+}
+
+.menu-container {
+  
+  display: none;
+  /* visibility: hidden; */
+  position: absolute;
+  top: 70px; 
+  right: 20px; 
+  background-color: #cfc3e7;
+  color:rgb(252, 245, 245) ;
+  padding: 10px;
+  z-index: 9998;
+  margin: 0px 30px;
+  border-radius: 10px;
+  
+}
+
+.menu-container.active {
+  display: block;
+ 
+}
+
+.menu-container ul {
+  list-style-type: none;
+  padding: 0;
+ 
+}
+
+.menu-container ul li {
+  margin-bottom: 10px;
+}
+
+.menu-container ul li a {
+  text-decoration: none;
+  color: #3e306b;
+ 
+}
+
+.menu-container ul li a img{
+ margin: 0px 10px; 
+ 
+}
+
+
+
+
+@media (min-width: 1200px) {
+
+  .menu-icon {
+    display: none;
+  }
+
+  .menu-container{
+    display: inline-block;
+    position: static;
+    background-color:transparent ;
+    padding: 0;
+    color: #f2eff4;
+    
+  }   
+  
+  .menu-container ul li {
+    margin-bottom: 10px;
+    display: inline;
+    margin: auto;
+  }
+
+
+  .menu-container ul li a {
+    text-decoration: none;
+    color: #c7b1f4;  
+  }
+
+  }
+
+
+

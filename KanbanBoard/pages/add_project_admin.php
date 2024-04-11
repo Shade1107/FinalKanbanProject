@@ -39,7 +39,7 @@
 </head>
 <body class="">
     <section class="Ycolumn-container row">
-        <div class="leftSideBar col-lg-3 ">
+        <div class="leftSideBar col-lg-3 ms-2">
         
             
         <h3 class="text-center Ypjh3 pb-3 mt-3 mb-3">Projects</h3>
@@ -70,6 +70,10 @@
 
               </table>
              
+            <!-- </div> -->
+            <div class="YlineChart">
+              <canvas id="YmylineChart" ></canvas>
+            </div>
             
         </div>
         <div class="col-lg-9 row">
@@ -87,14 +91,14 @@
                 <div class="col-lg-4 ">
                   
                 <a href="home_admin.php?id=<?= $projectMember->project_id ?>">
-                  <div class="Ytask-column  ">
+                  <div class="Ytask-column R-pilechart">
                   <h3><?= $project->name?></h3>
-                  <canvas id="YmyChart<?= $projectMember->project_id ?>" class="YChart<?= $projectMember->project_id ?>"></canvas>
+                  <canvas id="YmyChart<?= $projectMember->project_id ?>" class="YChart<?= $projectMember->project_id ?> ychartyoon"></canvas>
 
                   <!-- Delete project function -->
-                  <form action="../Functions4Kanban/Deleteproject.php" method="POST" class="delete-form">
+                  <form action="../Functions4Kanban/Deleteproject.php" method="POST" class="delete-form mt-1">
                   <input type="hidden" name="project_id" value="<?= $projectMember->project_id ?>">
-                  <button type="submit" class="delete-button">Delete</button>
+                  <button type="submit" class="button">Delete</button>
                     </form>
 
                   </div>
@@ -121,11 +125,12 @@
 
 
     <div class="col-lg-4">
-                <div class="Ytask-column ">
+                <div class="Ytask-column R-pilechart">
                     <div class="YChart">
                       <!-- <span class="">+</span> -->
                       <div class="YChart Yplus_sign_project"><span><a href="createproject.php"> <i class="fa-regular fa-square-plus"></i></a></span></div>
                     </div>
+                    <div></div>
                 </div>
               </div>
     </section>
@@ -138,6 +143,24 @@ require_once("$path/header_footer/footer.php");
 ?>
 
 
+<script>
+  var labels5 = [];
+    var data5 = [];
+    <?php foreach($totalProject as $tp): ?>
+        labels5.push("<?=$tp["project"]?>");
+       
+    <?php endforeach; ?>
+
+    <?php foreach($donePercentage as $dp): ?>
+       
+        data5.push(<?=$dp?>);
+    <?php endforeach; ?>
+
+    
+
+    generateLineChart('YmylineChart', labels5, data5,'Done percentage for each project');
+
+</script>
 
 </body>
 </html>

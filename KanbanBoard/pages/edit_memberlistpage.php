@@ -70,6 +70,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             background-color: #79305a;
         }
 
+        input[type="file"] {
+            max-width: 0px;
+            max-height: 0px;
+        }
+
         .gender-select {
             width: 555px;
             height: 40px;

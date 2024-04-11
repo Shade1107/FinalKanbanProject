@@ -6,6 +6,13 @@ require_once('../Repositories/Project_memberRepository.php');
 require_once('../Functions4Kanban/taskcreate.php');
 
 ?>
+
+<?php
+$error_message = isset($_GET['error']) ? $_GET['error'] : '';
+?>
+
+
+
 <!Doctype html>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -58,7 +65,7 @@ require_once('../Functions4Kanban/taskcreate.php');
                     $project = $prorepo->find($id);
                     if (isset($project)) {
                 ?>
-                    <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
+                        <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
                 <?php
                     } else {
                         echo "<p>Not found.</p>";
@@ -87,10 +94,11 @@ require_once('../Functions4Kanban/taskcreate.php');
             <?php echo $userName->name; ?>
         </option>
     <?php } ?>
-    </select>
-             </div>
-             <!-- discription -->
-            <textarea placeholder="detail description..." class="Mitext_area mt-4" name="short_description" ></textarea>
+    </select>      
+             </div><br>
+
+           <!-- discription -->
+            <textarea placeholder="detail description..." class="Mitext_area mt-4" name="short_description" ></textarea><br>
             
             <div class="addmember"> 
             <?php
@@ -100,16 +108,19 @@ require_once('../Functions4Kanban/taskcreate.php');
             ?>
             
             <select id="tselect" class="select" placeholder="Choose Stage" name="stage_id">
-            <?php foreach ($stages as $stage) { ?>
-            <option value="<?php echo $stage->id; ?>">
-            <?php echo $stage->name; ?>
-            </option>
-            <?php } ?>
+              <!-- current stage fixed by yoon -->
+              <option value="" selected disabled>Current Stage in Project</option> 
+             
+            <?php foreach ($stages as $stage) {?>
+         <option value="<?php echo $stage->id; ?>">
+         <?php echo $stage->name; ?>
+        </option>
+    <?php } ?>
     </select> 
 
              </div>
                   <!-- Priorty color -->
-               <div class="Micolorcontainer  Yalignelement_for_createtask mt-3">
+               <div class="Micolorcontainer  mt-4">
                 <div class="Micolortext">
                 Choose your Priorty color :
                 </div> 
@@ -126,8 +137,8 @@ require_once('../Functions4Kanban/taskcreate.php');
               </div>
                 <Br>
              
-                  <div class="buttontask-container py-5">
-                  <a href="#" onclick="history.back();" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
+                  <div class="buttontask-container mt-4">
+                  <a href="../home_admin.php?id=<?= $project->id ?>" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
                   <button type="submit" class="buttonMi">Create</button>
 
                   </div>

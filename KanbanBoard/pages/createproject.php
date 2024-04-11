@@ -3,10 +3,10 @@ $isCreateProject = true;
 require_once('../header_footer/header.php');
 $admin_id   = $_SESSION['user_id']; 
 $stageError = isset($_SESSION['stageError']) ? $_SESSION['stageError'] : ''; 
-
 require_once('../Repositories/StageRepository.php');
 include('DB_connection.php');
 // require_once('header&footer/footer.php');
+
 $stageRepo = New StageRepository(DatabaseConnection::getInstance());
 
 unset($_SESSION['stageError']);
@@ -23,7 +23,7 @@ unset($_SESSION['stageError']);
  </head>  
  <body class="MiYbody">
  <section class="Ycolumn-container MiYcolumn-container pb-5 ">
-  <div class="row MiYrow">
+  <div class="row MiYrow d-flex justify-content-center"">
       
    <!-- picture slide-->
    <div class="col-lg-7  d-flex justify-content-center align-items-center">
@@ -31,13 +31,13 @@ unset($_SESSION['stageError']);
 <div id="carouselExampleSlidesOnly" class="carousel slide MiYimgspace ms-1" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../image/kb9.jpg" class="d-block w-100 rounded" alt="...">
+      <img src="../image/kb9.jpg" class="d-block w-100 rounded" alt="slide1">
     </div>
     <div class="carousel-item">
-      <img src="../image/kb10.jpg" class="d-block w-100 rounded" alt="...">
+      <img src="../image/kb10.jpg" class="d-block w-100 rounded" alt="slide2">
     </div>
     <div class="carousel-item">
-      <img src="../image/kb11.jpg" class="d-block w-100 rounded" alt="...">
+      <img src="../image/kb11.jpg" class="d-block w-100 rounded" alt="slide3">
     </div>
   </div>
 </div>
@@ -45,7 +45,6 @@ unset($_SESSION['stageError']);
 
      <!-- add  task -->
  <div class="col-lg-5">
-
 
 <form action="../Functions4Kanban/projectcreate.php" method="POST">
 
@@ -58,7 +57,7 @@ unset($_SESSION['stageError']);
   <input type="text" id="admin_id" name="admin_id" value="<?php echo $admin_id ?>" hidden><br>
 </div>
 
- <input type="text" id="" name="projectName" class="Miinput-field mt-5" placeholder="Enter Project title"><br>
+ <input type="text" id="" name="projectName" class="Miinput-field mt-4" placeholder="Enter Project title"><br>
 
           <!-- add member -->
           <div class="addmember">  
@@ -70,7 +69,7 @@ unset($_SESSION['stageError']);
                   <tr>
                     <td>
                       <!-- <input type="text" name="k" placeholder="search member to add" autocomplete="off" class="inputsearch mt-4 "> -->
-                      <select id="tselect" class="select" placeholder="search member to add" name="members[]" multiple>
+                      <select id="tselect" class="select mt-2" placeholder="search member to add" name="members[]" multiple>
                         <?php foreach ($member as $m) : ?>
                           <option value="<?php echo htmlspecialchars($m->id); ?>">
                             <?php echo htmlspecialchars($m->name); ?>
@@ -85,22 +84,22 @@ unset($_SESSION['stageError']);
               </div>
 
       <!-- stage -->
-      <div class="select-con mt-4 Yalignelement">
-           <select id="select-tags" multiple data-placeholder="Type to add stage" class="select "  name="stages[]" multiple>     
+      <div class="select-con mt-4 ">
+           <select id="select-tags" multiple data-placeholder="Type to add stage" class="select"  name="stages[]" multiple>     
            <option>Planing</option>
            <option>Doing</option>
            <option>Done</option>
            
-       </select>
+       </select><?php if (isset($stageError)) echo '<div style="color:red;">'.$stageError.'</div>';?>
       </div>
 
             <!-- discription -->
-            <textarea placeholder="description..." id="des" name="Description" class="Mitext_area mt-4" ></textarea>
+            <textarea placeholder="description..." id="des" name="Description" class="Mitext_area mt-4" ></textarea><br>
           
             <!-- detail discription -->
             <textarea placeholder="detail description..." id="Detail_des" name="Detail_Description" class="Mitext_area mt-4" ></textarea>
 
-            <div class="datecontainer Yalignelement">
+            <div class="datecontainer ">
                   <div class="input-group mt-4 ">
                     <span class="input-group-text" id="basic-addon3">Choose your create date</span>
                     <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="createDate">
@@ -108,16 +107,16 @@ unset($_SESSION['stageError']);
               </div>
                 
                <!-- target date -->   
-              <div class="datecontainer Yalignelement">        
-                <div class="input-group mt-4" >
+              <div class="datecontainer">        
+                <div class="input-group mt-3 " >
                   <span class="input-group-text" id="basic-addon3">Choose your target date</span>
-                  <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="dueDate">
+                  <input type="date" class="form-control " id="basic-url" aria-describedby="basic-addon3" name="dueDate">
                 </div>
               </div>
       </div>
       <?php if (isset($stageError)) echo '<div style="color:red;">'.$stageError.'</div>';?>
   
-       <div class="buttontask-container py-5">
+       <div class="buttontask-container mt-4">
        <a href="add_project_admin.php" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
        <button type="submit" class="buttonMi " >Create</button>
 

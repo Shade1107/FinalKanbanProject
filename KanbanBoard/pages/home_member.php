@@ -114,7 +114,6 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                         generateLineChart_for_member('YmemberlineChart<?= $taskMember->user_id ?>', labels<?= $taskMember->user_id ?>, data<?= $taskMember->user_id ?>);
 
-
                     });
                 </script>
                   <?php } ?>
@@ -196,9 +195,8 @@ $stages    =  $stageRepo -> ProjectID($id);
 <section class="column-container mb-5 container-fluid row">
 <?php
     foreach($stages as $stage):?>
-<div class="col-lg-3 col-md-3 col-sm-3">
-    <!-- <div class="task-column" > -->
-    <div class="task-column" id="<?=$stage->name?>">
+<div class="col-lg-3 col-md-3-home col-sm-3">
+    <div class="task-column">
         <h4 class="text-center"><?=$stage->name?></h4>
         <hr class="custom-hr">
         <div id="s_<?=$stage->id?>" stage_id="<?=$stage->id?>" class="task-list drop_stage dropzone" ondrop="drop(event)" ondragleave="dragLeave(event);" ondragover="allowDrop(event)">

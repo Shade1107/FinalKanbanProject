@@ -95,6 +95,5 @@
             $taskRepo = new TaskRepository(DatabaseConnection::getInstance());
             return $taskRepo->find($taskMember->task_id);
         }
-        
     }
 ?> 

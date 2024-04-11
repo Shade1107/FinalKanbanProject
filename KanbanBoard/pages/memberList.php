@@ -36,7 +36,7 @@
                         <th></th>
                         <th>Name</th>
                         <th>Email</th>
-                        <!-- <th onclick="togglePassword()">Password</th> -->
+                        <th onclick="togglePassword()">Password</th>
                         <th>Gender</th>
                         <th>Role</th>
                     </tr>
@@ -48,7 +48,7 @@
                                 <td><?= $m->img?></td>
                                 <td><?= $m->name ?></td>
                                 <td><?= $m->email ?></td>  
-                                <!-- <td data-password="<?= $m->password ?>">***</td>    -->
+                                <td data-password="<?= $m->password ?>">***</td>   
                                 <td><?= ($m->gender_id == 1) ? 'Male' : 'Female' ?></td>     
                                 <td><?= ($m->role_id == 1 ) ? 'Admin' : 'Member' ?></td>        
                             </tr>

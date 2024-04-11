@@ -25,6 +25,7 @@
         
         }
         
+        
         public function getAll(){
             $tasks = [];
             $query = "SELECT * FROM ". self::$table_name . ";";
@@ -121,6 +122,7 @@
         }
         
         public function assignStage(Task $task, Stage $stage){
+
             $query  = "UPDATE " .self::$table_name. " SET stage_id = '$stage->id' WHERE id = $task->id";
             $result = $this->connection->query($query);
 

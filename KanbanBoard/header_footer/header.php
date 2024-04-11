@@ -1,47 +1,42 @@
-<?php
+<?php 
 $path = realpath(__DIR__."/../");
 require_once("$path/Repositories/UserRepository.php");
 require_once("$path/Repositories/ProjectRepository.php");
 require_once("$path/Repositories/StageRepository.php");
 require_once("$path/Repositories/TaskRepository.php");
 
-// Start session
-session_start();
-
 $isMember = $isMember??'';
 $isAdmin = $isAdmin??'';
 
-// Redirect non-logged in users to login page
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-  header("Location: login.php");
-  exit;
-}
-
-// Get database connection instance
 $dbConnection = DatabaseConnection::getInstance();
-
-// Initialize repositories
 $projectRepository = new ProjectRepository($dbConnection);
-$userRepository = new UserRepository($dbConnection);
+$projects = $projectRepository->getAll();
 
-// Get user information if logged in
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+$id = intval($_GET["id"]?? '2');
+$projects = $projectRepository->find($id);
+
+?>  
+<?php
+
+session_start(); 
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
   $userID = $_SESSION['user_id'];
-  $user = $userRepository->find($userID);
+  $userRepo = new UserRepository(DatabaseConnection::getInstance());
+  $user = $userRepo->find($userID);
 }
+$isAdminMemberFromPJwebpage = $isAdminMemberFromPJwebpage??'';
+// if ($isMember) {
+//   // Display content for members
+//   echo "<script>alert('Welcome, Member!');</script>";
+// } else {
+//   // Display content for guests
+//   echo "Welcome, Guest!";
+// }
 
-// Get project ID from GET parameter (sanitize input)
-$id = intval($_GET["id"] ?? 2);
 
-// Fetch all projects and a specific project
-$allProjects = $projectRepository->getAll();
-$specificProject = $projectRepository->find($id);
-
+// Find the user with the specified ID
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,17 +50,9 @@ $specificProject = $projectRepository->find($id);
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
      <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">    
-  
-
-
-  <!-- custom css  -->
-  <link rel="icon" type="image/png" href="../image/logo2_2.PNG">
-
-
-      <!-- <link rel="stylesheet" href="css/style.css" /> -->
-     
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+      <link rel="icon" type="image/png" href="../image/logo2_2.PNG">
   </head>
   <body>
     <header>
@@ -85,15 +72,31 @@ $specificProject = $projectRepository->find($id);
           delete old ones.
         </p>
       </div>
-      <div class="d-flex profile">
+
+      <div class="menu-icon" onclick="toggleMenu()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      </div>
+
+     <div class="menu-container">
+     <ul>
       <?php 
           if ($isAdmin) :?>
-             <a href="../pages/createtask.php?id=<?= isset($specificProject->id) ? $specificProject->id : ''; ?>" class="btn  mt-3">Add Task</a>
-            <?php endif ?>
+          <li>
+             <a href="../pages/createtask.php?id=<?= isset($projects->id) ? $projects->id : ''; ?>" class="btn  mt-3">Add Task</a>
+          </li>
+             <?php endif ?>
           
+          <li>
             <a href="<?= ($isAdmin ? '../pages/memberlist_admin.php' : (isset($user) && $user->role_id == 2 ? '../pages/memberlist_member.php' : '../pages/memberlist_admin.php')) ?>" class="btn mt-3">Member List</a>
-          <a href="../Functions4Kanban/signout.php" class="btn  mt-3 ">LogOut</a>
-          <div class="d-flex Profilecircle mr-3">
+          </li>
+          
+            <li>
+            <a href="../Functions4Kanban/signout.php" class="btn  mt-3 ">LogOut</a>
+            </li>
+               
+            <li>
                 <a href="viewprofile.php?id=<?= $userID ?>" class="circle-container">
                 <?php
                $imagePath = (isset($user->img) && !empty($user->img)) ? "../image/".$user->img."?v=".time() : "../image/default.jpg";
@@ -101,7 +104,9 @@ $specificProject = $projectRepository->find($id);
                 <img src="<?= $imagePath ?>" id="photoPreview" class="avatar img-circle img-thumbnail" alt="avatar">
 
                 </a>
-         
+            </li>
+            </ul>
+            </div>
           
           <!-- <div class="d-flex Profilecircle mr-3">
                 <a href="#" class="circle-container">
@@ -130,6 +135,6 @@ $specificProject = $projectRepository->find($id);
      <!--bootstrap css1 js 1-->
     
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+     <script src="../js/menu.js"></script>
   </body>
 </html>

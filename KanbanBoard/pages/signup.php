@@ -46,7 +46,7 @@
                         <input type="password" id="password" class="input-field-psw  mt-5" name="password" placeholder="Enter Password">
                         
                         <!-- change  from fa-eye to fa-eye-slash & mt mb for button and psw field (myo) -->
-                        <i class="fas fa-eye-slash toggle-password" ></i>
+                        <i class="fas fasignup fa-eye-slash toggle-password" ></i>
                        
                         <?php if (isset($_GET['PasswordEmpty'])): ?>
                             <p class="" style="color: red ;">Password is required</p>
