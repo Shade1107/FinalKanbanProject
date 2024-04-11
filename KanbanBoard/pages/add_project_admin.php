@@ -95,7 +95,7 @@
                   <form action="../Functions4Kanban/Deleteproject.php" method="POST" class="delete-form">
                   <input type="hidden" name="project_id" value="<?= $projectMember->project_id ?>">
                   <button type="submit" class="delete-button">Delete</button>
-                    </form>
+                    </form> 
 
                   </div>
                 </a>

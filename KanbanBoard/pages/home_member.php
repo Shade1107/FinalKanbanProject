@@ -114,7 +114,6 @@ $stages    =  $stageRepo -> ProjectID($id);
 
                         generateLineChart_for_member('YmemberlineChart<?= $taskMember->user_id ?>', labels<?= $taskMember->user_id ?>, data<?= $taskMember->user_id ?>);
 
-
                     });
                 </script>
                   <?php } ?>
