@@ -138,7 +138,7 @@ $error_message = isset($_GET['error']) ? $_GET['error'] : '';
                 <Br>
              
                   <div class="buttontask-container mt-4">
-                  <a href="../home_admin.php?id=<?= $project->id ?>" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
+                  <a href="#" onclick="history.back();"  class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
                   <button type="submit" class="buttonMi">Create</button>
 
                   </div>
