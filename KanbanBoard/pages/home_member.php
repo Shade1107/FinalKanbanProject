@@ -248,7 +248,8 @@ $stages    =  $stageRepo -> ProjectID($id);
                     <div class="d-flex">
 
                     <div class="canvas-container">
-                          <div class="candiv">
+                      <!-- for member close Priority(myo)  -->
+                          <!-- <div class="candiv">
                               <canvas id="canvas1" width="25" height="25" class="canvas canvas1" data-color="#d16bca" data-cand="cand1" ></canvas>
                               <div class="YCanvasExtra YFirstExtra">1st Priority</div>
                             </div>
@@ -259,7 +260,7 @@ $stages    =  $stageRepo -> ProjectID($id);
                           <div class="candiv">
                               <canvas id="canvas3" width="25" height="25" class="canvas canvas3" data-color="#30d1d9" data-cand="cand3" ></canvas>
                               <div class="YCanvasExtra YThirdExtra">3rd Priority</div>
-                          </div>
+                          </div> -->
                     </div>
 
                         <div class="YsmallProfile" >
