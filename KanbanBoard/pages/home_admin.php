@@ -465,18 +465,6 @@ $stages    =  $stageRepo -> ProjectID($id);
     });
 
 
-// function updateVisibility() {
-//   const firstVisibleIndex = currentIndex;
-//   const lastVisibleIndex = currentIndex + numVisibleDivs - 1;
-
-//   divs.forEach((div, index) => {
-//     const isVisible = index >= firstVisibleIndex && index <= lastVisibleIndex;
-//     const offset = index - firstVisibleIndex;
-//     div.style.transition = 'transform 0.5s ease-in-out';
-//     div.style.transform = isVisible ? 'translateX(0)' : `translateX(${offset * 100}%)`;
-//     div.style.display = isVisible ? 'inline-block' : 'none';
-//   });
-// }
 
 function updateVisibility() {
   const firstVisibleIndex = currentIndex;
@@ -499,6 +487,10 @@ function updateVisibility() {
 }
 
 
+window.addEventListener('load', function() {
+  const loader = document.getElementById('loader-wrapper');
+  loader.style.display = 'none'; // Hide the loader when the page has finished loading
+});
 
 
   });
