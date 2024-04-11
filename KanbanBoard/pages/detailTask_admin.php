@@ -9,16 +9,14 @@ require_once("$path/Repositories/UserRepository.php");
 
 $id = intval($_GET['id']); // Assuming task ID is passed via GET parameter
 
-$dbConnection = DatabaseConnection::getInstance();
-
-$projectRepository = new ProjectRepository($dbConnection);
-$pm = $projectRepository->find($id); // Finding project by task ID (assuming it's linked)
-
-$taskrepo = new TaskRepository($dbConnection);
-$task = $taskrepo->find($id); // Finding task by task ID
-
-$taskmemrepo = new taskMemberRepository($dbConnection);
-$taskmembers = $taskmemrepo->find($id); // Finding task members by task ID
+$user = new taskMemberRepository(DatabaseConnection::getInstance());
+    $members = $user->find($id);
+    $taskmemberrepo = new taskMemberRepository(DatabaseConnection::getInstance());
+    $taskrepo       = new TaskRepository (DatabaseConnection::getInstance());
+    $task = $taskrepo->find($id);
+    $taskmember = $taskmemberrepo->findWithTaskID($id);
+    
+    $priority   = $taskrepo ->getPriorityName($task->task_priority_color);
 
 ?>
 <html>
@@ -71,7 +69,7 @@ $taskmembers = $taskmemrepo->find($id); // Finding task members by task ID
 
             <tr>
               <td>Priority</td>
-              <td><?= $task->task_priority_color ?></td> <!-- Assuming $task->priority holds the task priority -->
+              <td><?= $priority ?></td> <!-- Assuming $task->priority holds the task priority -->
             </tr>
            
         </table> 

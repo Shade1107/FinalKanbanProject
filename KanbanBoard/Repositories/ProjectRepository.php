@@ -187,8 +187,13 @@
         
             // Get the total days left
             $daysLeft = $interval->format('%r%a');
-        
-            return $daysLeft;
+
+
+            if ($daysLeft < 0) {
+                return abs($daysLeft) . " day(s) late";
+            } else {
+                return $daysLeft . " day(s) left";
+            }
         }
     }
     
