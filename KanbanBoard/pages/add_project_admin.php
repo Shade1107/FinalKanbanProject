@@ -57,13 +57,17 @@
                     <td><?=$totalProjects?></td>
                   </tr>
 
-                  <tr>
-                     <td> Average Done Rate</td>
-                     <?php 
-                        require_once('chart_data_function.php');
-                     ?>
-                    <td>: <?=$overall_done_rate??''?>%</td>
-                  </tr>
+
+                  <?php foreach($projects as $projectMember): 
+                    $project = $projectMemberRepo->getProjectName($projectMember);
+                    $due_date = $projectRepository->find($projectMember->project_id);
+                  ?>
+                    <tr>
+                        <td><?= $project->name?></td>
+                        <td><?= $projectRepository->calculateDaysLeft($due_date->due_date)?></td>
+                    </tr>
+                  <?php endforeach; ?>
+
               </table>
              
             <!-- </div> -->
@@ -110,21 +114,6 @@
                         data<?= $project->id ?>.push(<?= $stage["count"] ?>);
                         <?php endforeach; ?>
 
-                        // new Chart(document.getElementById("YmyChart<?= $project->id ?>"), {
-                        //     type: 'pie',
-                        //     data: {
-                        //         labels: labels<?= $project->id ?>,
-                        //         datasets: [{
-                        //             data: data<?= $project->id ?>
-                        //         }]
-                        //     },
-                        //     options: {
-                        //         title: {
-                        //             display: true,
-                        //             text: 'Chart JS Pie Chart Example'
-                        //         }
-                        //     }
-                        // });
                         generatePieChart("YmyChart<?= $project->id ?>", labels<?= $project->id ?>, data<?= $project->id ?> ,"<?= $project->name?>");
 
                     });
@@ -133,7 +122,6 @@
     <?php else : ?>
       <p>No projects found</p>
     <?php endif; ?>  
-
 
 
     <div class="col-lg-4">

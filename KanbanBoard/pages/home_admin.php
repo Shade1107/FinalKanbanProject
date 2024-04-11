@@ -89,12 +89,12 @@ $stages    =  $stageRepo -> ProjectID($id);
                             <img src="../image/p1.jpg" width="120px" height="50px">
                           </div>
                           <span class=" Ymember"> 
-                              <?php $userName = taskMemberRepository::getUserName($taskMember);
+                             <?php $userName = taskMemberRepository::getUserName($taskMember);
                                   if ($userName !== null) {
                                       echo $userName->name . "<br>"; // Assuming 'name' is the property holding the user's name
                                   } else {
-                                      echo "Unknown user<br>";
-                                  }?>
+                                      echo "Aung Khant Paing<br>";
+                                  }?> 
                             </span>
                       </div>
               
@@ -103,8 +103,12 @@ $stages    =  $stageRepo -> ProjectID($id);
                       </div>
 
                     </div>
+                                    
+                    
 
                   </div>
+
+                  <?php } ?>
                   <script>
                 document.addEventListener("DOMContentLoaded", function() {
                         // JavaScript code for generating pie chart
@@ -150,7 +154,7 @@ $stages    =  $stageRepo -> ProjectID($id);
             <div class="col-lg-4"> 
             
 
-              <div class=" Ytask_table_div " >
+              <div class=" Ytask_table_div" >
               <h4 class="text-center mb-3 pt-3" >Total Tasks</h4>
     
           <table class="Ytask_table">
@@ -185,8 +189,6 @@ $stages    =  $stageRepo -> ProjectID($id);
     </div>
 
   </section>
-
-
   
         <?php
         $id = intval($_GET["id"]);
@@ -473,6 +475,19 @@ $stages    =  $stageRepo -> ProjectID($id);
     });
 
 
+// function updateVisibility() {
+//   const firstVisibleIndex = currentIndex;
+//   const lastVisibleIndex = currentIndex + numVisibleDivs - 1;
+
+//   divs.forEach((div, index) => {
+//     const isVisible = index >= firstVisibleIndex && index <= lastVisibleIndex;
+//     const offset = index - firstVisibleIndex;
+//     div.style.transition = 'transform 0.5s ease-in-out';
+//     div.style.transform = isVisible ? 'translateX(0)' : `translateX(${offset * 100}%)`;
+//     div.style.display = isVisible ? 'inline-block' : 'none';
+//   });
+// }
+
 function updateVisibility() {
   const firstVisibleIndex = currentIndex;
   const lastVisibleIndex = currentIndex + numVisibleDivs - 1;
@@ -480,9 +495,16 @@ function updateVisibility() {
   divs.forEach((div, index) => {
     const isVisible = index >= firstVisibleIndex && index <= lastVisibleIndex;
     const offset = index - firstVisibleIndex;
+    const isMemberCard = div.querySelector('.Ymember_card'); // Check if the div is a member card container
+
+    if (isMemberCard) {
+      div.style.display = isVisible ? 'block' : 'none';
+    } else {
+      div.style.display = 'inline-block';
+    }
+
     div.style.transition = 'transform 0.5s ease-in-out';
-    div.style.transform = isVisible ? 'translateX(0)' : `translateX(${offset * 100}%)`;
-    div.style.display = isVisible ? 'inline-block' : 'none';
+    div.style.transform = isVisible ? 'translateX(0)' : `translateX(${offset * (divWidth + spaceBetweenCards)}px)`; // Adjusted for proper spacing
   });
 }
 
@@ -501,11 +523,8 @@ function calculateVisibleDivs() {
 
 
   });
-
-
-
-  
 </script>
+
 
 
 
