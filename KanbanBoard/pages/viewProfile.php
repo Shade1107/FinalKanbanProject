@@ -76,12 +76,12 @@ $projects = $projectMemberRepo->findWithMemberID($id);
             </tr>
             <tr>
               <th >Gender</th>
-              <td><?= $user->gender_id == 1 ? 'Male' : 'Female';?></td>
+              <td><?= $user->gender_id == 1 ? '男性' : '女性';?></td>
             
             </tr>
             <tr>
               <th>Role</th>
-              <td><?= $user->role_id == 1 ? 'Admin' : 'Member';?></td>
+              <td><?= $user->role_id == 1 ? '管理者' : 'メンバー';?></td>
             
             </tr>    
           </table> 

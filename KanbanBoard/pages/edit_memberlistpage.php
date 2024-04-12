@@ -88,8 +88,8 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
                     <label class="col-lg-3 control-label">Gender:</label>
                         <select class="form-select form-control gender-select Miinput-field" aria-label="Default select example" name="gender" required>
                             <option value="">Select Gender</option>
-                            <option value="1"  ". <?= $maleSelected ?> .">Male</option>
-                            <option value="2"  ". <?= $femaleSelected ?> .">Female</option>
+                            <option value="1"  ". <?= $maleSelected ?> .">男性</option>
+                            <option value="2"  ". <?= $femaleSelected ?> .">女性</option>
                         </select>
                     </div>
 
@@ -98,8 +98,8 @@ $memberSelected = ($selectedRole == 2) ? 'selected' : '';
                     <label class="col-lg-3 control-label">Role:</label>
                         <select class="form-select gender-select form-control"  aria-label="Default select example" name="role" required >
                             <option value="" selected disabled>Change Role</option>
-                            <option value="1" ". <?= $adminSelected ?> .">Admin</option>
-                            <option value="2" ". <?= $memberSelected ?> .">Member</option>
+                            <option value="1" ". <?= $adminSelected ?> .">管理者</option>
+                            <option value="2" ". <?= $memberSelected ?> .">メンバー</option>
                         </select>
                     </div>
 

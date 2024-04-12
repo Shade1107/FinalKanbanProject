@@ -54,7 +54,7 @@
                   </tr>
                   <tr>
                     <td>User's Role </td>
-                    <td><?php echo $user->role_id == 1 ? 'Admin' : 'Member'; ?></td>
+                    <td><?php echo $user->role_id == 1 ? '管理者' : 'メンバー'; ?></td>
                   </tr>
                   <tr>
                      <td> Total Projects</td>

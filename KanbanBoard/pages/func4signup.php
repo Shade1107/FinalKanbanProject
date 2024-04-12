@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insert user data into the database
     $role_id = 2; // Assuming default role_id
-    $insert_query = "INSERT INTO `$table` (name, email, password, role_id, gender_id) 
-                     VALUES ('$name', '$email', '$password', '$role_id', '$gender_id')";
+    $insert_query = "INSERT INTO `$table` (img ,name, email, password, role_id, gender_id) 
+                     VALUES ('default.jpg','$name', '$email', '$password', '$role_id', '$gender_id')";
     $insert_result = $conn->query($insert_query);
 
     if ($insert_result) {

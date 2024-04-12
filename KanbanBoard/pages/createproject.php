@@ -57,7 +57,7 @@ unset($_SESSION['stageError']);
   <input type="text" id="admin_id" name="admin_id" value="<?php echo $admin_id ?>" hidden><br>
 </div>
 
- <input type="text" id="" name="projectName" class="Miinput-field mt-4" placeholder="Enter Project title"><br>
+ <input type="text" id="" name="projectName" class="Miinput-field mt-4" placeholder="Enter Project title" required><br>
 
           <!-- add member -->
           <div class="addmember">  
@@ -69,7 +69,7 @@ unset($_SESSION['stageError']);
                   <tr>
                     <td>
                       <!-- <input type="text" name="k" placeholder="search member to add" autocomplete="off" class="inputsearch mt-4 "> -->
-                      <select id="tselect" class="select mt-2" placeholder="search member to add" name="members[]" multiple>
+                      <select id="tselect" class="select mt-2" placeholder="search member to add" name="members[]" multiple required>
                         <?php foreach ($member as $m) : ?>
                           <option value="<?php echo htmlspecialchars($m->id); ?>">
                             <?php echo htmlspecialchars($m->name); ?>
@@ -85,24 +85,24 @@ unset($_SESSION['stageError']);
 
       <!-- stage -->
       <div class="select-con mt-4 ">
-           <select id="select-tags" multiple data-placeholder="Type to add stage" class="select"  name="stages[]" multiple>     
-           <option>Planing</option>
-           <option>Doing</option>
-           <option>Done</option>
+           <select id="select-tags" multiple data-placeholder="Type to add stage" class="select"  name="stages[]" multiple required>     
+           <option>計画</option>
+           <option>進行中</option>
+           <option>完了</option>
            
        </select><?php if (isset($stageError)) echo '<div style="color:red;">'.$stageError.'</div>';?>
       </div>
 
             <!-- discription -->
-            <textarea placeholder="description..." id="des" name="Description" class="Mitext_area mt-4" ></textarea><br>
+            <textarea placeholder="description..." id="des" name="Description" class="Mitext_area mt-4" required></textarea><br>
           
             <!-- detail discription -->
-            <textarea placeholder="detail description..." id="Detail_des" name="Detail_Description" class="Mitext_area mt-4" ></textarea>
+            <textarea placeholder="detail description..." id="Detail_des" name="Detail_Description" class="Mitext_area mt-4" required></textarea>
 
             <div class="datecontainer ">
                   <div class="input-group mt-4 ">
                     <span class="input-group-text" id="basic-addon3">Choose your create date</span>
-                    <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="createDate">
+                    <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="createDate" required>
                   </div>
               </div>
                 
@@ -110,11 +110,10 @@ unset($_SESSION['stageError']);
               <div class="datecontainer">        
                 <div class="input-group mt-3 " >
                   <span class="input-group-text" id="basic-addon3">Choose your target date</span>
-                  <input type="date" class="form-control " id="basic-url" aria-describedby="basic-addon3" name="dueDate">
+                  <input type="date" class="form-control " id="basic-url" aria-describedby="basic-addon3" name="dueDate" required>
                 </div>
               </div>
       </div>
-      <?php if (isset($stageError)) echo '<div style="color:red;">'.$stageError.'</div>';?>
   
        <div class="buttontask-container mt-4">
        <a href="add_project_admin.php" class="buttonlink"><button type="button" class="buttonMi " >Back</button></a>
